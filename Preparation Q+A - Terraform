@@ -1,0 +1,18 @@
+TERRAFORM
+==========
+
+1. Terraform provisioners. 
+- Provisioners in Terraform allow you to execute scripts or commands on a local or remote machine after a resource is created or destroyed. They are useful for bootstrapping machines, installing software, or running configuration scripts.
+- Types of Provisioners - local-exec, remote-exec, file
+2. Terraform statefile
+- Needed for change tracking.
+- Tracks real infra vs declared infra.
+3. If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
+- removed instance is destroyed; only listed instances remain.
+4. In Terraform, what is the purpose of init, plan, and apply commands?
+- terraform init - Downloads providers/modules.
+- terraform plan - Shows changes.
+- terraform apply - Applies infrastructure changes.
+5. What happens if the Terraform state file is accidentally deleted?
+- Terraform loses tracking; risks duplication or recreation.
+- Best to store state in remote backend (S3 + DynamoDB for locking).
