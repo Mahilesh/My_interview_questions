@@ -2,33 +2,33 @@ Only Questions
 
 Common
 ======
-Common - What to do if an application is down
-common- Scenario based includes 3 sub-questions 
+What to do if an application is down
+Scenario based includes 3 sub-questions 
 a) If any service is down for more than 2 weeks and customer is asking for update, what will you tell to customer?
 b) How to troubleshoot the issue and what will be checked during the process
 c) what steps to take so that the issue will not happen in future 
-C - In Airflow, if a job fails, how do you debug it?
-C - If you're facing performance issues on a server, how do you troubleshoot?
+In Airflow, if a job fails, how do you debug it?
+If you're facing performance issues on a server, how do you troubleshoot?
 
 Kubernetes
 ===========
-1)Kubernetes architecture
-2)Deployment vs stateful set
- Stateful Vs Stateless
+Kubernetes architecture
+Deployment vs stateful set
+Stateful Vs Stateless
 How do you manage data of stateless application?
 If there is file which is being used by 2 customers, and need to deploy that file in k8s cluster and on prem as well, how to do that?
-k8 - How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
-k8 - If secret is stored in vault inside a pod and that pod is down then how to tsg
-K8 - Contents written inside deployment.yaml or heml chart
-K8 - In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
+How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
+If secret is stored in vault inside a pod and that pod is down then how to tsg
+Contents written inside deployment.yaml or heml chart
+In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
 
 Terraform
 =========
-4)Terraform provisioners. 
-5)Terraform statefile
+Terraform provisioners. 
+Terraform statefile
 If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
-T - In Terraform, what is the purpose of init, plan, and apply commands?
-T - What happens if the Terraform state file is accidentally deleted?
+In Terraform, what is the purpose of init, plan, and apply commands?
+What happens if the Terraform state file is accidentally deleted?
 
 
 Docker
@@ -75,21 +75,14 @@ AWS - How many masters and slaves are in RDS?
 Jenkins
 =======
 If we have 5 stages in a Jenkins pipeline and 5th stage having syntax error then what will happen if we run the pipeline.
-
-
-Scripting 
-==========
-Script - Explain Declarative vs. Scripting pipelines.
 What are some main differences between scripted and declarative pipeline.
 
 Shell Script
 ============
 
-
 Python
 ======
 Python - In Python, what are lists and tuples, and how do they differ?
-
 
 Yaml
 ====
