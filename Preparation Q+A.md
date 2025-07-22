@@ -1,6 +1,12 @@
+## Table of Contents
+
+- [Attach and Detach Filesystem](#attach-and-detach-filesystem)
+- [Print Last 15 Lines](#print-last-15-lines)
+- [Enable Passwordless Authentication](#enable-passwordless-authentication)
+
 # LINUX
 
-### 1. How do you attach and detach a filesystem in Linux?
+### 1. How do you attach and detach a filesystem in Linux?    #attach-and-detach-filesystem
 
 You can use the `mount` and `umount` commands:
 
