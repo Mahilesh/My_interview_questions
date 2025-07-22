@@ -14,4 +14,21 @@ LINUX
 		-> Enter the password for once
 	2. To test from server A
 	#ssh user@ServerB  -> login without password
-
+4. Disk space is full on a production server — what do you do?
+- Check disk usage 		#df -h
+- Check large files/directories #du -sh /* 2>/dev/null | sort -hr | head -20
+- Clear Old logs 		#rm -rf /var/log/old_log_file.log
+- Preventive Tip: Set up logrotate.
+5. A process is consuming high CPU — how do you troubleshoot it?
+- Check top CPU-consuming processes:	#top
+- Get process details:			#lsof -p <PID> or #strace -p <PID> or #pidstat -o <PID>
+- Kill or restart process if needed:	#kill -9 <PID>
+6. A server is not reachable via SSH — how would you diagnose it?
+- Check network connectivity:				#ping <server-ip>
+- Check port						#telnet <server-ip> 22
+- From remote system (if you have other access):	#systemctl status sshd or #journalctl -xe | grep ssh
+- Firewall check:					#iptables -L	
+7. How do you schedule regular backups using cron?
+- to edit 	#crontab -e
+- * * * * * /bin/startup.sh >> /var/log/backup.log 2>&1
+- to verify 	#crontab -l
