@@ -1,0 +1,33 @@
+Common DevOps
+=============
+
+1. What to do if an application is down
+- Check logs and monitoring tools (e.g., Grafana, CloudWatch).
+- Identify the failing component (app, DB, network).
+- Restart service or redeploy if needed.
+- Notify stakeholders.
+- Document root cause.
+2. If any service is down for more than 2 weeks and customer is asking for update, what will you tell to customer?
+- Provide a status update with reason for delay.
+- Share workaround if available.
+- Communicate estimated resolution timeline.
+3. How to troubleshoot the issue and what will be checked during the process
+- Logs (application, system, container).
+- Service/process status.
+- Network/DNS/firewall.
+- Disk, CPU, memory usage.
+- Dependency health (DB, APIs).
+4. what steps to take so that the issue will not happen in future 
+- Set up monitoring/alerts.
+- Implement auto-restart or self-healing.
+- Fix root cause (code, infra, configuration).
+- Document RCA.
+5. In Airflow, if a job fails, how do you debug it?
+- Check task logs and DAG UI.
+- Validate dependencies and parameters.
+- Re-run task after fix.
+6. If you're facing performance issues on a server, how do you troubleshoot?
+- Use top, htop, iotop, netstat, etc.
+- Check CPU/memory/disk usage.
+- Analyze logs for slow queries/errors.
+- Monitor with Grafana/CloudWatch.
