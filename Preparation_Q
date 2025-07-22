@@ -1,2 +1,137 @@
 Only Questions
 
+Questions with Answers
+======================
+
+Common
+======
+Common - What to do if an application is down
+common- Scenario based includes 3 sub-questions 
+a) If any service is down for more than 2 weeks and customer is asking for update, what will you tell to customer?
+b) How to troubleshoot the issue and what will be checked during the process
+c) what steps to take so that the issue will not happen in future 
+C - In Airflow, if a job fails, how do you debug it?
+C - If you're facing performance issues on a server, how do you troubleshoot?
+
+Kubernetes
+===========
+1)Kubernetes architecture
+2)Deployment vs stateful set
+ Stateful Vs Stateless
+How do you manage data of stateless application?
+If there is file which is being used by 2 customers, and need to deploy that file in k8s cluster and on prem as well, how to do that?
+k8 - How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
+k8 - If secret is stored in vault inside a pod and that pod is down then how to tsg
+K8 - Contents written inside deployment.yaml or heml chart
+K8 - In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
+
+Terraform
+=========
+4)Terraform provisioners. 
+5)Terraform statefile
+If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
+T - In Terraform, what is the purpose of init, plan, and apply commands?
+T - What happens if the Terraform state file is accidentally deleted?
+
+
+Docker
+=======
+3)Explain Docker networking and types of network. What is the default network.
+6)Docker image vs container
+7)Docker bind mount vs volume 
+Can we install docker inside a container.
+What is inside docker file
+D - Contents written inside docker file
+D - What is the issue with using large file image in dockerfile
+D - If Docker containers are consuming too much disk space, how do you fix it?
+
+
+Linux
+======
+1. In Linux, how do you attach and detach a filesystem?.
+2. How do you print the last 15 lines of a file in Linux?
+3. How do you enable passwordless authentication between two servers?
+
+Git
+===
+What is git branching strategy used in your organisation
+How deployment is done in different environment using git repo
+How and from where to clone repo, is there any local repo you are using and then transferring from local to remote or how? (Honestly I didn’t get this Q, if anyone has real time exposure pls explain)
+How to handle merge conflict in git. If 2 people working on same file and did the commit and got conflict err, in how many ways it can be solved (someone explain pls).
+G- In Git, explain the push and pull commands.
+G- What is the use of Git tags?
+G- What are the different types of branches in Git?
+
+
+AWS
+====
+Aws - In CloudWatch, what is the use of log groups and log trails?
+AWS - What is the purpose of creating S3 bucket policies?
+AWS - How do you maintain the lifecycle of an S3 bucket?
+AWS - What are Network ACLs and Security Groups, and how do they differ?
+AWS - Explain EC2 instances and handling multiple VPCs.
+AWS - How do you configure AWS RDS, and what factors do you consider (size, requirements, etc.)?
+AWS - How much data is stored in your RDS MySQL?
+AWS - How many masters and slaves are in RDS?
+
+
+Jenkins
+=======
+If we have 5 stages in a Jenkins pipeline and 5th stage having syntax error then what will happen if we run the pipeline.
+
+
+Scripting 
+==========
+Script - Explain Declarative vs. Scripting pipelines.
+What are some main differences between scripted and declarative pipeline.
+
+Shell Script
+============
+
+
+Python
+======
+Python - In Python, what are lists and tuples, and how do they differ?
+
+
+Yaml
+====
+How to run a yaml manifest without a yaml manifest file created.
+
+SonarQube
+==========
+What is default qualitygate in sonar
+How to configure SonarQube
+What is the output of sonarqube, how to fix if any smell code/vurnabilities  found
+
+Ansible
+=======
+Ansible - How do you write an Ansible playbook, and what client requirements do you consider?
+
+CICD
+=====
+Difference between code quality and code coverage.
+Where do you write the code/yaml file for pipeline
+How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
+CICD - What kind of CI/CD pipelines are you familiar with?
+
+Azure
+=====
+How to integrate azure key vault in jenkins / azure pipeline
+How do you use Azure Key vault's secrets in AKS?
+How will the application(container/pod) fetch the latest(rotated) secrets form azure vault.
+How do you integrate SonarQube & Snyk in Azure pipeline.
+How do you secure your AKS cluster?
+How do you make your AKS cluster highly available.
+How do you perform cost optimization in AKS.
+How do you do you integrate And  EntraID with your AKS for authentication?
+HPA triggers (what and all types of triggers you have used in HPA so far)
+Azure - How azure key vault is integrated in cicd
+
+Unknown
+=======
+What is PAT
+
+Grafana 
+=======
+Grafana - How do you configure a Grafana dashboard?
