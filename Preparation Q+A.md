@@ -1,8 +1,21 @@
-## Table of Contents
+# Linux Interview Questions
 
+## Table of Contents
 - [Attach and Detach Filesystem](#attach-and-detach-filesystem)
 - [Print Last 15 Lines](#print-last-15-lines)
 - [Enable Passwordless Authentication](#enable-passwordless-authentication)
+
+---
+
+## Attach and Detach Filesystem
+
+**Q1: How do you attach and detach a filesystem in Linux?**  
+You can use the `mount` and `umount` commands:
+
+**Attach (Mount):**
+```bash
+mount /dev/sdX /mnt/mydir
+```
 
 # LINUX
 
