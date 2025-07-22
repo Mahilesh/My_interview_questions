@@ -8,18 +8,21 @@ Docker
     - Application crashing (missing config/env)
     - Port conflicts
     - Permissions or file system issues
+
 2. Image size is too large — how do you optimize it?
 - Use a minimal base image like alpine or debian:slim
 - Combine RUN commands using && and clean up with rm and apt-get clean
 - Use .dockerignore to exclude unnecessary files
 - Multi-stage builds to separate build-time dependencies
 - Avoid installing tools not needed at runtime
+
 3. Best practices for handling secrets in Docker?
 - Don't do:   - Store secrets in Dockerfiles or hard-code in images
 - Do this:    - Use environment variables securely (but not ideal for sensitive info)
               - Use Docker secrets (available in Docker Swarm)
               - Use external secret managers (e.g., AWS Secrets Manager, HashiCorp Vault)  
               - Mount secrets as volumes:   #docker run -v /path/to/secret:/run/secret myimage
+
 4. Difference between entrypoint and cmd
 ENTRYPOINT	                            CMD
 ==========                              ===
@@ -30,6 +33,7 @@ Typically used for fixed behavior	      Used for flexible options
 Ex:- 
 ENTRYPOINT ["python3", "app.py"]
 CMD ["--env=prod"]
+
 5. Explain Docker networking and types of network. What is the default network.
 - Default Network:-   bridge is the default for containers (unless specified otherwise)
 - Type of Docker Network:-
