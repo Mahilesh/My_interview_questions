@@ -1,0 +1,48 @@
+Docker
+=======
+1. A container keeps restarting — how do you troubleshoot?
+- Check container logs:     #docker logs <container_id>
+- Inspect restart policy:   #docker inspect <container_id> | grep -i restart
+- Run container without restart policy to debug:  #docker run --rm -it <image> /bin/bash
+- Common issues:
+    - Application crashing (missing config/env)
+    - Port conflicts
+    - Permissions or file system issues
+2. Image size is too large — how do you optimize it?
+- Use a minimal base image like alpine or debian:slim
+- Combine RUN commands using && and clean up with rm and apt-get clean
+- Use .dockerignore to exclude unnecessary files
+- Multi-stage builds to separate build-time dependencies
+- Avoid installing tools not needed at runtime
+3. Best practices for handling secrets in Docker?
+- Don't do:   - Store secrets in Dockerfiles or hard-code in images
+- Do this:    - Use environment variables securely (but not ideal for sensitive info)
+              - Use Docker secrets (available in Docker Swarm)
+              - Use external secret managers (e.g., AWS Secrets Manager, HashiCorp Vault)  
+              - Mount secrets as volumes:   #docker run -v /path/to/secret:/run/secret myimage
+4. Difference between entrypoint and cmd
+ENTRYPOINT	                            CMD
+==========                              ===
+Sets the main executable	              Provides default arguments
+Cannot be overridden easily	            Can be overridden via CLI
+Typically used for fixed behavior	      Used for flexible options
+
+Ex:- 
+ENTRYPOINT ["python3", "app.py"]
+CMD ["--env=prod"]
+5. Explain Docker networking and types of network. What is the default network.
+- Default Network:-   bridge is the default for containers (unless specified otherwise)
+- Type of Docker Network:-
+    - Bridge (default)
+        - Default for standalone containers
+        - Containers get their own IP; communicate via virtual bridge
+    - Host
+        - Shares the host's network stack
+        - No network isolation
+    - None
+        - Disables all networking
+    - Overlay (Swarm only)
+        - Enables multi-host networking
+    - Macvlan
+        - Assigns MAC address from the LAN
+
