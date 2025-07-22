@@ -33,14 +33,18 @@ What happens if the Terraform state file is accidentally deleted?
 
 Docker
 =======
-3)Explain Docker networking and types of network. What is the default network.
-6)Docker image vs container
-7)Docker bind mount vs volume 
-Can we install docker inside a container.
-What is inside docker file
-D - Contents written inside docker file
-D - What is the issue with using large file image in dockerfile
-D - If Docker containers are consuming too much disk space, how do you fix it?
+1. A container keeps restarting — how do you troubleshoot?
+2. Image size is too large — how do you optimize it?
+3. Best practices for handling secrets in Docker?
+4. Difference between entrypoint and cmd
+5. Explain Docker networking and types of network. What is the default network.
+6. Docker image vs container
+7. Docker bind mount vs volume 
+8. Can we install docker inside a container.
+9. What is inside docker file
+10. Contents written inside docker file
+11. What is the issue with using large file image in dockerfile
+12. If Docker containers are consuming too much disk space, how do you fix it?
 
 
 Linux
