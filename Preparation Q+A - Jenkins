@@ -3,3 +3,11 @@ JENKINS
 
 1. If we have 5 stages in a Jenkins pipeline and 5th stage having syntax error then what will happen if we run the pipeline.
 - Pipeline fails at syntax check before execution; entire run fails.
+2. What are some main differences between scripted and declarative pipeline.
+Feature	    Declarative Pipeline	      Scripted Pipeline
+--------    --------------------        -----------------
+Syntax	    Structured (DSL style)	    Freeform Groovy scripting
+Readability	Easier to read and maintain	More complex but flexible
+Error       Handling	                  Limited, controlled via post	Fully customizable
+Flexibility	Moderate	                  High (can use functions, loops)
+Use Case	  Simple/standard pipelines	  Complex/custom pipelines
