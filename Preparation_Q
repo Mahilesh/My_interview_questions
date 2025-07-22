@@ -48,6 +48,10 @@ Linux
 1. In Linux, how do you attach and detach a filesystem?.
 2. How do you print the last 15 lines of a file in Linux?
 3. How do you enable passwordless authentication between two servers?
+4. Disk space is full on a production server — what do you do?
+5. A process is consuming high CPU — how do you troubleshoot it?
+6. A server is not reachable via SSH — how would you diagnose it?
+7. How do you schedule regular backups using cron?
 
 Git
 ===
