@@ -15,15 +15,15 @@ You can use the `mount` and `umount` commands.
 ### Attach (Mount):
 ```bash
 mount /dev/sdX /mnt/mydir
-Detach (Unmount):
-bash
-Copy
-Edit
+```
+
+### Detach (Unmount):
+```bash
 umount /mnt/mydir
+```
+
 Example:
-bash
-Copy
-Edit
+```bash
 mount /dev/sdb1 /mnt/backup
 umount /mnt/backup
 ```
