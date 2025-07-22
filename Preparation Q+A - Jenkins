@@ -1,0 +1,5 @@
+JENKINS
+========
+
+1. If we have 5 stages in a Jenkins pipeline and 5th stage having syntax error then what will happen if we run the pipeline.
+- Pipeline fails at syntax check before execution; entire run fails.
