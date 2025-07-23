@@ -24,5 +24,33 @@ Code quality - Measures the maintainability, reliability, and security of code. 
 Code coverage - Measures the percentage of code covered by tests (unit tests, integration tests). High coverage = more tested code.
 
 3. Where do you write the code/yaml file for pipeline
+    In most platforms like GitLab/GitHub/Azure DevOps, pipeline configuration is written in a YAML file and committed to the repository itself.
+
+Example locations:
+GitLab: .gitlab-ci.yml
+GitHub Actions: .github/workflows/pipeline.yml
+Azure DevOps: azure-pipelines.yml
+
+➡️ For modular projects, YAML templates can be split and stored under ci/, devops/, or pipelines/ folders and included using include: or extends:.
+
 4. How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
+Let’s say you’ve tested a pipeline and want to schedule it to run later (e.g., deploy to stage/prod):
+
+Option1:- (CLI)
+You can also use "rules:" in .gitlab-ci.yml to ensure a job only runs on specific branches or scheduled pipelines.
+
+Option2:- (GUI)
+In GitLab CI/CD 
+- Use the "CI/CD > Schedules" option from the GitLab UI.
+- Choose:
+    Target branch: e.g., stage, main
+    Interval: Daily, weekly, cron-like expression
+    Set variables if needed (e.g., DEPLOY_ENV=stage)
+
 5. CICD - What kind of CI/CD pipelines are you familiar with?
+
+- I’ve worked extensively with GitLab CI/CD and GoCD pipelines.
+- GitLab -  I’ve built YAML-based pipelines with stages like build, test, sonar scan, docker build, and deploy to Kubernetes. I also used GitLab Schedules for timed deploys and protected branches for prod.
+- GoCD - I handled multi-stage pipelines where each app had its own deployment requirement. I integrated pipelines with shell scripts, Tomcat deployment, and Dockerization.
+
+I’m familiar with conditional deployments, artifact promotions, and rollback strategies across dev/test/stage/prod environments.
