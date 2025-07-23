@@ -127,10 +127,11 @@ Ansible - How do you write an Ansible playbook, and what client requirements do 
 
 CICD
 =====
-Difference between code quality and code coverage.
-Where do you write the code/yaml file for pipeline
-How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
-CICD - What kind of CI/CD pipelines are you familiar with?
+1. CICD Workflow
+2. Difference between code quality and code coverage.
+3. Where do you write the code/yaml file for pipeline
+4. How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
+5. CICD - What kind of CI/CD pipelines are you familiar with?
 
 Azure
 =====
