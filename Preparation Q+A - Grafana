@@ -1,0 +1,21 @@
+GRAFANA
+========
+
+1. How do you configure a Grafana dashboard?
+
+Step1:- Add a Data Source
+  Go to Settings > Data Sources, choose the appropriate backend (like Prometheus, Elasticsearch, MySQL or InfluxDB), enter the connection details, and test the connection.
+Step2:- Create a Dashboard
+  Click on the "+" icon > Dashboard, and then "Add new panel" to begin creating visualizations.
+Step3:- Configure Panels
+  Inside each panel,
+    - Select the data source
+    - Write a query to fetch the required metrics
+    - Choose a visualization type like Graph, Gauge, Table, or Stat
+    - Set panel titles, units (e.g., %, ms), and thresholds if needed
+Step4:- Use Variables (Optional)
+  For dynamic dashboards, I create template variables (like $instance) so users can filter panels based on hosts, environments, etc.
+Step5:- Save and Share
+  Once done, I save the dashboard and optionally share it via a link or export it as JSON.
+Step6:- Alerts (If Needed)
+  If supported by the data source, I configure alerts by defining alert rules, thresholds, and notification channels (like email or Slack).
