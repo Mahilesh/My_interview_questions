@@ -19,8 +19,20 @@ Kubernetes
       - Container runtime interface - Pulls and runs containers inside pods.
 
 2. Deployment vs stateful set
+- Deployments are ideal for stateless applications where pod identity doesn't matter. 
+  Ex:- web servers, APIs
+- StatefulSets are used for stateful apps where ordered startup and stable identities are crucial, especially with persistent storage. 
+  Ex:- databases, Kafka, Zookeeper
+
 3. Stateful Vs Stateless
+- A Stateless app (Deployment) doesn’t store client context between requests — it's easier to scale and recover. 
+  Ex:- NGINX or Apache Web Server
+- A Stateful app (Statefulset) requires maintaining session or data consistency, needing persistent storage and careful orchestration.
+  Ex:- MongoDB / MySQL
+
 4. How do you manage data of stateless application?
+- In stateless apps, we manage data by storing it outside the application. This includes using external databases, caching layers for sessions, object storage for files, and messaging queues for decoupled processing. The app remains stateless by not relying on internal memory or disk.
+
 5. If there is file which is being used by 2 customers, and need to deploy that file in k8s cluster and on prem as well, how to do that?
 6. How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
 7. If secret is stored in vault inside a pod and that pod is down then how to tsg
