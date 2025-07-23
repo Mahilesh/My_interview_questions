@@ -2,6 +2,20 @@ CICD
 ====
 
 1. CICD Workflow
+CI – Continuous Integration
+- Code Commit: Developer pushes code to Git repo (e.g., GitLab, GitHub).
+- Pipeline Trigger: CI pipeline is triggered (automatically or manually).
+- Build: Code is compiled/built (e.g., Java via Maven/Gradle).
+- Unit Testing: Runs automated tests to validate functionality.
+- Code Analysis: Tools like SonarQube check for code quality/security.
+
+CD – Continuous Delivery/Deployment
+- Artifact Creation: Output of build is packaged (e.g., .jar, .war, Docker image).
+- Artifact Storage: Stored in a repository (e.g., Nexus, GitLab Registry, ECR).
+- Deployment to Environment: (Dev/Test/Stage/Prod) using Helm, kubectl, etc.
+- Smoke Testing: Optional post-deploy test for app readiness.
+- Notification: Teams are notified via Slack/email/ServiceNow.
+
 2. Difference between code quality and code coverage.
 3. Where do you write the code/yaml file for pipeline
 4. How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
