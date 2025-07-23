@@ -46,6 +46,23 @@ Kubernetes
 - Step3:- Update the YAML with the new image tag
 - Step4:- Apply the YAML to the cluster using #kubectl
 
-7. If secret is stored in vault inside a pod and that pod is down then how to tsg
+7. If secret is stored in vault inside a pod and that pod is down then how to tsg?
+- If a pod that pulls secrets from Vault is down, I first check the pod status and logs, then validate Vault connectivity, the Kubernetes auth configuration, and token validity. I also inspect volume mounts or Vault agent init containers. Based on findings, I restart the pod or reinitiate auth if required.
+
+Step1:- Check pod status            
+  #kubectl get pod <pod-name> -n <namespace>
+  #kubectl describe pod <pod-name> -n <namespace>
+Step2:- Check Logs (Application + Vault Agent)
+  #kubectl logs <pod-name> -n <namespace>
+  #kubectl logs <pod-name> -c vault-agent -n <namespace> 
+Step3:- Check vault connectivity
+  #curl -s $VAULT_ADDR/v1/sys/health
+Step4:- Validate Vault Token / Auth Role
+  #vault read auth/kubernetes/role/<your-role>
+Step5:- Check InitContainer or VolumeMounts (if secrets are injected)
+  #kubectl get pod <pod-name> -o yaml
+Step6;- Redeploy Pod or Rollout Restart
+  #kubectl rollout restart deployment <your-deployment> -n <namespace>
+
 8. Contents written inside deployment.yaml or heml chart
 9. In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
