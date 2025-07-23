@@ -17,6 +17,12 @@ CD – Continuous Delivery/Deployment
 - Notification: Teams are notified via Slack/email/ServiceNow.
 
 2. Difference between code quality and code coverage.
+➡️ Code quality checks how good the code is.
+➡️ Code coverage checks how much of the code is tested.
+
+Code quality - Measures the maintainability, reliability, and security of code. Includes detecting bugs, code smells, security vulnerabilities.
+Code coverage - Measures the percentage of code covered by tests (unit tests, integration tests). High coverage = more tested code.
+
 3. Where do you write the code/yaml file for pipeline
 4. How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
 5. CICD - What kind of CI/CD pipelines are you familiar with?
