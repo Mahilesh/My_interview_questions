@@ -34,7 +34,18 @@ Kubernetes
 - In stateless apps, we manage data by storing it outside the application. This includes using external databases, caching layers for sessions, object storage for files, and messaging queues for decoupled processing. The app remains stateless by not relying on internal memory or disk.
 
 5. If there is file which is being used by 2 customers, and need to deploy that file in k8s cluster and on prem as well, how to do that?
+- Method1:- Use a central storage (e.g., S3, NFS) to keep the shared file and sync it to both Kubernetes (via volume or initContainer) and on-prem (via script or cron job).
+- Method2:- Include the file in your CI/CD pipeline to deploy it to both environments consistently.
+  - Commands to use
+      Kubernetes - kubectl cp
+      On-premise - scp or rsync 
+
 6. How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
+- Step1:- Prepare Kubernetes YAML manifests - deployment.yaml, service.yaml, configmap.yaml, etc.
+- Step2:- Push updated image to container registry
+- Step3:- Update the YAML with the new image tag
+- Step4:- Apply the YAML to the cluster using #kubectl
+
 7. If secret is stored in vault inside a pod and that pod is down then how to tsg
 8. Contents written inside deployment.yaml or heml chart
 9. In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
