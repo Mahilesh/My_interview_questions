@@ -1,0 +1,12 @@
+Kubernetes
+==========
+
+1. Kubernetes architecture
+2. Deployment vs stateful set
+3. Stateful Vs Stateless
+4. How do you manage data of stateless application?
+5. If there is file which is being used by 2 customers, and need to deploy that file in k8s cluster and on prem as well, how to do that?
+6. How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
+7. If secret is stored in vault inside a pod and that pod is down then how to tsg
+8. Contents written inside deployment.yaml or heml chart
+9. In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
