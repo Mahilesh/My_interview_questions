@@ -65,4 +65,15 @@ Step6;- Redeploy Pod or Rollout Restart
   #kubectl rollout restart deployment <your-deployment> -n <namespace>
 
 8. Contents written inside deployment.yaml or heml chart
+- deployment.yaml, we define how our application should be deployed in the Kubernetes cluster. It includes metadata like the app name and labels, the number of replicas, the container image, ports, environment variables, and volume mounts. It may also include health checks, resource limits, and affinity rules.
+- Helm - deployment.yaml - becomes a template using placeholders (like {{ .Values.image.repository }}), and values are dynamically pulled from "values.yaml" to support reusability and parameterization across environments.
+
 9. In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
+- Step1:- #kubectl describe pod <name-of-the-pod> -n <namespace>
+- Step2:- #kubectl get nodes, #kubectl describe node <node-name>
+- Step3:- #kubectl get pvc -n <namespace>         ----> (Check PVCs (if using volumes))
+- Step4:- #kubectl describe node <node-name> | grep -i taint          ----> Pod may not tolerate node taints.
+- Step5:- If you have master node access, then login to that node and check schedular logs
+#kubectl get pods -n kube-system | grep scheduler          (to find the schedular)
+#kubectl logs -n kube-system kube-scheduler-<pod> 
+
