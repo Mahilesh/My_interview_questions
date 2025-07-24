@@ -112,4 +112,4 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 15. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
 16. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
 17. Error code - 404 - what it means?
-18. 
+18. Write a shell script - which you written recently?
