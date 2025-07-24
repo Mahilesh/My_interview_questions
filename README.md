@@ -95,3 +95,21 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 10. By using Python - what automation scripts you have created?
 11. Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
 
+1. Tell me about yourself
+2. CICD Flow
+3. Static IP vs Dynamic IP
+4. Private Ip is not visible, we should use only public ip but needs to be restricted How?
+5. Why your org consider Autoscaling instead of Reserved Spot instances
+6. Terraform Architecture
+7. Diff bt main.tf vs terraform.statefile vs terraform.tfvar file
+8. Gitlab CICD - Write yaml file for rollout/rollback deployment in gitlab CICD?
+9. what is Terraform statefile
+10. diff bt TCP vs UDP?
+11. What is TLS?
+12. How you reduced monthly costs by 20% through EC2? (from resume)
+13. How do you create kubernetes cluster through terraform - whether you used CICD for that
+14. DNS is not working in Linux - How to check connectivity and trobuleshoot the issue
+15. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
+16. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
+17. Error code - 404 - what it means?
+18. 
