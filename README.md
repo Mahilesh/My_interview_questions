@@ -95,22 +95,81 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 10. By using Python - what automation scripts you have created?
 11. Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
 
-1. Tell me about yourself
-2. CICD Flow
-3. Static IP vs Dynamic IP
-4. Private Ip is not visible, we should use only public ip but needs to be restricted How?
-5. Why your org consider Autoscaling instead of Reserved Spot instances
-6. Terraform Architecture
-7. Diff bt main.tf vs terraform.statefile vs terraform.tfvar file
-8. Gitlab CICD - Write yaml file for rollout/rollback deployment in gitlab CICD?
-9. what is Terraform statefile
-10. diff bt TCP vs UDP?
-11. What is TLS?
-12. How you reduced monthly costs by 20% through EC2? (from resume)
-13. How do you create kubernetes cluster through terraform - whether you used CICD for that
-14. DNS is not working in Linux - How to check connectivity and trobuleshoot the issue
-15. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
-16. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
-17. Error code - 404 - what it means?
-18. Write a shell script - which you written recently?
-19. Diff bt git merge vs git rebase
+
+4. Static IP vs Dynamic IP
+- Static IP: Manually assigned, doesn’t change over time (e.g., useful for DNS, VPN).
+- Dynamic IP: Automatically assigned by DHCP and may change periodically.
+- ✅ Use static IPs when consistency is important. Useful for whitelisting and DNS mapping
+
+5. Private Ip is not visible, we should use only public ip but needs to be restricted How?
+- Associate Elastic IP (public) with instance
+- Use Security Groups/NACLs to allow traffic only from whitelisted IPs or CIDRs.
+- Use NACLs or AWS WAF for additional filtering
+- Optionally, use VPN or Bastion Host for additional control.
+
+6. Why your org consider Autoscaling instead of Reserved Spot instances
+- Auto Scaling provides:
+    Elasticity: Adds/removes instances based on load.
+    Availability: Maintains healthy instance count.
+- Reserved instances save cost but don’t scale.
+- Spot instances are cheap but can be interrupted anytime.
+✅ So Auto Scaling = balance between cost, scalability, and availability.
+
+7. Terraform Architecture
+Core components:
+    - Terraform CLI
+    - Provider plugins (AWS, Azure, etc.)
+    - .tf files = Configuration
+    - State file = Infrastructure snapshot
+- Workflow: Write → Plan → Apply → Maintain
+
+8. Diff bt main.tf vs terraform.statefile vs terraform.tfvar file 
+File	                        Purpose
+main.tf	                    Main configuration file (resource definitions)
+terraform.tfvars	        Variable values (like region, instance type)
+terraform.tfstate	        Stores infrastructure state (actual resource info)
+
+10. Gitlab CICD - Write yaml file for rollout/rollback deployment in gitlab CICD?
+
+stages:
+  - deploy
+
+deploy_app:
+  stage: deploy
+  script:
+    - echo "Rolling out deployment"
+    - kubectl apply -f deployment.yaml
+
+rollback_app:
+  stage: deploy
+  when: manual
+  script:
+    - echo "Rolling back deployment"
+    - kubectl rollout undo deployment/my-app
+
+11. what is Terraform statefile
+- .tfstate file stores current state of your infra.
+- Helps Terraform track resource changes and perform diffs.
+- Don’t edit manually. Store in remote backend like S3 with locking via DynamoDB.
+  
+12. diff bt TCP vs UDP?
+TCP	                        UDP
+==================      ============== 
+Connection-based	    Connectionless
+Reliable	            Unreliable
+Slower (handshake)	    Faster
+Used for HTTP, SSH	    Used for DNS, streaming
+
+14. What is TLS?
+- TLS (Transport Layer Security) = Encrypts data during transmission.
+- Replaces SSL.
+- Ensures confidentiality, integrity, authenticity of data between client-server.
+
+15. How you reduced monthly costs by 20% through EC2? (from resume)
+16. How do you create kubernetes cluster through terraform - whether you used CICD for that
+17. DNS is not working in Linux - How to check connectivity and trobuleshoot the issue
+18. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
+19. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
+20. Error code - 404 - what it means?
+21. Write a shell script - which you written recently?
+22. Diff bt git merge vs git rebase
