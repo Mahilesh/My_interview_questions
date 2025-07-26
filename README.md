@@ -214,8 +214,76 @@ if [ "$USAGE" -gt "$THRESHOLD" ]; then
 fi
 
 23. Diff bt git merge vs git rebase
-Feature	                    Merge	                            Rebase
-=======                    ========                            =========
-History	                    Keeps                     full history with merge commits	Rewrites history (linear)
-Safe?	                    Yes                       Can be dangerous (force push)
-Use Case	                For preserving history	  For clean commit history
+| Feature	                    Merge	                            Rebase
+|:------------------------|:-----------------------|:------------------------------------------|
+| History	              |: Keeps                 |: full history with merge commits	Rewrites history (linear)
+| Safe?	                  |:   Yes                 |: Can be dangerous (force push)
+| Use Case	              |: For preserving history|: For clean commit history
+
+
+
+## 4. Static IP vs Dynamic IP
+- **Static IP**: Manually assigned, doesn’t change over time (e.g., useful for DNS, VPN).
+- **Dynamic IP**: Automatically assigned by DHCP and may change periodically.
+- ✅ Use static IPs when consistency is important. Useful for whitelisting and DNS mapping.
+
+---
+
+## 5. Private IP is not visible, we should use only public IP but needs to be restricted. How?
+- Associate Elastic IP (public) with instance.
+- Use Security Groups/NACLs to allow traffic only from whitelisted IPs or CIDRs.
+- Use NACLs or AWS WAF for additional filtering.
+- Optionally, use VPN or Bastion Host for additional control.
+
+---
+
+## 6. Why your org considers Autoscaling instead of Reserved or Spot Instances?
+- **Auto Scaling** provides:
+  - Elasticity: Adds/removes instances based on load.
+  - Availability: Maintains healthy instance count.
+- **Reserved instances** save cost but don’t scale.
+- **Spot instances** are cheap but can be interrupted anytime.
+
+✅ So Auto Scaling = balance between cost, scalability, and availability.
+
+---
+
+## 7. Terraform Architecture
+**Core components**:
+- Terraform CLI  
+- Provider plugins (AWS, Azure, etc.)  
+- `.tf` files = Configuration  
+- State file = Infrastructure snapshot  
+
+**Workflow**: `Write → Plan → Apply → Maintain`
+
+---
+
+## 8. Difference between `main.tf` vs `terraform.tfstate` vs `terraform.tfvars`
+
+| File               | Purpose                                      |
+|--------------------|----------------------------------------------|
+| `main.tf`          | Main configuration file (resource definitions) |
+| `terraform.tfvars` | Variable values (like region, instance type)  |
+| `terraform.tfstate`| Stores infrastructure state (actual resource info) |
+
+---
+
+## 10. GitLab CI/CD - YAML for rollout/rollback deployment
+
+```yaml
+stages:
+  - deploy
+
+deploy_app:
+  stage: deploy
+  script:
+    - echo "Rolling out deployment"
+    - kubectl apply -f deployment.yaml
+
+rollback_app:
+  stage: deploy
+  when: manual
+  script:
+    - echo "Rolling back deployment"
+    - kubectl rollout undo deployment/my-app
