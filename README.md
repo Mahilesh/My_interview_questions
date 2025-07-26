@@ -95,7 +95,7 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 9. Ansible
 10. By using Python - what automation scripts you have created?
 11. Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
-
+12. 
 3. Static IP vs Dynamic IP
 4. Private IP is not visible, we should use only public IP but needs to be restricted. How?
 5. Why your org considers Autoscaling instead of Reserved or Spot Instances?
