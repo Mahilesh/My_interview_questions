@@ -287,3 +287,57 @@ rollback_app:
   script:
     - echo "Rolling back deployment"
     - kubectl rollout undo deployment/my-app
+```
+
+## 11. What is Terraform State File?
+
+- `.tfstate` file stores the **current state** of your infrastructure.
+- Helps Terraform **track resource changes** and **perform diffs**.
+- **Do not edit manually**.
+- Store in a **remote backend** like AWS S3 (with locking via DynamoDB) for team collaboration and safety.
+
+---
+
+## 12. Difference Between TCP vs UDP
+
+| Feature              | TCP                      | UDP                   |
+|----------------------|---------------------------|------------------------|
+| Type                 | Connection-based          | Connectionless         |
+| Reliability          | Reliable                  | Unreliable             |
+| Speed                | Slower (3-way handshake)  | Faster                 |
+| Use Case             | HTTP, SSH, FTP            | DNS, VoIP, Streaming   |
+
+---
+
+## 14. What is TLS?
+
+- **TLS (Transport Layer Security)** encrypts data during transmission.
+- It **replaces SSL** (Secure Sockets Layer).
+- Ensures:
+  - **Confidentiality**
+  - **Integrity**
+  - **Authenticity**
+- Commonly used in HTTPS, email, and secure data exchange.
+
+---
+
+## 15. How You Reduced Monthly Costs by 20% Through EC2?
+
+- **Identified underutilized EC2 instances** using CloudWatch metrics.
+- **Rightsized instances** from large types (e.g., `m5`) to efficient types (`t3`).
+- **Implemented Auto Scaling** to handle load efficiently.
+- **Scheduled stop/start** of non-prod instances using **AWS Lambda and CloudWatch Events**.
+
+---
+
+## 16. How Did You Create Kubernetes Cluster Using Terraform? Was CI/CD Used?
+
+✅ **Yes. Here's how:**
+
+- Used **Terraform** to provision **Amazon EKS** via `aws_eks_cluster` and related resources.
+- Automated deployment through **GitLab CI/CD pipelines**:
+  - Triggered `terraform apply` on merge to `main` or `release` branches.
+- Ensured full **Infrastructure as Code** (IaC) with version-controlled K8s cluster setup.
+
+
+
