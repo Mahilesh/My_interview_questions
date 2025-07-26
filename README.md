@@ -81,6 +81,7 @@ I am currently using **Amazon EKS (Elastic Kubernetes Service)**, which is a man
 It simplifies cluster management, auto-scaling, and integrates well with other AWS services like IAM, CloudWatch, and ELB.  
 In previous projects, I have also worked with self-hosted Kubernetes on virtual machines using kubeadm.
 
+# Questions
 ### Eurofins India IT Solutions - Bangalore (L1 - virtual)
 
 1. Introduce yourself
@@ -95,141 +96,38 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 10. By using Python - what automation scripts you have created?
 11. Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
 
-
-
-4. Static IP vs Dynamic IP
-- Static IP: Manually assigned, doesn’t change over time (e.g., useful for DNS, VPN).
-- Dynamic IP: Automatically assigned by DHCP and may change periodically.
-- ✅ Use static IPs when consistency is important. Useful for whitelisting and DNS mapping
-
-5. Private Ip is not visible, we should use only public ip but needs to be restricted How?
-- Associate Elastic IP (public) with instance
-- Use Security Groups/NACLs to allow traffic only from whitelisted IPs or CIDRs.
-- Use NACLs or AWS WAF for additional filtering
-- Optionally, use VPN or Bastion Host for additional control.
-
-6. Why your org consider Autoscaling instead of Reserved Spot instances
-- Auto Scaling provides:
-    Elasticity: Adds/removes instances based on load.
-    Availability: Maintains healthy instance count.
-- Reserved instances save cost but don’t scale.
-- Spot instances are cheap but can be interrupted anytime.
-✅ So Auto Scaling = balance between cost, scalability, and availability.
-
-7. Terraform Architecture
-Core components:
-    - Terraform CLI
-    - Provider plugins (AWS, Azure, etc.)
-    - .tf files = Configuration
-    - State file = Infrastructure snapshot
-- Workflow: Write → Plan → Apply → Maintain
-
-8. Diff bt main.tf vs terraform.statefile vs terraform.tfvar file 
-File	                        Purpose
-main.tf	                    Main configuration file (resource definitions)
-terraform.tfvars	        Variable values (like region, instance type)
-terraform.tfstate	        Stores infrastructure state (actual resource info)
-
-10. Gitlab CICD - Write yaml file for rollout/rollback deployment in gitlab CICD?
-
-stages:
-  - deploy
-
-deploy_app:
-  stage: deploy
-  script:
-    - echo "Rolling out deployment"
-    - kubectl apply -f deployment.yaml
-
-rollback_app:
-  stage: deploy
-  when: manual
-  script:
-    - echo "Rolling back deployment"
-    - kubectl rollout undo deployment/my-app
-
-11. what is Terraform statefile
-- .tfstate file stores current state of your infra.
-- Helps Terraform track resource changes and perform diffs.
-- Don’t edit manually. Store in remote backend like S3 with locking via DynamoDB.
-  
-12. diff bt TCP vs UDP?
-TCP	                        UDP
-==================      ============== 
-Connection-based	    Connectionless
-Reliable	            Unreliable
-Slower (handshake)	    Faster
-Used for HTTP, SSH	    Used for DNS, streaming
-
-14. What is TLS?
-- TLS (Transport Layer Security) = Encrypts data during transmission.
-- Replaces SSL.
-- Ensures confidentiality, integrity, authenticity of data between client-server.
-
-15. How you reduced monthly costs by 20% through EC2? (from resume)
-- Identified under-utilized EC2 via CloudWatch metrics.
-- Rightsized instances to smaller types (e.g., m5 → t3).
-- Implemented Auto Scaling.
-- Stopped unused instances during off hours via Lambda scheduler.
-
-16. How do you create kubernetes cluster through terraform - whether you used CICD for that
-Yes:
-- Used Terraform to provision EKS (via aws_eks_cluster).
-- Integrated with GitLab CI to trigger terraform apply for cluster creation.
-- Followed IaC + pipeline-based provisioning.
-  
-17. DNS is not working in Linux - How to check connectivity and trobuleshoot the issue
-ping 8.8.8.8             # Check internet
-ping google.com          # Check DNS resolution
-cat /etc/resolv.conf     # Check DNS config
-systemctl restart network
-dig google.com           # Advanced DNS lookup
-
-19. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
-- Yes, if the app reads secrets dynamically (e.g., from environment or secret manager).
-- Use tools like:
-- AWS Secrets Manager / HashiCorp Vault
-- kubectl edit secret → base64 encode → update → no pod restart if app supports live reload
-- Otherwise, inject via Kubernetes Volume or Env var.
-
-20. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
-# Use AWS Console or CLI:
-aws ec2 describe-instances --query 'Reservations[].Instances[].{IP:PublicIpAddress,Ports:NetworkInterfaces[].PrivateIpAddress}'
-
-# Or check via:
-nmap -p 8080,443 <IP>
-
-21. Error code - 404 - what it means?
-404 Not Found = Client can reach the server, but resource (URL/path) doesn’t exist.
-
-22. Write a shell script - which you written recently?
-#!/bin/bash
-# Check disk usage and alert if > 80%
-THRESHOLD=80
-USAGE=$(df -h / | grep -v Filesystem | awk '{print $5}' | sed 's/%//')
-
-if [ "$USAGE" -gt "$THRESHOLD" ]; then
-  echo "Disk usage is above $THRESHOLD%, please take action!"
-  # Send email/slack alert here
-fi
-
-23. Diff bt git merge vs git rebase
-| Feature	                    Merge	                            Rebase
-|:------------------------|:-----------------------|:------------------------------------------|
-| History	              |: Keeps                 |: full history with merge commits	Rewrites history (linear)
-| Safe?	                  |:   Yes                 |: Can be dangerous (force push)
-| Use Case	              |: For preserving history|: For clean commit history
+3. Static IP vs Dynamic IP
+4. Private IP is not visible, we should use only public IP but needs to be restricted. How?
+5. Why your org considers Autoscaling instead of Reserved or Spot Instances?
+6. Terraform Architecture
+7. Difference between main.tf vs terraform.tfstate vs terraform.tfvars
+8. GitLab CI/CD - YAML for rollout/rollback deployment
+9. What is Terraform State File?
+10. Difference Between TCP vs UDP
+11. What is TLS?
+12. How You Reduced Monthly Costs by 20% Through EC2?
+13. How Did You Create Kubernetes Cluster Using Terraform? Was CI/CD Used?
+14. DNS is Not Working in Linux – How to Check Connectivity and Troubleshoot
+15. Developer somehow saw the secret which is hardcoded. Are you able to modify and make it invisible WITHOUT RESTART? If yes, how?
+16. Port 8080 mapped to one instance and 443 to other instances – how do you find which is public and which is private?
+17. Error code - 404 - what it means?
+18. Write a shell script - which you written recently?
+19. Difference between git merge vs git rebase
 
 
 
-## 4. Static IP vs Dynamic IP
+# Answers
+
+### Eurofins India IT Solutions - Bangalore (L1 - virtual)
+
+## 3. Static IP vs Dynamic IP
 - **Static IP**: Manually assigned, doesn’t change over time (e.g., useful for DNS, VPN).
 - **Dynamic IP**: Automatically assigned by DHCP and may change periodically.
 - ✅ Use static IPs when consistency is important. Useful for whitelisting and DNS mapping.
 
 ---
 
-## 5. Private IP is not visible, we should use only public IP but needs to be restricted. How?
+## 4. Private IP is not visible, we should use only public IP but needs to be restricted. How?
 - Associate Elastic IP (public) with instance.
 - Use Security Groups/NACLs to allow traffic only from whitelisted IPs or CIDRs.
 - Use NACLs or AWS WAF for additional filtering.
@@ -237,7 +135,7 @@ fi
 
 ---
 
-## 6. Why your org considers Autoscaling instead of Reserved or Spot Instances?
+## 5. Why your org considers Autoscaling instead of Reserved or Spot Instances?
 - **Auto Scaling** provides:
   - Elasticity: Adds/removes instances based on load.
   - Availability: Maintains healthy instance count.
@@ -248,7 +146,7 @@ fi
 
 ---
 
-## 7. Terraform Architecture
+## 6. Terraform Architecture
 **Core components**:
 - Terraform CLI  
 - Provider plugins (AWS, Azure, etc.)  
@@ -259,7 +157,7 @@ fi
 
 ---
 
-## 8. Difference between `main.tf` vs `terraform.tfstate` vs `terraform.tfvars`
+## 7. Difference between `main.tf` vs `terraform.tfstate` vs `terraform.tfvars`
 
 | File               | Purpose                                      |
 |--------------------|----------------------------------------------|
@@ -269,7 +167,7 @@ fi
 
 ---
 
-## 10. GitLab CI/CD - YAML for rollout/rollback deployment
+## 9. GitLab CI/CD - YAML for rollout/rollback deployment
 
 ```yaml
 stages:
@@ -289,7 +187,7 @@ rollback_app:
     - kubectl rollout undo deployment/my-app
 ```
 
-## 11. What is Terraform State File?
+## 10. What is Terraform State File?
 
 - `.tfstate` file stores the **current state** of your infrastructure.
 - Helps Terraform **track resource changes** and **perform diffs**.
@@ -298,7 +196,7 @@ rollback_app:
 
 ---
 
-## 12. Difference Between TCP vs UDP
+## 11. Difference Between TCP vs UDP
 
 | Feature              | TCP                      | UDP                   |
 |----------------------|---------------------------|------------------------|
@@ -309,7 +207,7 @@ rollback_app:
 
 ---
 
-## 14. What is TLS?
+## 12. What is TLS?
 
 - **TLS (Transport Layer Security)** encrypts data during transmission.
 - It **replaces SSL** (Secure Sockets Layer).
@@ -321,7 +219,7 @@ rollback_app:
 
 ---
 
-## 15. How You Reduced Monthly Costs by 20% Through EC2?
+## 13. How You Reduced Monthly Costs by 20% Through EC2?
 
 - **Identified underutilized EC2 instances** using CloudWatch metrics.
 - **Rightsized instances** from large types (e.g., `m5`) to efficient types (`t3`).
@@ -330,7 +228,7 @@ rollback_app:
 
 ---
 
-## 16. How Did You Create Kubernetes Cluster Using Terraform? Was CI/CD Used?
+## 14. How Did You Create Kubernetes Cluster Using Terraform? Was CI/CD Used?
 
 ✅ **Yes. Here's how:**
 
@@ -339,7 +237,7 @@ rollback_app:
   - Triggered `terraform apply` on merge to `main` or `release` branches.
 - Ensured full **Infrastructure as Code** (IaC) with version-controlled K8s cluster setup.
 
-## 17. DNS is Not Working in Linux – How to Check Connectivity and Troubleshoot
+## 15. DNS is Not Working in Linux – How to Check Connectivity and Troubleshoot
 
 ```bash
 ping 8.8.8.8             # Check internet connectivity (bypasses DNS)
@@ -349,7 +247,7 @@ systemctl restart network
 dig google.com           # Advanced DNS lookup
 ```
 
-### 19. Developer somehow saw the secret which is hardcoded. Are you able to modify and make it invisible WITHOUT RESTART? If yes, how?
+### 16. Developer somehow saw the secret which is hardcoded. Are you able to modify and make it invisible WITHOUT RESTART? If yes, how?
 
 - ✅ Yes, **if the app reads secrets dynamically** (e.g., from environment variables or a secret manager).
 - Use tools like:
@@ -363,7 +261,7 @@ dig google.com           # Advanced DNS lookup
 
 ---
 
-### 20. Port 8080 mapped to one instance and 443 to other instances – how do you find which is public and which is private?
+### 17. Port 8080 mapped to one instance and 443 to other instances – how do you find which is public and which is private?
 
 #### Option 1: AWS CLI
 ```bash
@@ -374,14 +272,14 @@ aws ec2 describe-instances --query 'Reservations[].Instances[].{IP:PublicIpAddre
 nmap -p 8080,443 <IP>
 ```
 
-### 21. Error code - 404 - what it means?
+### 18. Error code - 404 - what it means?
 
 `404 Not Found`  
 - The client can reach the server, but the requested resource (URL/path) does not exist on the server.
 
 ---
 
-### 22. Write a shell script - which you written recently?
+### 19. Write a shell script - which you written recently?
 
 ```bash
 #!/bin/bash
@@ -396,7 +294,7 @@ if [ "$USAGE" -gt "$THRESHOLD" ]; then
 fi
 ```
 
-### 23. Difference between `git merge` vs `git rebase`
+### 20. Difference between `git merge` vs `git rebase`
 
 | Feature    | Merge                                 | Rebase                               |
 |------------|---------------------------------------|--------------------------------------|
