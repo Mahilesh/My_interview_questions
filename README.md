@@ -1,5 +1,10 @@
-# My_interview_questions
-Company wise - I will upload the questions
+Company wise - I will upload the questions & answers
+
+## 📚 Table of Contents
+
+- [MIRAFRA - Bangalore (L1 - virtual)](#mirafra---bangalore-l1---virtual)
+- [Eurofins India IT Solutions - Bangalore (L1 - virtual)](#eurofins-india-it-solutions---bangalore-l1---virtual)
+
 
 # Questions
 ### MIRAFRA - Bangalore (L1 - virtual)
