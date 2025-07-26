@@ -86,16 +86,6 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 
 1. Introduce yourself
 2. CI/CD Workflow
-3. Terraform – How do you manage an existing EC2 instance by using Terraform?
-4. Docker – How do you ensure security while writing the Dockerfile?
-5. Kubernetes – How do you restrict not creating additional pods?
-6. GitLab/GitHub – Restrict creating new branches when already 4 branches exist
-7. AWS – Auto Load Balancer troubleshooting steps
-8. Linux – Get exact matching word in a file
-9. Ansible
-10. By using Python - what automation scripts you have created?
-11. Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
-12. 
 3. Static IP vs Dynamic IP
 4. Private IP is not visible, we should use only public IP but needs to be restricted. How?
 5. Why your org considers Autoscaling instead of Reserved or Spot Instances?
