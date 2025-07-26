@@ -339,5 +339,68 @@ rollback_app:
   - Triggered `terraform apply` on merge to `main` or `release` branches.
 - Ensured full **Infrastructure as Code** (IaC) with version-controlled K8s cluster setup.
 
+## 17. DNS is Not Working in Linux – How to Check Connectivity and Troubleshoot
 
+```bash
+ping 8.8.8.8             # Check internet connectivity (bypasses DNS)
+ping google.com          # Check DNS resolution
+cat /etc/resolv.conf     # Check DNS configuration file
+systemctl restart network
+dig google.com           # Advanced DNS lookup
+```
+
+### 19. Developer somehow saw the secret which is hardcoded. Are you able to modify and make it invisible WITHOUT RESTART? If yes, how?
+
+- ✅ Yes, **if the app reads secrets dynamically** (e.g., from environment variables or a secret manager).
+- Use tools like:
+  - AWS Secrets Manager
+  - HashiCorp Vault
+- You can also:
+  - `kubectl edit secret` → base64 encode → update value → **no pod restart** needed if the app supports live secret reload
+- Alternatively:
+  - Inject via **Kubernetes Volume** or **Environment Variable**
+
+
+---
+
+### 20. Port 8080 mapped to one instance and 443 to other instances – how do you find which is public and which is private?
+
+#### Option 1: AWS CLI
+```bash
+aws ec2 describe-instances --query 'Reservations[].Instances[].{IP:PublicIpAddress,Ports:NetworkInterfaces[].PrivateIpAddress}'
+```
+#### Option 2: Use nmap for port scan
+```bash
+nmap -p 8080,443 <IP>
+```
+
+### 21. Error code - 404 - what it means?
+
+`404 Not Found`  
+- The client can reach the server, but the requested resource (URL/path) does not exist on the server.
+
+---
+
+### 22. Write a shell script - which you written recently?
+
+```bash
+#!/bin/bash
+# Check disk usage and alert if > 80%
+
+THRESHOLD=80
+USAGE=$(df -h / | grep -v Filesystem | awk '{print $5}' | sed 's/%//')
+
+if [ "$USAGE" -gt "$THRESHOLD" ]; then
+  echo "Disk usage is above $THRESHOLD%, please take action!"
+  # Send email/slack alert here
+fi
+```
+
+### 23. Difference between `git merge` vs `git rebase`
+
+| Feature    | Merge                                 | Rebase                               |
+|------------|---------------------------------------|--------------------------------------|
+| History    | Keeps full history with merge commits | Rewrites history (linear)            |
+| Safe?      | Yes                                   | Can be dangerous (requires force push) |
+| Use Case   | For preserving complete history       | For maintaining a clean commit history |
 
