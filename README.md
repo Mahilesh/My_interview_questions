@@ -113,3 +113,4 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 16. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
 17. Error code - 404 - what it means?
 18. Write a shell script - which you written recently?
+19. Diff bt git merge vs git rebase
