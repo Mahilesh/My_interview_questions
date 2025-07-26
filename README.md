@@ -96,6 +96,7 @@ In previous projects, I have also worked with self-hosted Kubernetes on virtual 
 11. Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
 
 
+
 4. Static IP vs Dynamic IP
 - Static IP: Manually assigned, doesn’t change over time (e.g., useful for DNS, VPN).
 - Dynamic IP: Automatically assigned by DHCP and may change periodically.
@@ -166,10 +167,55 @@ Used for HTTP, SSH	    Used for DNS, streaming
 - Ensures confidentiality, integrity, authenticity of data between client-server.
 
 15. How you reduced monthly costs by 20% through EC2? (from resume)
+- Identified under-utilized EC2 via CloudWatch metrics.
+- Rightsized instances to smaller types (e.g., m5 → t3).
+- Implemented Auto Scaling.
+- Stopped unused instances during off hours via Lambda scheduler.
+
 16. How do you create kubernetes cluster through terraform - whether you used CICD for that
+Yes:
+- Used Terraform to provision EKS (via aws_eks_cluster).
+- Integrated with GitLab CI to trigger terraform apply for cluster creation.
+- Followed IaC + pipeline-based provisioning.
+  
 17. DNS is not working in Linux - How to check connectivity and trobuleshoot the issue
-18. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
-19. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
-20. Error code - 404 - what it means?
-21. Write a shell script - which you written recently?
-22. Diff bt git merge vs git rebase
+ping 8.8.8.8             # Check internet
+ping google.com          # Check DNS resolution
+cat /etc/resolv.conf     # Check DNS config
+systemctl restart network
+dig google.com           # Advanced DNS lookup
+
+19. Developer somehow saw the secret which is hardcoded, Are you able to modify and make it invisble WITHOUT RESTART? if yes, How?
+- Yes, if the app reads secrets dynamically (e.g., from environment or secret manager).
+- Use tools like:
+- AWS Secrets Manager / HashiCorp Vault
+- kubectl edit secret → base64 encode → update → no pod restart if app supports live reload
+- Otherwise, inject via Kubernetes Volume or Env var.
+
+20. Port no 8080 mapped to one instance and 443 mapped to other instances - how do you find which is public and private?
+# Use AWS Console or CLI:
+aws ec2 describe-instances --query 'Reservations[].Instances[].{IP:PublicIpAddress,Ports:NetworkInterfaces[].PrivateIpAddress}'
+
+# Or check via:
+nmap -p 8080,443 <IP>
+
+21. Error code - 404 - what it means?
+404 Not Found = Client can reach the server, but resource (URL/path) doesn’t exist.
+
+22. Write a shell script - which you written recently?
+#!/bin/bash
+# Check disk usage and alert if > 80%
+THRESHOLD=80
+USAGE=$(df -h / | grep -v Filesystem | awk '{print $5}' | sed 's/%//')
+
+if [ "$USAGE" -gt "$THRESHOLD" ]; then
+  echo "Disk usage is above $THRESHOLD%, please take action!"
+  # Send email/slack alert here
+fi
+
+23. Diff bt git merge vs git rebase
+Feature	                    Merge	                            Rebase
+=======                    ========                            =========
+History	                    Keeps                     full history with merge commits	Rewrites history (linear)
+Safe?	                    Yes                       Can be dangerous (force push)
+Use Case	                For preserving history	  For clean commit history
