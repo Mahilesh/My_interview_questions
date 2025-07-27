@@ -297,3 +297,25 @@ fi
 | Safe?      | Yes                                   | Can be dangerous (requires force push) |
 | Use Case   | For preserving complete history       | For maintaining a clean commit history |
 
+### 21. What is the difference between port 8080 and port 443?
+
+| Feature            | Port 8080                              | Port 443                                   |
+|--------------------|----------------------------------------|--------------------------------------------|
+| **Type**           | Alternative HTTP port                  | Default HTTPS port                         |
+| **Protocol**       | HTTP (HyperText Transfer Protocol)     | HTTPS (HTTP Secure with SSL/TLS)           |
+| **Security**       | ❌ Not secure (data sent in plain text) | ✅ Secure (encrypted using TLS/SSL)         |
+| **Common Usage**   | Development, testing, proxy servers     | Production websites needing encryption      |
+| **Browser Support**| Must specify explicitly (`:8080`)      | Automatically used for `https://` URLs      |
+| **Default?**       | ❌ No                                   | ✅ Yes (for HTTPS traffic)                  |
+
+---
+
+### Summary
+
+- **Port 443** is used for **secure HTTPS traffic** (encrypted).
+- **Port 8080** is typically used for **non-secure HTTP**, often in testing or development environments.
+
+> Example:
+> - http://example.com:8080 → HTTP on port 8080
+> - https://example.com → HTTPS on port 443
+
