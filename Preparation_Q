@@ -9,6 +9,11 @@ b) How to troubleshoot the issue and what will be checked during the process
 c) what steps to take so that the issue will not happen in future 
 In Airflow, if a job fails, how do you debug it?
 If you're facing performance issues on a server, how do you troubleshoot?
+Introduction
+Explain current project 
+1.Introduce yourself 
+14.have you worked on production deployment activity ?
+15.how frequently do we deploy to production in your current project
 
 Kubernetes
 ===========
@@ -30,6 +35,16 @@ Kubernetes
 15. You want to enforce that all images used in the cluster must come from a trusted internal registry. How do you implement this at the policy level?
 16. You're managing multi-region deployments using a single Kubernetes control plane. What architectural considerations must you address to avoid cross-region latency and single points of failure?
 17. During peak traffic, your ingress controller fails to route requests efficiently. How would you diagnose and scale ingress resources effectively under heavy load?
+18. Asked about k8s ( deployment, services, and configs) 
+19. Pod disruption budget
+20. About K8's Architecture and tell me the workflow?
+21. Tell about RBAC 
+22. in ur projects how many containers u ran? can u give me the use case where can run 4-5 containers in a pod?
+23. How many containers can run in a pod?
+24.what will be your approach if pod.yaml failed
+25.explain kubernets architecture 
+26.commands used in kubernets 
+27.if application which you are trying to deploy with kubernets got crashed and you are not able to enter into pod what will be your approach 
 
 Kubernetes architecture
 Deployment vs stateful set
@@ -48,6 +63,9 @@ Terraform statefile
 If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
 In Terraform, what is the purpose of init, plan, and apply commands?
 What happens if the Terraform state file is accidentally deleted?
+What is Terraform
+Can u pls write terraform file to provision the Ec2 instance in a public subnet in a VPC?
+write sample terraform resource file
 
 
 Docker
@@ -64,6 +82,10 @@ Docker
 10. Contents written inside docker file
 11. What is the issue with using large file image in dockerfile
 12. If Docker containers are consuming too much disk space, how do you fix it?
+13. Purpose of Docker
+14. R u using Dockerfile? u r build the dockerfile by codebuild?
+3.write sample docker file
+6.difference between cmd and entry point 
 
 
 Linux
@@ -85,7 +107,10 @@ How to handle merge conflict in git. If 2 people working on same file and did th
 G- In Git, explain the push and pull commands.
 G- What is the use of Git tags?
 G- What are the different types of branches in Git?
-
+Git sqash
+Git rebase
+2.git commands used in day to day activities
+5.Difference between git rebase and git merge
 
 AWS
 ====
@@ -97,6 +122,9 @@ AWS - Explain EC2 instances and handling multiple VPCs.
 AWS - How do you configure AWS RDS, and what factors do you consider (size, requirements, etc.)?
 AWS - How much data is stored in your RDS MySQL?
 AWS - How many masters and slaves are in RDS?
+How comfortable with AWS and how much rate urself out of 5?
+about IAM/Fargate/EC2/Lambda?
+Can u pls write a lambda file?
 
 
 Jenkins
@@ -132,6 +160,10 @@ CICD
 3. Where do you write the code/yaml file for pipeline
 4. How to schedule pipeline, lets say i have validated the pipeline with some update and i want to schedule it to stage/main branch, how to do? (This also someone explain)
 5. CICD - What kind of CI/CD pipelines are you familiar with?
+6. Whats ur organisation current cicd process and tools
+7. What securities measures/tools u were taken in ur cicd pipeline?
+8.explain about blue green deployment strategy 
+9.explain about your project pipeline
 
 Azure
 =====
@@ -149,7 +181,31 @@ Azure - How azure key vault is integrated in cicd
 Unknown
 =======
 What is PAT
+Service mesh
 
 Grafana 
 =======
 Grafana - How do you configure a Grafana dashboard?
+How to integrate grafana with prometheus
+did u configure Prometheus and Grafana?
+explain about Prometheus and grafana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
