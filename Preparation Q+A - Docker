@@ -50,3 +50,82 @@ CMD ["--env=prod"]
     - Macvlan
         - Assigns MAC address from the LAN
 
+6. Docker Image vs Container
+
+    Docker Image: A read-only template that contains the application code, libraries, dependencies, and instructions to create a container.
+    Docker Container: A running instance of a Docker image. It’s the executable version of an image with its own process, memory, and filesystem.
+
+7. Docker Bind Mount vs Volume
+    Bind Mount: Maps a host file or directory into the container. Changes on the host are reflected inside the container and vice versa.
+        Example: -v /host/path:/container/path
+        Not managed by Docker, direct host dependency.
+    Volume: Managed by Docker and stored in Docker’s storage area (/var/lib/docker/volumes/).
+        More portable and secure.
+        Example: -v myvolume:/container/path
+
+8. Can we install Docker inside a container?
+    Yes, it is possible (called Docker-in-Docker, or dind).
+    Used in CI/CD tools like GitLab runners.
+    Use case: To build and run Docker images inside a container.
+    Note: Comes with security risks and performance overhead.
+
+9. What is inside a Dockerfile?
+    A Dockerfile contains instructions to build a Docker image. It defines:
+    Base image (FROM)
+    Maintainer info (LABEL, optional)
+    Commands to install dependencies (RUN)
+    Environment variables (ENV)
+    Default command (CMD or ENTRYPOINT)
+    Working directory (WORKDIR)
+    Files to copy (COPY, ADD)
+
+10. Contents Written Inside Dockerfile
+    FROM python:3.9
+    WORKDIR /app
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+    COPY . .
+    CMD ["python", "app.py"]
+
+11. What is the issue with using a large image file in Dockerfile?
+    - Slower builds and deployments
+    - Increased network bandwidth usage
+    - Higher disk space consumption
+    - More caching and layer management overhead
+    - Poor CI/CD performance
+
+12. If Docker containers are consuming too much disk space, how do you fix it?
+    - Remove unused containers: docker container prune
+    - Remove unused images: docker image prune -a
+    - Remove unused volumes: docker volume prune
+    - Remove unused networks: docker network prune
+    - Clear all: docker system prune -a
+
+13. Purpose of Docker
+    - Package applications and dependencies in isolated containers
+    - Ensures consistency across environments (dev, test, prod)
+    - Simplifies deployment and scaling
+    - Supports microservices architecture
+    - Faster delivery through CI/CD pipelines
+
+14. Are you using Dockerfile? Are you building the Dockerfile using CodeBuild?
+    - Yes, I write and use Dockerfiles to containerize our applications. We build Docker images using AWS CodeBuild as part of our CI/CD pipeline. CodeBuild uses a buildspec.yml file to execute Docker build and push commands to Amazon ECR.
+
+15. Write Sample Dockerfile
+    FROM node:18
+    WORKDIR /usr/src/app
+    COPY package*.json ./
+    RUN npm install
+    COPY . .
+    EXPOSE 3000
+    CMD ["npm", "start"]
+
+16. Difference Between CMD and ENTRYPOINT
+    | Feature       | CMD                            | ENTRYPOINT                          |
+    | ------------- | ------------------------------ | ----------------------------------- |
+    | Purpose       | Provides **default arguments** | Defines **main executable**         |
+    | Overridden by | Arguments passed at runtime    | No, unless used with `--entrypoint` |
+    | Syntax        | `CMD ["arg1", "arg2"]`         | `ENTRYPOINT ["executable", "arg"]`  |
+    | Example Use   | `CMD ["npm", "start"]`         | `ENTRYPOINT ["python3"]`            |
+
+Tip:- Use ENTRYPOINT when you always want the same command to run, and CMD for default arguments.
