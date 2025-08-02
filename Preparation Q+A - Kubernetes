@@ -77,123 +77,134 @@ Step6;- Redeploy Pod or Rollout Restart
 #kubectl get pods -n kube-system | grep scheduler          (to find the schedular)
 #kubectl logs -n kube-system kube-scheduler-<pod> 
 
-KUBERNETES INTERVIEW QUESTIONS AND ANSWERS  
-(Questions 10 to 26)
+10. An application upgrade caused downtime even though you had rolling updates configured. What advanced strategies would you apply to ensure zero-downtime deployments next time?
 
-10. Q: An application upgrade caused downtime even though you had rolling updates configured.  
-    A: You can ensure zero-downtime by:
-       - Using readiness probes so the pod only serves traffic when ready.
-       - Gradually increasing maxSurge and maxUnavailable parameters.
-       - Leveraging blue-green or canary deployment strategies.
-       - Monitoring logs and metrics during rollout for rollback triggers.
+- Use readiness probes to prevent traffic to unhealthy pods.
+- Implement blue-green or canary deployments using tools like Argo Rollouts or Flagger.
+- Introduce preStop hooks for graceful shutdown.
+- Ensure proper resource limits and startup/liveness probes are configured.
+- Validate all configurations in staging with production-like traffic using load testing.
 
-11. Q: Your service mesh sidecar (e.g., Istio Envoy) is consuming more resources than the app itself.  
-    A: To optimize:
-       - Limit sidecar resource requests/limits in annotations.
-       - Reduce metrics/logging verbosity.
-       - Use custom Envoy filters or disable unused filters.
-       - Scale up nodes or pods if unavoidable.
+11. Your service mesh sidecar (e.g., Istio Envoy) is consuming more resources than the app itself. How do you analyze and optimize this setup?
 
-12. Q: You need to create a Kubernetes operator to automate complex application lifecycle events.  
-    A: Approach:
-       - Define Custom Resource Definitions (CRDs).
-       - Write a controller loop using Operator SDK or Kubebuilder.
-       - Implement reconciliation logic for desired state.
-       - Deploy and monitor the operator in the cluster.
+- Use metrics from Prometheus/Grafana or Istio Dashboard to monitor sidecar resource usage.
+- Analyze access logs and tracing (Jaeger/Zipkin) to find excessive routing or retries.
+- Tune Envoy config (e.g., connection pool, logging level).
+- Limit sidecar injection to only required namespaces/pods.
+- Consider switching to a lighter mesh if overkill for the use case.
 
-13. Q: Multiple nodes are showing high disk IO usage due to container logs.  
-    A: Solutions:
-       - Use log rotation (`logrotate`).
-       - Move logging to a centralized system like Fluentd + Elasticsearch.
-       - Set `emptyDir` size limits or move logs to external storage.
+12. You need to create a Kubernetes operator to automate complex application lifecycle events. How do you design the CRD and controller loop logic?
 
-14. Q: Your Kubernetes cluster's etcd performance is degrading.  
-    A: Troubleshooting steps:
-       - Check etcd metrics for disk I/O and latency.
-       - Ensure SSD-backed storage.
-       - Avoid storing large secrets or configmaps.
-       - Regularly defragment etcd (`etcdctl defrag`).
-       - Setup etcd in HA mode with an odd number of nodes.
+- Define a Custom Resource Definition (CRD) that describes your app's lifecycle (e.g., phase, version).
+- Write a controller (in Go using Kubebuilder or Operator SDK) to watch CR changes.
+- Implement reconciliation loop logic to check desired vs actual state and take actions.
+- Handle error retries and status updates for observability.
+- Use finalizers for clean teardown logic.
 
-15. Q: You want to enforce that all images used in the cluster must come from a trusted internal registry.  
-    A: Solutions:
-       - Use OPA Gatekeeper or Kyverno admission controller.
-       - Define policies to restrict image registry usage.
-       - Validate images in CI pipeline before deployment.
+13. Multiple nodes are showing high disk IO usage due to container logs. What Kubernetes features or practices can you apply to avoid this scenario?
 
-16. Q: You're managing multi-region deployments using a single Kubernetes control plane.  
-    A: Key considerations:
-       - Use federated clusters or multi-zone clusters.
-       - Replicate control plane across regions for HA.
-       - Use Global Load Balancer (like GCLB or AWS Global Accelerator).
-       - Manage latency-sensitive apps carefully with node affinity.
+- Use log rotation with `logrotate` or configure container runtime logging limits.
+- Offload logs using Fluentd/Fluent Bit to a centralized log system like ELK or Loki.
+- Use ephemeral storage limits on pods.
+- Switch to sidecar log shipping model if applicable.
+- Enable journald or structured logging to reduce disk usage.
 
-17. Q: During peak traffic, your ingress controller fails to route requests efficiently.  
-    A: Troubleshooting steps:
-       - Check ingress controller pod CPU/memory.
-       - Use horizontal pod autoscaler.
-       - Optimize NGINX/HAProxy config.
-       - Enable keep-alive, gzip, caching.
-       - Split traffic across multiple ingress controllers.
+14. Your Kubernetes cluster's etcd performance is degrading. What are the root causes and how do you ensure etcd high availability and tuning?
 
-18. Q: Asked about Kubernetes components like Deployment, Services, ConfigMaps, and Secrets.  
-    A:
-       - Deployment: Manages replica sets and rolling updates.
-       - Services: Expose pods for internal/external access.
-       - ConfigMaps: Store non-confidential config data.
-       - Secrets: Store sensitive data (base64 encoded).
+- Root causes: large number of objects, frequent writes, disk latency, slow backups.
+- Use SSD-backed persistent volumes for etcd.
+- Keep etcd cluster size to odd number (3 or 5).
+- Tune etcd compaction and defragmentation intervals.
+- Monitor etcd metrics and use alerts for latency, fsync, and DB size.
 
-19. Q: What is Pod Disruption Budget (PDB)?  
-    A: PDB ensures a minimum number of pods are always available during voluntary disruptions like node drains or updates. Example:
-       ```
-       minAvailable: 2
-       ```
+15. You want to enforce that all images used in the cluster must come from a trusted internal registry. How do you implement this at the policy level?
 
-20. Q: Explain Kubernetes Architecture and its workflow.  
-    A:
-       - Control Plane Components: kube-apiserver, controller-manager, scheduler, etcd.
-       - Node Components: kubelet, kube-proxy, container runtime.
-       - Workflow: User submits manifest → API server processes → Scheduler assigns node → kubelet runs pod → service routes traffic.
+- Use an Admission Controller like OPA/Gatekeeper to validate image registry.
+- Create policies that block images not matching `myregistry.company.com/*`.
+- Use Kubernetes PodSecurityPolicy (deprecated), PodSecurity Admission or Kyverno to enforce registry constraints.
+- Integrate CI pipeline to tag and push only approved images.
 
-21. Q: Explain Role-Based Access Control (RBAC) in Kubernetes.  
-    A: RBAC controls user/pod access to Kubernetes resources via:
-       - Role: Defines permissions (verbs/resources).
-       - RoleBinding: Assigns role to user/group/service account.
-       - ClusterRole/ClusterRoleBinding: Same but cluster-wide.
+16. You're managing multi-region deployments using a single Kubernetes control plane. What architectural considerations must you address to avoid cross-region latency and single points of failure?
 
-22. Q: In your projects, how many containers did you run in a Pod?  
-    A: Typically 1–2 containers. In some cases (e.g., log collector, sidecar, metrics), up to 4–5. For example:
-       - App container
-       - Envoy sidecar
-       - Fluentd log forwarder
-       - Prometheus exporter
-       - Init container for setup
+- Use regional clusters with federation or multi-cluster tools like KubeFed or GKE Hub.
+- Deploy control plane closer to the app/data location to avoid latency.
+- Use global load balancer or DNS-based routing (e.g., ExternalDNS).
+- Ensure high availability by replicating control plane and etcd.
+- Avoid single point of failure by distributing workloads and control plane components.
 
-23. Q: How many containers can run in a Pod?  
-    A: Technically unlimited, but practically 1–5 is common for resource efficiency and manageability. All containers in a pod share:
-       - Network namespace
-       - Storage volumes
+17. During peak traffic, your ingress controller fails to route requests efficiently. How would you diagnose and scale ingress resources effectively under heavy load?
 
-24. Q: What will be your approach if pod.yaml deployment fails?  
-    A:
-       - Run: `kubectl apply -f pod.yaml`
-       - If fails, check: `kubectl describe pod <pod-name>`
-       - Review events, imagePullErrors, scheduling issues.
-       - Fix manifest or image and reapply.
+- Check ingress pod logs and metrics (CPU, memory, connections).
+- Use horizontal pod autoscaler for ingress controller.
+- Tune NGINX/HAProxy buffer sizes and connection timeouts.
+- Implement rate limiting and caching.
+- Use dedicated node pool for ingress traffic.
 
-25. Q: List commonly used Kubernetes CLI commands.  
-    A:
-       - `kubectl get pods`
-       - `kubectl describe pod <pod>`
-       - `kubectl logs <pod>`
-       - `kubectl exec -it <pod> -- /bin/bash`
-       - `kubectl apply -f deployment.yaml`
-       - `kubectl delete -f service.yaml`
+18. Asked about k8s (deployment, services, and configs)
 
-26. Q: If the application you're trying to deploy crashes and you are not able to exec into the Pod, what will be your approach to troubleshoot?  
-    A:
-       - `kubectl get pods` → Check status.
-       - `kubectl describe pod <pod>` → See events, reasons.
-       - `kubectl logs <pod>` → View stdout/stderr logs.
-       - Check image versions, readiness/liveness probes.
-       - Check node resource status: `kubectl describe node <node>`
+- Deployment: manages replica sets, rolling updates, image versioning.
+- Services: expose pods to other services or external traffic.
+- Configs: use ConfigMaps and Secrets to externalize configuration.
+
+19. Pod disruption budget
+
+- Defines how many pods can be voluntarily disrupted at a time.
+- Helps maintain availability during voluntary events like upgrades.
+- Example: maxUnavailable: 1 or minAvailable: 2.
+
+20. About K8s Architecture and tell me the workflow?
+
+- Kube-apiserver receives user requests.
+- Scheduler schedules pods onto nodes.
+- Controller manager manages replicas, endpoints.
+- etcd stores cluster state.
+- Kubelet runs on each node and reports to control plane.
+- Kube-proxy handles networking and routing.
+
+21. Tell about RBAC
+
+- RBAC controls access to Kubernetes resources based on roles.
+- Role/ClusterRole: define permissions.
+- RoleBinding/ClusterRoleBinding: bind users/groups to roles.
+- Ensures least-privilege access control.
+
+22. In your projects, how many containers did you run? Can you give me a use case where you would run 4–5 containers in a pod?
+
+- Typically 1-2 containers per pod, but used 4-5 in cases like:
+  - Logging sidecar (Fluent Bit)
+  - Monitoring sidecar (Prometheus exporter)
+  - Main application
+  - Proxy/mesh sidecar (Envoy)
+  - Config watcher/reloader
+
+23. How many containers can run in a pod?
+
+- There is no strict limit; depends on node capacity and container requirements.
+- Practically, 5-10 is manageable per pod for performance and debugging.
+
+24. What will be your approach if pod.yaml failed?
+
+- Check syntax: `kubectl apply -f pod.yaml --dry-run=client`
+- Describe pod: `kubectl describe pod <name>`
+- Logs: `kubectl logs <name>`
+- Events: `kubectl get events`
+- Fix issues like missing image, wrong config, port conflict.
+
+25. Commands used in Kubernetes
+
+- kubectl get pods/services/deployments
+- kubectl describe pod <pod-name>
+- kubectl logs <pod-name>
+- kubectl apply -f <file.yaml>
+- kubectl exec -it <pod> -- /bin/bash
+- kubectl port-forward <pod> <port>:<port>
+
+26. If the application which you are trying to deploy with Kubernetes crashes and you are not able to enter into the pod, what will be your approach?
+
+- Check pod status: `kubectl get pods`
+- Describe the pod: `kubectl describe pod <name>`
+- View logs: `kubectl logs <name> --previous` (if it crashed)
+- Check node resources and events.
+- Verify image, config, secrets, and volume mounts.
+
+
