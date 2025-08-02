@@ -2,80 +2,107 @@ Kubernetes
 ==========
 
 1. Kubernetes architecture
+
 - Kubernetes follows a master-worker architecture (also known as control plane and nodes). It consists of the following key components:
 - Controller plane (Master nodes), Data plane (Worker nodes)
-  - In controller plane, consistes of components like API-server, Schedular, etcd, Controller Manager, Cloud Controller Manager
+
+  - In controller plane, consists of components like API-server, Scheduler, etcd, Controller Manager, Cloud Controller Manager
       - API-server - Acts as the entry point for all Kubernetes commands (kubectl, REST API). It handles authentication, authorization, and communicates with all components.
-      - Schedular - Assigns newly created pods to available worker nodes based on resource availability, affinity/anti-affinity rules, taints/tolerations, etc.
-      - Etcd - It is like database, A distributed key-value store used to store all cluster data, configurations, and state. It acts as the single source of truth.
-      - Controller Manager -  Runs various controllers that handle routine tasks like:
+      - Scheduler - Assigns newly created pods to available worker nodes based on resource availability, affinity/anti-affinity rules, taints/tolerations, etc.
+      - Etcd - A distributed key-value store used to store all cluster data, configurations, and state. It acts as the single source of truth.
+      - Controller Manager - Runs various controllers that handle routine tasks like:
           - Node controller (check node status)
           - Replication controller (ensure desired pod count)
-          - Endpoint controller, etc. 
-      - CLoud Controlller Manager - Kubernetes interact with the cloud provider's APIs. It separates out the cloud-specific logic from the rest of the Kubernetes core.
-  - In Data plane, consistes of components like Kubelet, Kube proxy, Container runtime interface (CRI)
+          - Endpoint controller, etc.
+      - Cloud Controller Manager - Enables Kubernetes to interact with the cloud provider's APIs. It separates out the cloud-specific logic from the rest of the Kubernetes core.
+
+  - In data plane, consists of components like Kubelet, Kube proxy, Container runtime interface (CRI)
       - Kubelet - An agent on each node that ensures containers are running as per pod specs.
       - Kube proxy - Manages networking and load-balancing across pods and services on a node.
       - Container runtime interface - Pulls and runs containers inside pods.
 
 2. Deployment vs stateful set
-- Deployments are ideal for stateless applications where pod identity doesn't matter. 
-  Ex:- web servers, APIs
-- StatefulSets are used for stateful apps where ordered startup and stable identities are crucial, especially with persistent storage. 
+
+- Deployments are ideal for stateless applications where pod identity doesn't matter.  
+  Ex:- web servers, APIs  
+- StatefulSets are used for stateful apps where ordered startup and stable identities are crucial, especially with persistent storage.  
   Ex:- databases, Kafka, Zookeeper
 
 3. Stateful Vs Stateless
-- A Stateless app (Deployment) doesn’t store client context between requests — it's easier to scale and recover. 
-  Ex:- NGINX or Apache Web Server
-- A Stateful app (Statefulset) requires maintaining session or data consistency, needing persistent storage and careful orchestration.
+
+- A Stateless app (Deployment) doesn’t store client context between requests — it's easier to scale and recover.  
+  Ex:- NGINX or Apache Web Server  
+- A Stateful app (StatefulSet) requires maintaining session or data consistency, needing persistent storage and careful orchestration.  
   Ex:- MongoDB / MySQL
 
 4. How do you manage data of stateless application?
+
 - In stateless apps, we manage data by storing it outside the application. This includes using external databases, caching layers for sessions, object storage for files, and messaging queues for decoupled processing. The app remains stateless by not relying on internal memory or disk.
 
 5. If there is file which is being used by 2 customers, and need to deploy that file in k8s cluster and on prem as well, how to do that?
+
 - Method1:- Use a central storage (e.g., S3, NFS) to keep the shared file and sync it to both Kubernetes (via volume or initContainer) and on-prem (via script or cron job).
 - Method2:- Include the file in your CI/CD pipeline to deploy it to both environments consistently.
-  - Commands to use
-      Kubernetes - kubectl cp
-      On-premise - scp or rsync 
+
+  - Commands to use  
+      Kubernetes - kubectl cp  
+      On-premise - scp or rsync
 
 6. How to deploy an app to k8s cluster in terms of app deploy only ( basically explain CD part)
-- Step1:- Prepare Kubernetes YAML manifests - deployment.yaml, service.yaml, configmap.yaml, etc.
-- Step2:- Push updated image to container registry
-- Step3:- Update the YAML with the new image tag
+
+- Step1:- Prepare Kubernetes YAML manifests - deployment.yaml, service.yaml, configmap.yaml, etc.  
+- Step2:- Push updated image to container registry  
+- Step3:- Update the YAML with the new image tag  
 - Step4:- Apply the YAML to the cluster using #kubectl
 
 7. If secret is stored in vault inside a pod and that pod is down then how to tsg?
+
 - If a pod that pulls secrets from Vault is down, I first check the pod status and logs, then validate Vault connectivity, the Kubernetes auth configuration, and token validity. I also inspect volume mounts or Vault agent init containers. Based on findings, I restart the pod or reinitiate auth if required.
 
-Step1:- Check pod status            
-  #kubectl get pod <pod-name> -n <namespace>
-  #kubectl describe pod <pod-name> -n <namespace>
-Step2:- Check Logs (Application + Vault Agent)
-  #kubectl logs <pod-name> -n <namespace>
-  #kubectl logs <pod-name> -c vault-agent -n <namespace> 
-Step3:- Check vault connectivity
-  #curl -s $VAULT_ADDR/v1/sys/health
-Step4:- Validate Vault Token / Auth Role
-  #vault read auth/kubernetes/role/<your-role>
-Step5:- Check InitContainer or VolumeMounts (if secrets are injected)
-  #kubectl get pod <pod-name> -o yaml
-Step6;- Redeploy Pod or Rollout Restart
-  #kubectl rollout restart deployment <your-deployment> -n <namespace>
+Step1:- Check pod status  
+  #kubectl get pod <pod-name> -n <namespace>  
+  #kubectl describe pod <pod-name> -n <namespace>  
+
+Step2:- Check Logs (Application + Vault Agent)  
+  #kubectl logs <pod-name> -n <namespace>  
+  #kubectl logs <pod-name> -c vault-agent -n <namespace>  
+
+Step3:- Check vault connectivity  
+  #curl -s $VAULT_ADDR/v1/sys/health  
+
+Step4:- Validate Vault Token / Auth Role  
+  #vault read auth/kubernetes/role/<your-role>  
+
+Step5:- Check InitContainer or VolumeMounts (if secrets are injected)  
+  #kubectl get pod <pod-name> -o yaml  
+
+Step6:- Redeploy Pod or Rollout Restart  
+  #kubectl rollout restart deployment <your-deployment> -n <namespace>  
 
 8. Contents written inside deployment.yaml or heml chart
-- deployment.yaml, we define how our application should be deployed in the Kubernetes cluster. It includes metadata like the app name and labels, the number of replicas, the container image, ports, environment variables, and volume mounts. It may also include health checks, resource limits, and affinity rules.
-- Helm - deployment.yaml - becomes a template using placeholders (like {{ .Values.image.repository }}), and values are dynamically pulled from "values.yaml" to support reusability and parameterization across environments.
+
+- deployment.yaml defines how our application should be deployed in the Kubernetes cluster. It includes metadata like the app name and labels, the number of replicas, the container image, ports, environment variables, and volume mounts. It may also include health checks, resource limits, and affinity rules.  
+- Helm - deployment.yaml becomes a template using placeholders (like {{ .Values.image.repository }}), and values are dynamically pulled from "values.yaml" to support reusability and parameterization across environments.
 
 9. In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
-- Step1:- #kubectl describe pod <name-of-the-pod> -n <namespace>
-- Step2:- #kubectl get nodes, #kubectl describe node <node-name>
-- Step3:- #kubectl get pvc -n <namespace>         ----> (Check PVCs (if using volumes))
-- Step4:- #kubectl describe node <node-name> | grep -i taint          ----> Pod may not tolerate node taints.
-- Step5:- If you have master node access, then login to that node and check schedular logs
-#kubectl get pods -n kube-system | grep scheduler          (to find the schedular)
-#kubectl logs -n kube-system kube-scheduler-<pod> 
+
+Step1:-  
+  #kubectl describe pod <name-of-the-pod> -n <namespace>  
+
+Step2:-  
+  #kubectl get nodes  
+  #kubectl describe node <node-name>  
+
+Step3:-  
+  #kubectl get pvc -n <namespace>         ----> (Check PVCs (if using volumes))  
+
+Step4:-  
+  #kubectl describe node <node-name> | grep -i taint     ----> Pod may not tolerate node taints  
+
+Step5:-  
+  If you have master node access, then login to that node and check scheduler logs  
+  #kubectl get pods -n kube-system | grep scheduler  
+  #kubectl logs -n kube-system kube-scheduler-<pod>  
 
 10. An application upgrade caused downtime even though you had rolling updates configured. What advanced strategies would you apply to ensure zero-downtime deployments next time?
 
