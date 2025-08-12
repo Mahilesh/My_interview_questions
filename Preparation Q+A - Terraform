@@ -2,17 +2,152 @@ TERRAFORM
 ==========
 
 1. Terraform provisioners. 
+
 - Provisioners in Terraform allow you to execute scripts or commands on a local or remote machine after a resource is created or destroyed. They are useful for bootstrapping machines, installing software, or running configuration scripts.
 - Types of Provisioners - local-exec, remote-exec, file
+
 2. Terraform statefile
+
 - Needed for change tracking.
 - Tracks real infra vs declared infra.
+
 3. If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
+
 - removed instance is destroyed; only listed instances remain.
+
 4. In Terraform, what is the purpose of init, plan, and apply commands?
+
 - terraform init - Downloads providers/modules.
 - terraform plan - Shows changes.
 - terraform apply - Applies infrastructure changes.
+
 5. What happens if the Terraform state file is accidentally deleted?
+
 - Terraform loses tracking; risks duplication or recreation.
 - Best to store state in remote backend (S3 + DynamoDB for locking).
+
+6. What is Terraform
+
+- Terraform is an open-source Infrastructure as Code (IaC) tool developed by HashiCorp.
+- It allows you to define, provision, and manage cloud infrastructure using a declarative configuration language (HCL).
+- Supports multiple cloud providers like AWS, Azure, GCP, and on-premises environments.
+- Uses a state file to track real-world resources vs. declared resources.
+
+7. Can u pls write terraform file to provision the Ec2 instance in a public subnet in a VPC?
+
+- Below sample script creates a VPC, public subnet, internet gateway, route table, security group, and EC2 instance.
+- Replace ami, key_name, and region with your own values before running.
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_vpc" "my_vpc" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+}
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id                  = aws_vpc.my_vpc.id
+  cidr_block              = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+  availability_zone       = "us-east-1a"
+}
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+resource "aws_route_table" "public_rt" {
+  vpc_id = aws_vpc.my_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+}
+
+resource "aws_route_table_association" "public_assoc" {
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_rt.id
+}
+
+resource "aws_security_group" "public_sg" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "public_ec2" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.public_subnet.id
+  vpc_security_group_ids = [aws_security_group.public_sg.id]
+  key_name      = "my-keypair"
+}
+
+8. write sample terraform resource file
+
+- Save the file as main.tf
+- Run terraform init to initialize the provider plugins
+- Run terraform plan to see the execution plan
+- Run terraform apply to create the resources
+
+9. What are common challenges faced while working with Terraform?
+
+- Managing .tfstate file securely and avoiding corruption.
+- Handling configuration drift when changes happen outside Terraform.
+- Managing dependencies between resources.
+- Securing sensitive variables and secrets.
+- Maintaining consistency across multiple environments.
+- Version control and reuse of modules.
+- Long execution times for large infra updates.
+
+10. How do you handle state file management in Terraform?
+
+- Store state in a remote backend (e.g., S3, Azure Blob, Terraform Cloud).
+- Enable state locking (e.g., DynamoDB for AWS).
+- Backup state files regularly.
+- Use separate states or workspaces for different environments.
+- Never commit .tfstate to version control.
+
+11. How do you detect and resolve drift in Terraform-managed infrastructure?
+
+- Run terraform plan to detect drift between state and real infra.
+- Apply Terraform config to overwrite unintended manual changes.
+- Update .tf files if manual changes are intentional.
+- Enforce Terraform as the single source of truth via CI/CD pipelines.
+
+12. How do you manage secrets securely in Terraform?
+
+- Use secret managers like AWS Secrets Manager, Vault, Azure Key Vault.
+- Pass secrets via environment variables or encrypted .tfvars.
+- Mark variables as sensitive = true to hide in logs.
+- Avoid storing secrets directly in .tf files or Git.
+
+13. Why should you use a remote backend for Terraform?
+
+- Centralized state file for team collaboration.
+- Prevents state loss and supports backups.
+- Enables state locking to avoid concurrent modifications.
+- Secures state storage with encryption and access control.
+- Supports automation with CI/CD pipelines.
