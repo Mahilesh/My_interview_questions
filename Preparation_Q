@@ -58,14 +58,20 @@ In Kubernetes, if a pod is in a pending state, how do you troubleshoot?
 
 Terraform
 =========
-Terraform provisioners. 
-Terraform statefile
-If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
-In Terraform, what is the purpose of init, plan, and apply commands?
-What happens if the Terraform state file is accidentally deleted?
-What is Terraform
-Can u pls write terraform file to provision the Ec2 instance in a public subnet in a VPC?
-write sample terraform resource file
+1. Terraform provisioners. 
+2. Terraform statefile
+3. If we have created 3 instances using terraform script and the instance names are mentioned as a list, Suppose we removed 2nd instance name from the list and applied script again then what will happen to the already 3 instances created before.
+4. In Terraform, what is the purpose of init, plan, and apply commands?
+5. What happens if the Terraform state file is accidentally deleted?
+6. What is Terraform
+7. Can u pls write terraform file to provision the Ec2 instance in a public subnet in a VPC?
+8. write sample terraform resource file
+9. What are common challenges faced while working with Terraform?
+10. How do you handle state file management in Terraform?
+11. How do you detect and resolve drift in Terraform-managed infrastructure?
+12. How do you manage secrets securely in Terraform?
+13. Why should you use a remote backend for Terraform?
+14. How to recover from a corrupted state file?
 
 
 Docker
