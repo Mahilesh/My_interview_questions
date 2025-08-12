@@ -151,3 +151,15 @@ resource "aws_instance" "public_ec2" {
 - Enables state locking to avoid concurrent modifications.
 - Secures state storage with encryption and access control.
 - Supports automation with CI/CD pipelines.
+
+14. How to recover from a corrupted state file?
+
+- If you have a backup state file (from version control or backup system), simply replace the corrupted state file with the backup. If using remote state storage like S3, you can restore from a previous version.
+- If no backup exists:
+    - Run terraform refresh to update state with real infrastructure state
+    - Use terraform import to bring existing resources back under Terraform management
+    - Systematically verify each resource and import them one by one
+
+Pro tip: Always enable versioning on your remote state storage (like S3) and maintain regular backups to prevent data loss in such scenarios.
+
+When we encountered this in production, we used a combination of AWS CLI and custom scripts to generate a resource inventory that we could systematically import back into Terraform control.
