@@ -1,34 +1,126 @@
 LINUX
 ======
 
-1. In Linux, how do you attach and detach a filesystem?.
-	use mount & umount cmmands
-	Ex:- mount /filesystem1 /filesystem2
-	Ex:- umount /filesystem1 /filesystem2
+1. In Linux, how do you attach and detach a filesystem?
+
+- Use `mount` and `umount` commands.  
+- Example to attach: `mount /filesystem1 /filesystem2`  
+- Example to detach: `umount /filesystem1`  
+
 2. How do you print the last 15 lines of a file in Linux?
-	#tail -n 15 filename.log
+
+- Use the command: `tail -n 15 filename.log`  
+
 3. How do you enable passwordless authentication between two servers?
-	1. Server A (source) - 
-	#ssh-keygen -t rsa -b 4096
-	#ssh-copy-id user@Server B or #cat ~/.ssh/id_rsa.pub | ssh user@serverB 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys' 
-		-> Enter the password for once
-	2. To test from server A
-	#ssh user@ServerB  -> login without password
+
+- On Server A (source), generate SSH key: `ssh-keygen -t rsa -b 4096`  
+- Copy the public key to Server B: `ssh-copy-id user@ServerB`  
+  or  
+  `cat ~/.ssh/id_rsa.pub | ssh user@ServerB 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys'`  
+- Enter password once during copying.  
+- Test passwordless login: `ssh user@ServerB`  
+
 4. Disk space is full on a production server — what do you do?
-- Check disk usage 		#df -h
-- Check large files/directories #du -sh /* 2>/dev/null | sort -hr | head -20
-- Clear Old logs 		#rm -rf /var/log/old_log_file.log
-- Preventive Tip: Set up logrotate.
+
+- Check disk usage: `df -h`  
+- Find large files/directories: `du -sh /* 2>/dev/null | sort -hr | head -20`  
+- Clear old logs: `rm -rf /var/log/old_log_file.log`  
+- Preventive tip: Set up `logrotate` to manage log files automatically.  
+
 5. A process is consuming high CPU — how do you troubleshoot it?
-- Check top CPU-consuming processes:	#top
-- Get process details:			#lsof -p <PID> or #strace -p <PID> or #pidstat -o <PID>
-- Kill or restart process if needed:	#kill -9 <PID>
+
+- Check top CPU-consuming processes: `top`  
+- Get detailed info on process: `lsof -p <PID>` or `strace -p <PID>` or `pidstat -o <PID>`  
+- Kill or restart the process if necessary: `kill -9 <PID>`  
+
 6. A server is not reachable via SSH — how would you diagnose it?
-- Check network connectivity:				#ping <server-ip>
-- Check port						#telnet <server-ip> 22
-- From remote system (if you have other access):	#systemctl status sshd or #journalctl -xe | grep ssh
-- Firewall check:					#iptables -L	
+
+- Check network connectivity: `ping <server-ip>`  
+- Check if SSH port is open: `telnet <server-ip> 22`  
+- On the server (if accessible), check SSH service status: `systemctl status sshd`  
+- Check SSH logs: `journalctl -xe | grep ssh`  
+- Check firewall rules: `iptables -L`  
+
 7. How do you schedule regular backups using cron?
-- to edit 	#crontab -e
-- * * * * * /bin/startup.sh >> /var/log/backup.log 2>&1
-- to verify 	#crontab -l
+
+- Edit cron jobs: `crontab -e`  
+- Add job example: `* * * * * /bin/startup.sh >> /var/log/backup.log 2>&1`  
+- Verify cron jobs: `crontab -l` 
+
+-- -- -- You will never become a DevOps engineer if you don’t know how Linux works. -- -- -- 
+
+1. How do services run in Linux? -> #how services run (systemd, service, journalctl, targets)
+
+- Using systemd to manage services and targets.  
+- Using `service` command to start/stop services on older systems.  
+- Viewing logs with `journalctl`.  
+- Managing service states via targets (like runlevels).  
+
+2. How do permissions work in Linux? -> #how permissions work (chmod, chown, umask, sticky bit)
+
+- Changing permissions with `chmod`.  
+- Changing ownership with `chown`.  
+- Setting default permissions with `umask`.  
+- Using the sticky bit to restrict file deletion in shared directories.  
+
+3. How does storage work in Linux? -> #how storage works (mount, fstab, df, du, LVM, RAID basics)
+
+- Mounting filesystems with `mount`.  
+- Configuring persistent mounts in `/etc/fstab`.  
+- Checking disk usage with `df` and `du`.  
+- Managing logical volumes using LVM.  
+- Basics of RAID for redundancy and performance.  
+
+4. How are users managed in Linux? -> #how users are managed (useradd, passwd, groups, sudoers)
+
+- Adding users with `useradd`.  
+- Changing passwords with `passwd`.  
+- Managing groups with `groups` and `groupadd`.  
+- Controlling sudo access via `/etc/sudoers`.  
+
+5. How to debug Linux systems? -> #how to debug systems (logs, journalctl, ps, top, netstat, lsof)
+
+- Checking logs in `/var/log` and using `journalctl`.  
+- Monitoring processes with `ps` and `top`.  
+- Checking network connections with `netstat`.  
+- Listing open files using `lsof`.  
+
+6. How does Linux operate? -> #how Linux operates (processes, file system, systemd, signals)
+
+- Running multiple processes with process management.  
+- Organizing data with the Linux file system hierarchy.  
+- Managing services using systemd.  
+- Handling signals for process control.  
+
+7. How to check system performance? -> #how to check performance (top, iostat, vmstat, strace, sar, perf)
+
+- Using `top` for real-time CPU and memory usage.  
+- Disk I/O monitoring with `iostat`.  
+- Virtual memory stats using `vmstat`.  
+- Debugging system calls via `strace`.  
+- Collecting system activity reports with `sar`.  
+- Performance profiling using `perf`.  
+
+8. How does networking work in Linux? -> #how networking works (interfaces, ports, DNS, routing, firewalls)
+
+- Configuring network interfaces.  
+- Understanding ports and services.  
+- DNS resolution basics.  
+- Routing and packet forwarding.  
+- Managing firewalls (iptables, firewalld).  
+
+9. How to use the command line effectively? -> #how to use the command line (bash, grep, awk, sed, pipes, redirects)
+
+- Using `bash` shell.  
+- Searching text with `grep`.  
+- Processing data with `awk` and `sed`.  
+- Combining commands with pipes (`|`).  
+- Redirecting input/output (`>`, `<`, `>>`).  
+
+10. How to write automation scripts in Linux? -> #how to write automation scripts (bash scripts, cron jobs, conditionals, loops)
+
+- Writing bash shell scripts.  
+- Scheduling tasks using cron jobs.  
+- Using conditionals (`if`, `case`).  
+- Creating loops (`for`, `while`).  
+
