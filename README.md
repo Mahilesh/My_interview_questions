@@ -4,6 +4,8 @@ Company wise - I will upload the questions & answers
 
 - [MIRAFRA - Bangalore (L1 - virtual)](#mirafra---bangalore-l1---virtual)
 - [Eurofins India IT Solutions - Bangalore (L1 - virtual)](#eurofins-india-it-solutions---bangalore-l1---virtual)
+- Siemens
+- Capgemini (L1 - virtual)]
 
 
 # Questions
@@ -318,4 +320,100 @@ fi
 > Example:
 > - http://example.com:8080 → HTTP on port 8080
 > - https://example.com → HTTPS on port 443
+
+# Questions
+
+### Capgemini - (L1 - virtual)
+
+1. Can you write a simple Dockerfile to build an image for a basic application?
+2. What is the full command to create a Docker container?
+3. Once you build an image from your source code, how do you dockerize and run it? (Step-by-step commands)
+4. After creating a Docker image, how do you push it to a registry and then use it in Kubernetes?
+5. Can you write a shell script that monitors the Tomcat service and sends an email notification if the service fails?
+6. Can you explain the Kubernetes architecture as implemented in your project?
+7. What are the different types of services available in Kubernetes, and when do you use each?
+8. How do you configure persistent volumes and persistent volume claims in Kubernetes?
+9. What deployment strategies have you implemented in Kubernetes (e.g., Rolling Update, Blue-Green, Canary)?
+10. If a Kubernetes scheduler has issues, how would you troubleshoot it?
+11. What recent challenges/issues have you encountered in your Kubernetes clusters, and how did you resolve them?
+12. Apart from checking console logs, which tools do you use for monitoring or viewing logs in Kubernetes?
+13. Can you walk me through the CI/CD flow you have implemented in your project?
+14. Can you explain the Kafka architecture used in your organization?
+15. What are the key differences between SonicMQ and Kafka?
+16. Can you share some examples of complex AWS cloud infrastructure issues you faced and how you resolved them?
+17. Why do you deploy applications both on Docker (standalone) and Kubernetes? What’s the reasoning?
+18. Where do you store and manage application secrets in your environment?
+
+# Answers
+
+### Capgemini - (L1 - virtual)
+
+1. Can you write a simple Dockerfile to build an image for a basic application?
+
+FROM python:3.9-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+
+2. What is the full command to create a Docker container?
+
+docker run -d --name <container_name> -p <host_port>:<container_port> <image_name>:<tag>
+docker run -d --name myapp -p 8080:8080 myapp:1.0
+
+3. What is the full command to create a Docker Image?
+
+docker build -t <image_name>:<tag> -f <Dockerfile_path> <build_context>
+docker build -t myapp:1.0 -f Dockerfile .
+
+4. Once you build an image from your source code, how do you dockerize and run it? (Step-by-step commands)
+
+Step1:- docker build -t myapp:1.0 .
+Step2:- docker images
+Step3:- docker run -d --name myapp -p 8080:8080 myapp:1.0
+Step4:- docker logs myapp
+Step5:- curl http://localhost:8080
+
+5. After creating a Docker image, how do you push it to a registry and then use it in Kubernetes?
+
+Step 1: Tag the image for registry (e.g., Docker Hub or ECR/GCR/ACR):
+docker tag myapp:1.0 <registry_username>/myapp:1.0
+
+
+Step 2: Login and push:
+docker login
+docker push <registry_username>/myapp:1.0
+
+
+Step 3: Create a Kubernetes Deployment using that image (deployment.yaml):
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: <registry_username>/myapp:1.0
+        ports:
+        - containerPort: 8080
+
+
+Step 4: Apply in Kubernetes:
+kubectl apply -f deployment.yaml
+kubectl get pods
+
+
+Step 5: Expose the service (NodePort/LoadBalancer/Ingress):
+kubectl expose deployment myapp-deployment --type=NodePort --port=8080
 
