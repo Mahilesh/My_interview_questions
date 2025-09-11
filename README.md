@@ -417,3 +417,250 @@ kubectl get pods
 Step 5: Expose the service (NodePort/LoadBalancer/Ingress):
 kubectl expose deployment myapp-deployment --type=NodePort --port=8080
 
+### 6. Can you write a shell script that monitors the Tomcat service and sends an email notification if the service fails?
+
+```bash
+#!/bin/bash
+# Check if Tomcat service is running
+SERVICE="tomcat"
+EMAIL="admin@example.com"
+
+if ! systemctl is-active --quiet $SERVICE; then
+  echo "Tomcat service is down!" | mail -s "ALERT: Tomcat Down" $EMAIL
+fi
+```
+
+
+### 7. Can you explain the Kubernetes architecture as implemented in your project?
+
+## 1. Cluster Setup
+- We run a **multi-node EKS cluster** (AWS managed Kubernetes).  
+- The cluster consists of **1 control plane** (managed by AWS) and multiple **worker nodes (EC2 instances)** distributed across availability zones for high availability.  
+- Nodes are **tainted and labeled** based on the environment (DEV, TST, PRD) and workload type.  
+
+## 2. Node Configuration & Container Runtime
+- Worker nodes run **containerd** as the container runtime.  
+- Each node has **kubelet** for managing pods and **kube-proxy** for networking.  
+- Nodes are part of an **Auto Scaling Group** for dynamic scaling based on load.  
+
+## 3. Deployment & Workload Management
+- Applications run in **Pods**, grouped under **Deployments** for rolling updates and scaling.  
+- **DaemonSets** are used for running monitoring and logging agents on all nodes.  
+- Stateful workloads (like Kafka, databases) use **StatefulSets** with **Persistent Volumes** for storage.  
+
+## 4. Networking & Service Discovery
+- We use **Calico CNI plugin** for pod-to-pod networking and network policies.  
+- **Services** (ClusterIP, LoadBalancer) expose applications internally or externally.  
+- **Ingress** is managed via **AWS ALB Ingress Controller**.  
+
+## 5. Observability & Management
+- Non-production clusters are monitored using **Rancher dashboard** for logs and resource utilization.  
+- Production clusters integrate with **CloudWatch + Prometheus + Grafana** for metrics and alerting.  
+
+## 6. Secrets & Configs
+- Secrets and config maps are stored in **Kubernetes Secrets / ConfigMaps**, with sensitive production secrets optionally integrated with **AWS Secrets Manager**.  
+
+## 7. CI/CD Integration
+- Docker images are built via **GitLab CI/CD**, pushed to **ECR**, and deployed to Kubernetes using **Helm charts**.  
+- Deployments follow **Rolling Updates**, with **canary releases** for high-risk services.  
+
+## 8. Security & Governance
+- **Role-based access control (RBAC)** is configured for all namespaces.  
+- **Pod security policies** and **network policies** enforce compliance for production workloads.  
+
+### 8. What are the different types of services available in Kubernetes, and when do you use each?
+
+| Service Type   | Description                                 | Use Case                                  |
+|----------------|---------------------------------------------|------------------------------------------|
+| **ClusterIP**  | Default service; accessible only inside the cluster | Internal microservices                    |
+| **NodePort**   | Exposes service on each node at a static port | Simple external access for testing       |
+| **LoadBalancer** | Creates a cloud load balancer to expose service externally | Production access                        |
+| **ExternalName** | Maps service to an external DNS name        | Access external service from inside cluster |
+
+### 9. How do you configure persistent volumes and persistent volume claims in Kubernetes?
+
+### Concepts
+- **PersistentVolume (PV):**  
+  A cluster-wide resource that provides storage (backed by hostPath, NFS, AWS EBS, etc.).  
+
+- **PersistentVolumeClaim (PVC):**  
+  A request by a user for storage with specific size and access mode.  
+
+---
+
+### Example YAML
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mypv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:               # For demo; in production use NFS, EBS, EFS, etc.
+    path: /mnt/data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+### 10. What deployment strategies have you implemented in Kubernetes
+
+### 1. Rolling Update
+- **Description:** Gradually replaces existing pods with new version pods.  
+- **Details:** Ensures zero downtime by updating a few pods at a time.  
+- **Use Case:** Default strategy in Kubernetes; suitable for most production deployments.  
+
+---
+
+### 2. Blue-Green Deployment
+- **Description:** Runs two identical environments (Blue = current, Green = new).  
+- **Details:** Traffic is switched from Blue to Green once the new version is validated.  
+- **Use Case:** Minimizes downtime and allows easy rollback by switching traffic back.  
+
+---
+
+### 3. Canary Deployment
+- **Description:** Releases the new version to a small subset of users first.  
+- **Details:** Performance and stability are monitored before rolling out to all users.  
+- **Use Case:** Useful for testing new features in production with reduced risk.
+
+### 11. If a Kubernetes scheduler has issues, how would you troubleshoot it?  
+
+- **Check scheduler logs:**  
+  ```bash
+  kubectl logs -n kube-system kube-scheduler-<node>
+Check node resources:
+
+bash
+Copy code
+kubectl describe nodes
+Verify taints/tolerations or resource constraints preventing pod scheduling.
+
+Check events for scheduling failures:
+
+bash
+Copy code
+kubectl get events
+
+### 12. Recent Challenges in Kubernetes and Resolutions
+
+- **Pod not starting due to PVC issues**  
+  - Cause: PV/PVC binding mismatch.  
+  - Resolution: Verified storage class and corrected PVC bindings.  
+
+- **Pods failing health checks**  
+  - Cause: Incorrect readiness/liveness probe configuration.  
+  - Resolution: Updated probe paths and thresholds.  
+
+- **Node running out of memory**  
+  - Cause: Resource requests/limits not properly defined.  
+  - Resolution: Adjusted CPU/Memory requests and limits; scaled nodes if required.  
+
+- **Network issues between pods**  
+  - Cause: Misconfigured CNI plugin or policy.  
+  - Resolution: Checked CNI logs and used `kubectl exec` to debug connectivity.  
+
+---
+
+### 13. Tools for Monitoring and Logs in Kubernetes
+
+- **Monitoring**
+  - Prometheus + Grafana for cluster and application metrics.  
+  - Metrics Server (`kubectl top pod` / `kubectl top node`) for real-time resource usage.  
+
+- **Logging**
+  - ELK Stack (Elasticsearch, Logstash, Kibana) for centralized log aggregation.  
+  - Rancher Dashboard for quick visibility in non-production and production.  
+
+- **Tracing**
+  - Jaeger and OpenTelemetry for distributed tracing and debugging microservices.  
+
+
+### 14. Can you walk me through the CI/CD flow you have implemented in your project?  
+
+### Source Control  
+- **Git (GitLab/GitHub)** → triggers pipelines on commit/merge  
+
+### CI Pipeline  
+1. **Build Docker image**  
+2. **Run unit tests**  
+3. **Code linting & SonarQube analysis**  
+
+### CD Pipeline  
+1. **Push Docker image** to container registry (ECR/ACR/Harbor)  
+2. **Deploy to environments** (Dev → QA → Production) using **Helm charts / Kubernetes manifests**  
+3. **Rollback** automatically if errors are detected
+ 
+### 15. Can you explain the Kafka architecture used in your organization?  
+
+- **Broker**: Stores and serves messages to consumers.  
+- **Producer**: Sends messages to Kafka topics.  
+- **Consumer**: Reads messages from Kafka topics.  
+- **Zookeeper** (for Kafka 2.x): Manages cluster metadata and leader election.  
+- **Topics & Partitions**: Messages are distributed across partitions for scalability and parallel processing.  
+
+### 16. What are the key differences between SonicMQ and Kafka?
+
+| Feature       | SonicMQ                  | Kafka                          |
+|---------------|--------------------------|--------------------------------|
+| **Messaging** | JMS-based                | Distributed log-based          |
+| **Persistence** | Supports persistent/non-persistent | Persistent by default          |
+| **Scalability** | Limited                 | Highly scalable                |
+| **Use Case**  | Enterprise legacy apps   | High-throughput streaming systems |
+
+
+##$ 17. Can you share some examples of complex AWS cloud infrastructure issues you faced and how you resolved them?
+
+- **Issue:** Auto Scaling Group not launching instances  
+  - **Resolution:** Checked IAM roles and Launch Template configuration.  
+
+- **Issue:** ELB not routing traffic  
+  - **Resolution:** Fixed security group and subnet configuration issues.  
+
+- **Issue:** Lambda failing due to missing environment variables  
+  - **Resolution:** Added proper secret references and environment variables.  
+
+- **Issue:** RDS connection limits  
+  - **Resolution:** Increased `max_connections` and tuned application connection pooling.
+ 
+
+### 18. Why do you deploy applications both on Docker (standalone) and Kubernetes? What’s the reasoning?
+
+- **Docker Standalone:**  
+  - Simple testing and development  
+  - Local debugging without cluster dependency  
+
+- **Kubernetes:**  
+  - Production-grade deployments  
+  - High availability and scalability  
+  - Rolling updates and automated recovery  
+
+- **Flexibility:**  
+  - Developers can test locally using Docker without needing the full cluster  
+
+---
+
+### 19. Where do you store and manage application secrets in your environment?
+
+### Options used:
+- **AWS Secrets Manager**  
+- **HashiCorp Vault**  
+- **Kubernetes Secrets** (with encryption at rest)  
+
+### Best Practices:
+- Avoid hardcoding secrets in code or Dockerfiles  
+- Use **environment variables** or **mounted secrets** in pods  
+- **Rotate secrets regularly**  
+
