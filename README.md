@@ -621,7 +621,7 @@ kubectl get events
 | **Use Case**  | Enterprise legacy apps   | High-throughput streaming systems |
 
 
-##$ 17. Can you share some examples of complex AWS cloud infrastructure issues you faced and how you resolved them?
+### 17. Can you share some examples of complex AWS cloud infrastructure issues you faced and how you resolved them?
 
 - **Issue:** Auto Scaling Group not launching instances  
   - **Resolution:** Checked IAM roles and Launch Template configuration.  
