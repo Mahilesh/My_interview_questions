@@ -685,3 +685,132 @@ kubectl get events
 16. Does your company have separate teams for Terraform, Kubernetes, and Docker?
 17. Do you have knowledge of databases?
 18. A junior DevOps engineer deployed a container, but after 5 days the container is down and the data is lost. How would you modify the Dockerfile to prevent data loss in the future?
+
+
+# Sigma - L1 -virtual - Questions with answers
+
+**1. Difference between Docker and Kubernetes:**
+
+* Docker: Container platform to build, ship, and run applications.
+* Kubernetes: Container orchestration platform to manage multiple containers, scale apps, handle load balancing, and self-healing.
+
+**2. How to run multiple containers in Docker:**
+
+* Use `docker run` for multiple containers manually:
+
+```
+docker run -d --name app1 myapp:1.0
+docker run -d --name app2 myapp:1.0
+```
+
+* Or use Docker Compose for multiple services.
+
+**3. How to upgrade Kubernetes cluster version:**
+
+* EKS: `eksctl upgrade cluster --name <cluster-name> --version <new-version>`
+* Kubeadm:
+
+```
+kubeadm upgrade plan
+kubeadm upgrade apply <version>
+```
+
+* Upgrade master first, then worker nodes, then update kubelet & kubectl.
+
+**4. Kubernetes services you’ve worked with:**
+
+* ClusterIP – internal communication
+* NodePort – expose service on node port
+* LoadBalancer – external access via cloud LB
+
+**5. Difference between Deployment and StatefulSet:**
+
+| Feature  | Deployment           | StatefulSet                           |
+| -------- | -------------------- | ------------------------------------- |
+| Pods     | Identical, stateless | Stable network ID & storage, stateful |
+| Scaling  | Simple               | Maintains order & identity            |
+| Use case | Web servers          | Databases, messaging queues           |
+
+**6. Default service type in Kubernetes:**
+
+* ClusterIP (accessible only within the cluster).
+
+**7. Docker doesn’t provide container orchestration. Tool used:**
+
+* Kubernetes, Docker Swarm, or OpenShift.
+
+**8. Have you worked with Kubernetes Operators:**
+
+* Yes/No. Operators automate management of custom apps, handling deployments, upgrades, and recovery.
+
+**9. Tasks performed in SonarQube within Jenkins pipeline:**
+
+* Code quality analysis
+* Run static code scans
+* Break build if quality gates fail
+
+**10. Writing a Jenkinsfile:**
+
+* Yes. Can write Declarative or Scripted pipelines with stages like build, test, deploy, and integrate tools like SonarQube, Docker, Kubernetes.
+
+**11. CI/CD workflow:**
+
+1. Code commit: Push code to GitHub/GitLab.
+2. Build stage: Jenkins pulls code, runs build and unit tests.
+3. Code quality scan: SonarQube evaluates code.
+4. Docker build: Package application into a container image.
+5. Deploy stage: Deploy to Kubernetes or test server.
+6. Monitoring & alerting: Ensure application health post-deployment.
+
+**12. Linux commands/features you’ve worked with:**
+
+* File commands: `ls, cp, mv, rm, find`
+* Process & service: `ps, top, systemctl, service`
+* Disk & memory: `df, du, free, vmstat`
+* Network: `ping, netstat, ss, telnet, nc`
+* Logs: `tail, less, journalctl`
+* Shell scripting & cron jobs
+
+**13. Apart from Tomcat, web servers known:**
+
+* Apache HTTP Server, Nginx, JBoss, WildFly
+
+**14. Troubleshooting DOWN applications from server:**
+
+1. Check service status: `systemctl status <service>`
+2. Check logs: `/var/log/<service>/` or app logs
+3. Check port availability: `netstat -tulnp | grep <port>`
+4. Check resource usage: `top`, `df -h`, `free -m`
+5. Check dependencies: DB connections, environment variables, configuration files
+
+**15. /var/log files to check for server issues:**
+
+* `/var/log/messages` or `/var/log/syslog` – general system errors
+* `/var/log/secure` or `/var/log/auth.log` – authentication
+* `/var/log/httpd/` or `/var/log/nginx/` – web server errors
+* `/var/log/mysqld.log` – database errors
+* `/var/log/cron` – cron jobs
+
+**16. Separate teams for Terraform, Kubernetes, Docker:**
+
+* Small teams manage all; larger orgs may have specialized teams.
+
+**17. Knowledge of databases:**
+
+* MySQL, PostgreSQL, Oracle; basic queries, backup, restore, connection checks.
+
+**18. Preventing data loss in Docker container:**
+
+* Use volumes to persist data outside the container:
+
+```dockerfile
+VOLUME /var/lib/mysql
+```
+
+* Or mount host directories:
+
+```bash
+docker run -v /host/data:/container/data myapp:1.0
+```
+
+* Ensures data is preserved even if the container is deleted.
