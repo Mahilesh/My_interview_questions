@@ -4,8 +4,9 @@ Company wise - I will upload the questions & answers
 
 - [MIRAFRA - Bangalore (L1 - virtual)](#mirafra---bangalore-l1---virtual)
 - [Eurofins India IT Solutions - Bangalore (L1 - virtual)](#eurofins-india-it-solutions---bangalore-l1---virtual)
-- Siemens
+- Siemens - Face to Face
 - Capgemini (L1 - virtual)]
+- Sigma L1 - virtual
 
 
 # Questions
@@ -664,3 +665,23 @@ kubectl get events
 - Use **environment variables** or **mounted secrets** in pods  
 - **Rotate secrets regularly**  
 
+# Sigma - L1 -virtual - Questions
+
+1. What is the difference between Docker and Kubernetes?
+2. How do you run multiple containers in Docker?
+3. How do you upgrade the Kubernetes cluster version?
+4. Which Kubernetes services have you worked with?
+5. What is the difference between a Deployment and a StatefulSet in Kubernetes?
+6. What is the default service type in Kubernetes?
+7. If Docker doesn’t provide container orchestration, which tool is used for that?
+8. Have you worked with Kubernetes Operators?
+9. What tasks do you perform in SonarQube within a Jenkins pipeline?
+10. Do you know how to write a Jenkinsfile?
+11. Can you explain the CI/CD workflow you follow?
+12. Which Linux commands or features have you worked with most?
+13. Apart from Tomcat, which web servers do you know and have experience with?
+14. If an application shows as DOWN in the browser, how would you troubleshoot it from the server?
+15. Inside /var/log, which files would you check to debug server issues?
+16. Does your company have separate teams for Terraform, Kubernetes, and Docker?
+17. Do you have knowledge of databases?
+18. A junior DevOps engineer deployed a container, but after 5 days the container is down and the data is lost. How would you modify the Dockerfile to prevent data loss in the future?
