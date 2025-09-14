@@ -5,6 +5,11 @@ RANDOM QUESTION AND ANSWERS - DevOps
 
 tail -10 app.log
 
+#AWS CLOUD
+1. If you have an on-prem application, how would you migrate and deploy it in a cloud-native environment?
+
+To migrate an on-prem application to a cloud-native environment, I would first containerize the application using Docker, then deploy it on Kubernetes (for example, AWS EKS). The container images would be stored in a registry like Amazon ECR, and we’d use CI/CD pipelines to automate builds and deployments. Finally, I’d configure monitoring, logging, and auto-scaling to make it fully cloud-native and production-ready.
+
 #DOCKER
 1. Can you write a basic Dockerfile for your application?
 
@@ -28,3 +33,5 @@ CMD ["java", "-jar", "app_name.jar"]
 1. How do you configure Prometheus and Grafana for monitoring?
 
 We configure Prometheus and Grafana on EKS using Helm charts. Prometheus is deployed to scrape metrics from Kubernetes components, cAdvisor, and Node Exporter (running as a DaemonSet on each node). Grafana is then set up as a separate Helm release, connected to Prometheus as a data source, and we import dashboards for visualizing cluster and application metrics.
+
+
