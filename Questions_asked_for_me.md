@@ -1,30 +1,3 @@
-# 📚 Interview Questions Summary
-
-| MIRAFRA – Bangalore (L1 – Virtual)               | Eurofins India IT Solutions – Bangalore (L1 – Virtual)                  |
-|--------------------------------------------------|-------------------------------------------------------------------------|
-| Introduce yourself                               | Introduce yourself                                                      |
-| CI/CD Workflow                                   | CI/CD Workflow                                                          |
-| Terraform – Manage existing EC2                  | Static IP vs Dynamic IP                                                 |
-| Docker – Dockerfile security                     | Public IP use, restrict access                                          |
-| Kubernetes – Restrict pods                       | Why Autoscaling over Reserved/Spot                                      |
-| GitLab/GitHub – Branch limit                     | Terraform Architecture                                                  |
-| AWS – ALB troubleshooting                        | main.tf vs terraform.tfstate vs terraform.tfvars                        |
-| Linux – Exact word match in file                 | GitLab YAML – Rollout/Rollback                                          |
-| Ansible                                          | What is Terraform State File?                                           |
-| Python – Automation scripts                      | TCP vs UDP                                                              |
-| Kubernetes – EKS or Self-hosted?                 | TLS                                                                     |
-|                                                  | Reduce EC2 Monthly Costs by 20%                                         |
-|                                                  | Kubernetes Cluster via Terraform – CI/CD?                               |
-|                                                  | Linux DNS Issue – Troubleshooting                                       |
-|                                                  | Modify visible secrets WITHOUT RESTART                                  |
-|                                                  | Identify public/private between 8080 & 443                              |
-|                                                  | Error Code 404 – Meaning                                                |
-|                                                  | Recent Shell Script                                                     |
-|                                                  | Git Merge vs Rebase                                                     |
-|                                                  | Diff bt 8080 vs 443
-
-
-
 Mirafra
 =======
 
@@ -72,3 +45,45 @@ Siemens
 
 Capgemini
 ==========
+
+1. Can you write a simple Dockerfile to build an image for a basic application?
+2. What is the full command to create a Docker container?
+3. Once you build an image from your source code, how do you dockerize and run it? (Step-by-step commands)
+4. After creating a Docker image, how do you push it to a registry and then use it in Kubernetes?
+5. Can you write a shell script that monitors the Tomcat service and sends an email notification if the service fails?
+6. Can you explain the Kubernetes architecture as implemented in your project?
+7. What are the different types of services available in Kubernetes, and when do you use each?
+8. How do you configure persistent volumes and persistent volume claims in Kubernetes?
+9. What deployment strategies have you implemented in Kubernetes (e.g., Rolling Update, Blue-Green, Canary)?
+10. If a Kubernetes scheduler has issues, how would you troubleshoot it?
+11. What recent challenges/issues have you encountered in your Kubernetes clusters, and how did you resolve them?
+12. Apart from checking console logs, which tools do you use for monitoring or viewing logs in Kubernetes?
+13. Can you walk me through the CI/CD flow you have implemented in your project?
+14. Can you explain the Kafka architecture used in your organization?
+15. What are the key differences between SonicMQ and Kafka?
+16. Can you share some examples of complex AWS cloud infrastructure issues you faced and how you resolved them?
+17. Why do you deploy applications both on Docker (standalone) and Kubernetes? What’s the reasoning?
+18. Where do you store and manage application secrets in your environment?
+
+
+Sigma
+======
+
+1. What is the difference between Docker and Kubernetes?
+2. How do you run multiple containers in Docker?
+3. How do you upgrade the Kubernetes cluster version?
+4. Which Kubernetes services have you worked with?
+5. What is the difference between a Deployment and a StatefulSet in Kubernetes?
+6. What is the default service type in Kubernetes?
+7. If Docker doesn’t provide container orchestration, which tool is used for that?
+8. Have you worked with Kubernetes Operators?
+9. What tasks do you perform in SonarQube within a Jenkins pipeline?
+10. Do you know how to write a Jenkinsfile?
+11. Can you explain the CI/CD workflow you follow?
+12. Which Linux commands or features have you worked with most?
+13. Apart from Tomcat, which web servers do you know and have experience with?
+14. If an application shows as DOWN in the browser, how would you troubleshoot it from the server?
+15. Inside /var/log, which files would you check to debug server issues?
+16. Does your company have separate teams for Terraform, Kubernetes, and Docker?
+17. Do you have knowledge of databases?
+18. A junior DevOps engineer deployed a container, but after 5 days the container is down and the data is lost. How would you modify the Dockerfile to prevent data loss in the future?
