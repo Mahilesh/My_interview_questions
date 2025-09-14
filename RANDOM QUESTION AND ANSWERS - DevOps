@@ -1,0 +1,30 @@
+RANDOM QUESTION AND ANSWERS - DevOps
+
+#LINUX
+1. How do you display the last 10 lines of a large log file without opening it fully?
+
+tail -10 app.log
+
+#DOCKER
+1. Can you write a basic Dockerfile for your application?
+
+#if python
+FROM python:3.9
+WORKDIR /app
+COPY requirements.txt
+RUN pip install -r requirements.txt .
+COPY . .
+EXPOSE 5000
+CMD ["python3", "app.py"]
+
+#if java
+FROM openjdk:17
+WORKDIR /app
+COPY app_name.jar .
+EXPOSE 8080
+CMD ["java", "-jar", "app_name.jar"]
+
+#KUBERNETES
+1. How do you configure Prometheus and Grafana for monitoring?
+
+We configure Prometheus and Grafana on EKS using Helm charts. Prometheus is deployed to scrape metrics from Kubernetes components, cAdvisor, and Node Exporter (running as a DaemonSet on each node). Grafana is then set up as a separate Helm release, connected to Prometheus as a data source, and we import dashboards for visualizing cluster and application metrics.
