@@ -1,6 +1,13 @@
+Summary 
+=======
+1. Mirafra - (L1 - virtual)
+2. Eurofins - (L1 - virtual)
+3. Siemens - (L1 - Face to Face)
+4. Capgemini - (L1 - virtual)
+5. Sigma - (L1 - virtual)
+
 Mirafra
 =======
-
 1. Introduce yourself
 2. CI/CD Workflow
 3. Terraform – How do you manage an existing EC2 instance by using Terraform?
@@ -16,7 +23,6 @@ Mirafra
 
 Eurofins
 ========
-
 1. Introduce yourself
 2. CI/CD Workflow
 3. Static IP vs Dynamic IP
@@ -39,13 +45,22 @@ Eurofins
 
 Siemens
 ========
-
-
-
+1. Can you introduce yourself?
+2. What are your day-to-day activities as a DevOps engineer?
+3. You mentioned AWS cost optimization in your resume — how did you achieve that?
+4. What is a target policy in IAM?
+5. If Commit A was done by someone else and Commit B was done by you, which Git command would you use to commit your changes (Commit B)?
+6. What AWS services have you worked with?
+7. Can you explain a recent issue you faced in GitLab CI/CD?
+8. What are the remote backends available for storing a Terraform state file?
+9. How do you implement a remote backend in Terraform?
+10. Have you completed any AWS certifications?
+11. In Kubernetes, are worker nodes managed by you or by Kubernetes itself?
+12. How do you perform cost optimization in AWS in practice?
+13. Which version of Terraform are you currently using?
 
 Capgemini
 ==========
-
 1. Can you write a simple Dockerfile to build an image for a basic application?
 2. What is the full command to create a Docker container?
 3. Once you build an image from your source code, how do you dockerize and run it? (Step-by-step commands)
@@ -68,7 +83,6 @@ Capgemini
 
 Sigma
 ======
-
 1. What is the difference between Docker and Kubernetes?
 2. How do you run multiple containers in Docker?
 3. How do you upgrade the Kubernetes cluster version?
