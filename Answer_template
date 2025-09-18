@@ -1,0 +1,194 @@
+1. Kubernetes Architecture in your org
+
+👉 “We use AWS EKS for Kubernetes. Our architecture has worker nodes spread across multiple AZs. We run both stateless apps (Deployments) and stateful workloads (StatefulSets). For networking we use AWS VPC CNI and ingress with ALB. We monitor with Prometheus + Grafana, and logging is shipped to ELK. We use GitLab CI/CD pipelines for deployment into namespaces per environment (Dev, QA, Prod).”
+
+2. CI/CD Flow in your project (GitLab CI/CD)
+
+👉 “We follow trunk-based development. Developers push code to GitLab, and pipelines are triggered.
+
+Build stage → Build Docker image, push to ECR.
+
+Test stage → Run unit tests, linting, security scans.
+
+Deploy stage → Helm charts + kubectl apply to deploy in EKS.
+
+Notifications → Sent to Slack/email for success/failure.”
+
+3. CI/CD Flow in your project (Jenkins)
+
+👉 “We use Jenkins pipelines (declarative). The pipeline stages are:
+
+Checkout → Clone repo from GitHub.
+
+Build → Maven/Gradle or Docker build.
+
+Test → JUnit, SonarQube.
+
+Package & Push → Push Docker image to ECR.
+
+Deploy → Helm charts to Kubernetes via kubectl.
+
+Notifications → Email/Slack.”
+
+4. AWS Services used in your org
+
+👉 “We use EC2, ALB, RDS (Postgres), EKS for Kubernetes, S3 for storage, CloudWatch for monitoring, IAM for security, SNS/SQS for messaging, and ECR for container images. For cost optimization, we use Reserved Instances and AutoScaling.”
+
+5. Kafka Architecture in your org
+
+👉 “We have a Kafka cluster deployed on dedicated VMs. Brokers are spread across multiple AZs. Zookeeper manages coordination. Topics are partitioned for scalability and replicated for HA. Producers are microservices publishing events, consumers are downstream services. We monitor lag using Burrow/Grafana.”
+
+6. Setting up Kubernetes from scratch
+
+👉 “I provisioned EC2 nodes, installed Docker + kubeadm. Used kubeadm init to bootstrap the master, kubeadm join for worker nodes. Set up Flannel/Calico as CNI. Installed Metrics Server, kubectl, and dashboard. Finally, configured RBAC and deployed sample apps.”
+
+7. Reducing monthly AWS costs by 20%
+
+👉 “We identified underutilized EC2 instances and rightsized them. Shifted workloads to AutoScaling Groups so unused capacity shuts down automatically. Purchased Reserved Instances for steady workloads. These optimizations reduced our monthly bill by ~20%.”
+
+8. Reducing deployment time by 40%
+
+👉 “We automated deployment using Jenkins/GitLab pipelines with Helm charts. Earlier deployments were manual (30–40 mins). After automation, deployments take <10 minutes. This reduced manual errors and improved developer productivity.”
+
+9. Recent RCA
+
+👉 “We had a production incident where API requests were timing out. RCA showed high pod memory usage due to a memory leak. We added resource limits in deployments and implemented liveness probes. After fix, no recurrence.”
+
+10. Complex AWS issue resolved
+
+👉 “Once, EC2 instances in ASG were terminating unexpectedly. On RCA, we found a faulty health check misconfigured in ALB. After fixing thresholds, the issue was resolved.”
+
+11. Reducing incident detection time by 50% (ELK + Prometheus)
+
+👉 “Earlier, logs and metrics were checked manually. We integrated Prometheus alerts with Grafana and routed alerts to PagerDuty. Application logs were centralized in ELK with pre-configured dashboards. This reduced detection time from ~20 mins to under 10 mins.”
+
+12. Tool Versions
+
+👉 “Kubernetes 1.27 (EKS), Jenkins 2.4+, GitLab 16+, Docker 24+, Terraform 1.5+, Ansible 2.10+, Kafka 3.5, ELK 8.x, Prometheus 2.5+.”
+
+13. Simple Dockerfile
+FROM python:3.9
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]
+
+14. Simple Shell Script
+#!/bin/bash
+for file in *.log; do
+   echo "Processing $file"
+done
+
+15. Simple Jenkinsfile
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps { sh 'mvn clean package' }
+    }
+    stage('Deploy') {
+      steps { sh 'kubectl apply -f deployment.yaml' }
+    }
+  }
+}
+
+16. GitLab CI/CD YAML
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t myapp .
+    - docker push myrepo/myapp:latest
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f deployment.yaml
+
+17. Terraform File
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}
+
+18. Kubernetes Deployment YAML
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: myrepo/myapp:latest
+        ports:
+        - containerPort: 80
+
+
+
+19. Recent issue you faced in Kubernetes - Explain 2 scenarios
+Scenario 1 – Pod CrashLoopBackOff
+“In our EKS cluster, I noticed a service where pods were going into CrashLoopBackOff. I started by checking pod logs using kubectl logs and saw database connection errors. When I checked the Deployment manifest, I realized the database credentials were missing in the ConfigMap. The pods kept restarting because they couldn’t connect. I updated the ConfigMap with the right env variables, redeployed the pod, and it stabilized. As a preventive step, we added CI/CD validation so that missing environment variables are caught before deployment.”
+
+Scenario 2 – Node Not Joining Cluster
+“Once, a worker node was not joining the Kubernetes cluster. The kubelet logs showed errors about networking. I checked the CNI plugin, and it turned out Calico was not properly configured during bootstrap. I reinstalled Calico with the right CIDR settings, restarted kubelet, and the node successfully joined. To prevent this, I documented the bootstrap steps and we added an Ansible role to automate node setup consistently.”
+
+20. Recent issue you faced in AWS - Explain 2 scenarios
+Scenario 1 – EC2 Auto Scaling Terminations
+“We had an issue where EC2 instances in an Auto Scaling Group kept terminating after launch. I checked CloudWatch logs and found that ALB health checks were failing within seconds of startup. The root cause was that the health check grace period was set too low — the application needed 90 seconds to boot but the health check expected 30 seconds. I increased the health check grace period and the issue was resolved. Later, we also optimized AMI boot time to make startup faster.”
+
+Scenario 2 – S3 Access Denied
+“An application running in ECS was failing to read from an S3 bucket. I checked the app logs and found ‘Access Denied’ errors. Reviewing the IAM role attached to the ECS task, I saw it only had s3:ListBucket but not s3:GetObject. I updated the IAM role with least-privilege s3:GetObject access for that specific bucket. After redeploying the task definition, the application was able to read objects. As a best practice, we now use IAM Access Analyzer to proactively detect missing permissions.”
+
+21. Recent issue you faced in Docker - Explain 2 scenarios
+
+Scenario 1 – Large Image Size
+“One challenge we faced was very large Docker images that slowed down build and deployment. One image was almost 1GB. On investigation, I found the Dockerfile used a full python:3.9 base image with unnecessary build tools. I optimized it by switching to python:3.9-slim, removed unused dependencies, and added a .dockerignore. This reduced the image size by nearly 700MB and cut deployment times significantly. We now follow a checklist for Dockerfile best practices to avoid this in the future.”
+
+Scenario 2 – Container Restarting
+“Another issue was a container that kept restarting every minute. I checked docker logs and found the process exited immediately after starting. The Dockerfile was using the wrong ENTRYPOINT, so the command wasn’t running properly. I corrected it to use CMD ["python", "app.py"] and the container stayed up. We added health checks and CI/CD tests to ensure containers don’t crash-loop before deploying to production.”
+
+
+22. Recent issue you faced in Jenkins - Explain 2 scenarios
+
+Scenario 1 – Stuck Builds
+“Once, our Jenkins jobs were stuck in the build stage. I checked the workspace and saw leftover cache files from previous runs that conflicted with the new build. To fix this, I added cleanWs() at the start of the pipeline to clear the workspace before every build. After that, builds ran smoothly. To prevent recurrence, we standardized this practice in all Jenkinsfiles.”
+
+Scenario 2 – Secret Leak in Console
+“We had a situation where a Jenkins pipeline accidentally printed database passwords in the console log. The root cause was that a developer used echo $DB_PASSWORD directly. I moved all credentials into the Jenkins Credentials Store, updated the pipeline to use withCredentials, and masked sensitive values. After this, we also did a quick audit to ensure no other jobs were leaking secrets.”
+
+
+23. Recent issue you faced in Gitlab CI/CD - Explain 2 scenarios
+
+Scenario 1 – Pipeline Stuck (No Runner)
+“A GitLab pipeline was stuck in the pending state for more than 30 minutes. I checked the job and saw it required a docker tag, but our shared runner didn’t have it. I registered a new GitLab runner with the docker tag and updated the job configuration. Once I did that, the pipeline picked up and executed. We now maintain a runner-to-tag mapping document so developers don’t face this again.”
+
+Scenario 2 – YAML Syntax Error
+“We once had a situation where pipelines failed immediately. On checking the GitLab job logs, it showed a YAML parsing error. After reviewing .gitlab-ci.yml, I found incorrect indentation in one of the stages. I corrected the spacing and validated with GitLab’s built-in CI Lint tool before pushing. To prevent this in future, we integrated CI Lint checks as part of our pre-merge review process.”
+
+24. Recent issue you faced in Terraform - Explain 2 scenarios
+Scenario 1 – State Lock Error
+“During a deployment, Terraform showed an error: Error acquiring state lock. I checked DynamoDB and found a stale lock entry because a previous apply was interrupted. I manually removed the lock record from DynamoDB, and the pipeline ran successfully. We now ensure terraform plan and apply run only through CI/CD to reduce manual interruption issues.”
+
+Scenario 2 – Infrastructure Drift
+“One time, a security group rule was changed manually in AWS, which caused a mismatch with Terraform. When I ran terraform plan, it showed differences. I ran terraform refresh to sync the state and re-applied the config so that the manual change was overridden by IaC. We also started enforcing a ‘no manual change’ policy in production to avoid drift.”
+
+25. Day to Day activites - 10 to 15 points
+
+👉 “Daily standups, reviewing pipelines, monitoring prod systems, resolving incidents, writing automation scripts, managing deployments, optimizing costs, collaborating with developers, handling RCA, working on CI/CD improvements, maintaining infra with Terraform, supporting MQ/Kafka, upgrading tools, patching, and documenting.”
+
