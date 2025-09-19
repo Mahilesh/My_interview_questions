@@ -7,11 +7,8 @@
 👉 “We follow trunk-based development. Developers push code to GitLab, and pipelines are triggered.
 
 Build stage → Build Docker image, push to ECR.
-
 Test stage → Run unit tests, linting, security scans.
-
 Deploy stage → Helm charts + kubectl apply to deploy in EKS.
-
 Notifications → Sent to Slack/email for success/failure.”
 
 3. CI/CD Flow in your project (Jenkins)
@@ -19,15 +16,10 @@ Notifications → Sent to Slack/email for success/failure.”
 👉 “We use Jenkins pipelines (declarative). The pipeline stages are:
 
 Checkout → Clone repo from GitHub.
-
 Build → Maven/Gradle or Docker build.
-
 Test → JUnit, SonarQube.
-
 Package & Push → Push Docker image to ECR.
-
 Deploy → Helm charts to Kubernetes via kubectl.
-
 Notifications → Email/Slack.”
 
 4. AWS Services used in your org
