@@ -1,0 +1,34 @@
+Ports an SRE / DevOps
+Should Remember
+
+1. Basic Networking / System Ports
+
+22-> SSH (remote login, Ansible, Git over SSH)
+80-> HTTP (web traffic)
+443-> HTTPS (secure wtraffic, APIs, GitHub/GitLab
+25 / 587-> SMTP (emails, alerts)
+53-> DNS (name resolution
+123 > NTP (time sync
+
+2. DevOps Tools & CI/CD
+
+8080 -> Jenkins Ul (common default UI)
+50000 -> Jenkins agent communication
+3000 -> Grafana dashboards
+9090 -> Prometheus server
+9093 -> Alertmanager
+5601 -> Kibana (ELK)
+9200 / 9300-> Elastistcearch (API/ cluster comms)
+9092 -> Kafka brokers
+
+9100 -> Node Exporter
+
+3. Containers & Orchestration (Kubernetes/Docker
+
+2375/ 2376 -> Docker APl (unsecured / secured w/TLS)
+10250 -> Kubelet API (worker node comms)
+6443-> Kubernetes API Server (control plane)
+10257 / 10259 -> Kubernetes Controller Manager /
+Scheduler
+
+30000-32767- Kubernetes NodePort services
