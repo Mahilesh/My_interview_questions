@@ -35,3 +35,7 @@ CMD ["java", "-jar", "app_name.jar"]
 We configure Prometheus and Grafana on EKS using Helm charts. Prometheus is deployed to scrape metrics from Kubernetes components, cAdvisor, and Node Exporter (running as a DaemonSet on each node). Grafana is then set up as a separate Helm release, connected to Prometheus as a data source, and we import dashboards for visualizing cluster and application metrics.
 
 
+• How do you troubleshoot a pod stuck in CrashLoopBackOff?
+• How do you optimize a slow SQL query?
+• What happens when / is 100% full on a Linux box?
+• How do you debug a networking issue when DNS resolution fails?
