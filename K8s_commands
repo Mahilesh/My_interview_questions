@@ -21,6 +21,24 @@ kubectl delete pod <pod-name>         # Delete a pod (it will restart if part of
 kubectl explain pod                   # Show documentation about Pod resource
 kubectl explain pod.spec.containers   # Drill into specific fields of Pod spec
 
+#kubernetes deployment commands
+kubectl create deployment <name> --image=<image>                  # Create a deployment with specified name and image
+kubectl get deployments                                           # List all deployments in the current namespace
+kubectl describe deployment <name>                                # Show detailed information about a deployment
+kubectl scale deployment <name> --replicas=<number>               # Scale the deployment to specified number of replicas
+kubectl rollout restart deployment/<name>                         # Restart all pods in the deployment
+kubectl rollout status deployment/<name>                          # Check rollout status of a deployment
+kubectl create deployment <name> --image=<image> -o yaml          # Generate deployment YAML manifest
+kubectl create deployment <name> --image=<image> -o yaml --dry-run=client   # Validate deployment creation locally without applying
+kubectl create deployment <name> --image=<image> -o yaml --dry-run=client > name.yaml  # Save deployment YAML to file
+
+#kubernetes service commands
+kubectl get services                          # List all services in the current namespace
+kubectl describe service <name>               # Show detailed information about a specific service
+kubectl expose pod <name>                     # Expose a pod as a service
+kubectl delete service <name>                 # Delete a service
+kubectl port-forward <pod> <local-port>:<remote-port>   # Forward a local port to a pod's port
+
 
 
 
