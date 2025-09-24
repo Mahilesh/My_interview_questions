@@ -39,6 +39,26 @@ kubectl expose pod <name>                     # Expose a pod as a service
 kubectl delete service <name>                 # Delete a service
 kubectl port-forward <pod> <local-port>:<remote-port>   # Forward a local port to a pod's port
 
+#kubernetes namespace commands
+kubectl get namespaces                                # List all namespaces
+kubectl create namespace <name>                       # Create a new namespace
+kubectl delete namespace <name>                       # Delete a namespace
+kubectl config set-context --current-namespace=<name> # Set the default namespace for the current context
 
+#kubernetes resource commands
+kubectl apply -f <file>                # Apply a configuration from a YAML/JSON file
+kubectl edit <type> <name>             # Edit a resource live in the cluster
+kubectl delete -f <file>               # Delete resources defined in a file
+kubectl get <type>                      # List resources of a specific type (pods, deployments, services, etc.)
+kubectl describe <type> <name>         # Show detailed information about a specific resource
+
+#kubernetes statistics & event commands
+kubectl top nodes                # Show CPU/memory usage for all nodes
+kubectl top pods                 # Show CPU/memory usage for all pods
+kubectl events                   # Display cluster events (deprecated in newer versions, use `kubectl get events`)
+kubectl get events               # List all events in the current namespace
+
+#kubernetes permissions
+kubectl get roles                # List all roles in the current namespace
 
 
