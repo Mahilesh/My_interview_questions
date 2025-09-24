@@ -1,0 +1,26 @@
+#kubernetes cluster commands
+kubectl cluster-info                  # Show cluster info (API server, DNS, etc.)
+kubectl get nodes -o wide             # List all nodes with detailed info
+
+#kubernetes pod commands
+kubectl get pods                      # List all pods in current namespace
+kubectl get pods -o wide              # List pods with more details (IP, node, etc.)
+kubectl get pods -l <label>=<value>   # List pods matching a label
+kubectl get pod <pod-name>            # Get details of a single pod
+kubectl describe pod <pod-name>       # Detailed pod information (events, conditions)
+
+#kubernetes logs checking commands
+kubectl logs <pod-name>               # Get logs from a pod
+kubectl logs -f <pod-name>            # Stream logs (follow mode)
+kubectl exec -it <pod-name> -- sh     # Open a shell inside a pod (if shell available)
+
+#Pod Lifecycle
+kubectl delete pod <pod-name>         # Delete a pod (it will restart if part of a Deployment/ReplicaSet)
+
+#Resource Explanation
+kubectl explain pod                   # Show documentation about Pod resource
+kubectl explain pod.spec.containers   # Drill into specific fields of Pod spec
+
+
+
+
