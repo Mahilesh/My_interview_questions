@@ -1,0 +1,67 @@
+100 Continue - Client should continue with request
+101 Switching Protocols - Server agrees to switch protocols
+102 Processing - Server has received the request but not yet completed
+103 Early Hints - Used to return some headers before final response
+
+200 OK - Request succeeded, response contains requested data
+201 Created - Resource successfully created
+202 Accepted - Request accepted but not yet processed
+203 Non-Authoritative Information - Response modified by a proxy
+204 No Content - Request succeeded, no content returned
+205 Reset Content - Request succeeded, user agent should reset view
+206 Partial Content - Partial resource returned (range request)
+207 Multi-Status - WebDAV, multiple status for multiple operations
+208 Already Reported - WebDAV, members already reported
+226 IM Used - Response from server indicates instance manipulation
+
+300 Multiple Choices - Multiple options for the resource
+301 Moved Permanently - Resource permanently moved to a new URL
+302 Found - Resource temporarily found at a different URL
+303 See Other - Response can be found at another URI using GET
+304 Not Modified - Resource not modified since last request
+305 Use Proxy - Requested resource must be accessed via proxy
+306 (Unused) - Previously used, now unused
+307 Temporary Redirect - Temporary redirect, same method must be used
+308 Permanent Redirect - Permanent redirect, same method must be used
+
+400 Bad Request - Server could not understand request
+401 Unauthorized - Authentication required
+402 Payment Required - Reserved for future use
+403 Forbidden - Server refuses to fulfill request
+404 Not Found - Resource could not be found
+405 Method Not Allowed - HTTP method not allowed on resource
+406 Not Acceptable - Resource cannot generate acceptable content
+407 Proxy Authentication Required - Proxy authentication required
+408 Request Timeout - Client did not send request in time
+409 Conflict - Request conflicts with current server state
+410 Gone - Resource permanently removed
+411 Length Required - Content-Length header required
+412 Precondition Failed - Condition in headers failed
+413 Payload Too Large - Request entity too large
+414 URI Too Long - URI requested is too long
+415 Unsupported Media Type - Media type not supported
+416 Range Not Satisfiable - Requested range not available
+417 Expectation Failed - Server cannot meet Expect header
+418 I'm a teapot - April Fools, not for actual use
+421 Misdirected Request - Request sent to wrong server
+422 Unprocessable Entity - WebDAV, request well-formed but unable to process
+423 Locked - WebDAV, resource locked
+424 Failed Dependency - WebDAV, dependent action failed
+425 Too Early - Server unwilling to process request yet
+426 Upgrade Required - Client must switch protocol
+428 Precondition Required - Server requires precondition
+429 Too Many Requests - Rate limiting
+431 Request Header Fields Too Large - Headers too large
+451 Unavailable For Legal Reasons - Resource unavailable due to legal reasons
+
+500 Internal Server Error - Generic server error
+501 Not Implemented - Server does not support functionality
+502 Bad Gateway - Invalid response from upstream server
+503 Service Unavailable - Server currently unavailable
+504 Gateway Timeout - Gateway did not get response in time
+505 HTTP Version Not Supported - HTTP version not supported
+506 Variant Also Negotiates - Transparent content negotiation error
+507 Insufficient Storage - WebDAV, insufficient storage
+508 Loop Detected - WebDAV, infinite loop detected
+510 Not Extended - Further extensions required
+511 Network Authentication Required - Network authentication required
