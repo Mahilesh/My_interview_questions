@@ -1,0 +1,23 @@
+200 OK - Request succeeded
+201 Created - Resource created successfully
+202 Accepted - Request accepted but not yet processed
+204 No Content - Request succeeded, no content returned
+301 Moved Permanently - URL permanently moved
+302 Found - URL temporarily moved
+304 Not Modified - Resource not modified since last request
+400 Bad Request - Client sent invalid request
+401 Unauthorized - Authentication required
+403 Forbidden - Access denied
+404 Not Found - Resource not found
+405 Method Not Allowed - HTTP method not allowed
+408 Request Timeout - Client request timed out
+409 Conflict - Request conflicts with server state
+413 Payload Too Large - Request entity too large
+415 Unsupported Media Type - Media type not supported
+429 Too Many Requests - Rate limiting exceeded
+500 Internal Server Error - Server encountered error
+501 Not Implemented - Server does not support functionality
+502 Bad Gateway - Invalid response from upstream server
+503 Service Unavailable - Server temporarily unavailable
+504 Gateway Timeout - Gateway did not get response in time
+505 HTTP Version Not Supported - HTTP version not supported
