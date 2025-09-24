@@ -1,10 +1,18 @@
+Informational (1xx)
+Success (2xx)
+Redirection (3xx)
+Client Error (4xx)
+Server Error (5xx)
+
 200 OK - Request succeeded
 201 Created - Resource created successfully
 202 Accepted - Request accepted but not yet processed
 204 No Content - Request succeeded, no content returned
+
 301 Moved Permanently - URL permanently moved
 302 Found - URL temporarily moved
 304 Not Modified - Resource not modified since last request
+
 400 Bad Request - Client sent invalid request
 401 Unauthorized - Authentication required
 403 Forbidden - Access denied
@@ -15,6 +23,7 @@
 413 Payload Too Large - Request entity too large
 415 Unsupported Media Type - Media type not supported
 429 Too Many Requests - Rate limiting exceeded
+
 500 Internal Server Error - Server encountered error
 501 Not Implemented - Server does not support functionality
 502 Bad Gateway - Invalid response from upstream server
