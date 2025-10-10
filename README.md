@@ -7,6 +7,7 @@ Company wise - I will upload the questions & answers
 - Siemens - Face to Face
 - Capgemini (L1 - virtual)]
 - Sigma L1 - virtual
+- SqaureShift - Face to Face
 
 
 # Questions
@@ -814,3 +815,108 @@ docker run -v /host/data:/container/data myapp:1.0
 ```
 
 * Ensures data is preserved even if the container is deleted.
+
+### SqaureShift - Face to Face
+
+# Elasticsearch & Kubernetes Interview Questions and Answers
+
+## Elasticsearch & Deployment Related
+
+**1. Are you running Elasticsearch on-premises or using Elastic Cloud on Kubernetes (ECK)?**  
+We’re using Elasticsearch deployed on-premises within Kubernetes, not Elastic Cloud. We manage it using Helm charts or the Elastic Cloud on Kubernetes (ECK) operator depending on the environment. ECK simplifies the management of Elasticsearch clusters including scaling, upgrades, and monitoring through CRDs.
+
+**2. Which version of open-source Elasticsearch are you currently using?**  
+We’re using the open-source Elasticsearch 8.x version (for example, 8.10). This version includes improved security by default (TLS, built-in authentication) and enhanced performance for large-scale indexing and search workloads.
+
+**3. How do you deploy the ELK stack (Elasticsearch, Logstash, Kibana) in Kubernetes — for example, how do you handle components like Filebeat (as a DaemonSet)?**  
+We deploy the ELK stack using Helm charts or manifests:
+- Elasticsearch – as a StatefulSet (since it’s stateful and requires persistent storage).
+- Logstash – as a Deployment (stateless, can scale horizontally).
+- Kibana – as a Deployment with an internal Service.
+- Filebeat – deployed as a DaemonSet on each node to collect logs and forward them to Logstash/Elasticsearch.  
+Configuration and secrets (like credentials) are managed through ConfigMaps and Secrets in Kubernetes.
+
+**4. Have you encountered any recent issues or performance challenges with Elasticsearch in your project? How did you resolve them?**  
+Yes, we faced indexing slowness and high heap memory usage on data nodes. We resolved it by:
+- Increasing JVM heap size in the StatefulSet YAML.
+- Optimizing index settings (reduced number of shards, used ILM policies).
+- Offloading heavy queries to non-peak hours.
+- Implementing Prometheus + Grafana monitoring for Elasticsearch metrics to identify bottlenecks early.
+
+**5. Is your Elasticsearch cluster exposed externally (public access) or restricted for internal access only?**  
+It’s restricted for internal access only. We expose Kibana via Ingress (HTTPS) for internal users and restrict Elasticsearch access through NetworkPolicies and RBAC. No direct public access is allowed for security reasons.
+
+## Kubernetes Concepts & Architecture
+
+**6. What types of services are commonly used in your Kubernetes setup (e.g., ClusterIP, NodePort, LoadBalancer, etc.)?**  
+We mainly use:
+- ClusterIP – for internal communication between microservices.
+- NodePort – for limited external access in non-production.
+- LoadBalancer – for production services through an external load balancer (e.g., AWS ALB).
+- Headless Service – for StatefulSets like Elasticsearch to enable direct Pod-to-Pod communication.
+
+**7. Can you explain how networking works in Kubernetes — for example, how Pods, Services, and Ingress communicate?**  
+Each Pod gets its own IP. Services (like ClusterIP) provide a stable endpoint to access Pods behind them. Ingress acts as a Layer 7 HTTP reverse proxy that routes external traffic to internal Services based on rules. All Pods can communicate with each other within the same cluster via the CNI (Container Network Interface).
+
+**8. How do different Kubernetes components communicate with each other (e.g., kube-apiserver, kubelet, controller manager)?**  
+The kube-apiserver is the central control plane — all communication passes through it. The kubelet on each node communicates with the API server to report Pod status and receive instructions. The controller manager and scheduler continuously interact with the API server to ensure the desired cluster state is maintained. Communication happens securely via HTTPS and certificates.
+
+**9. What’s the difference between a Pod and a Container in Kubernetes?**  
+A Container is a single runnable unit (like a process) created from an image. A Pod is the smallest deployable unit in Kubernetes that can hold one or more containers sharing the same network namespace and storage volumes. Pods enable containers to communicate easily via localhost.
+
+**10. What’s the difference between a StatefulSet and a Deployment (Stateless application)?**  
+A Deployment manages stateless applications — Pods are identical and can be replaced anytime. A StatefulSet manages stateful applications — each Pod has a unique identity and persistent storage. Elasticsearch, Kafka, and databases typically use StatefulSets.
+
+## Configuration, Security & Validation
+
+**11. How do you integrate Kubernetes with Vault or a Secret Manager? Where do you specify secret references in your manifests?**  
+We integrate HashiCorp Vault (or AWS Secrets Manager) with Kubernetes using sidecar injectors or CSI driver. Secrets are fetched dynamically and mounted as environment variables or volumes. In manifests, we specify secret references under:
+```yaml
+envFrom:
+  - secretRef:
+      name: my-app-secrets
+```
+or using a Vault Agent injector annotation on the Pod definition.
+
+12. How do you implement Role-Based Access Control (RBAC) in your Kubernetes cluster?
+We define Roles/ClusterRoles to specify permissions (e.g., get, list, create on Pods). RoleBindings/ClusterRoleBindings link those roles to specific users, groups, or service accounts. This ensures least privilege and prevents unauthorized API access.
+
+13. What are the key sections typically defined inside a deployment.yaml file?
+A standard deployment.yaml includes:
+
+apiVersion, kind, metadata
+
+spec:
+
+replicas
+
+selector
+
+template:
+
+metadata (labels)
+
+spec:
+
+containers: name, image, ports, env, resources, volumeMounts
+
+volumes
+
+imagePullSecrets, tolerations, affinity, etc.
+
+14. After deploying an application in Kubernetes, how do you verify that it’s running correctly and healthy?
+After deployment, I typically:
+
+Check rollout status → kubectl rollout status deployment/<name>
+
+Verify Pod health → kubectl get pods -o wide
+
+Inspect logs → kubectl logs <pod-name>
+
+Describe resources for troubleshooting → kubectl describe pod <pod-name>
+
+Validate service and ingress endpoints using curl or browser.
+For ongoing checks, readiness/liveness probes are defined in the YAML.
+
+15. Do you use Kustomize for environment-specific configurations in your CI/CD pipeline (e.g., GitLab)?
+Yes, we use Kustomize with GitLab CI/CD to manage environment overlays — like dev, test, and prod. Each environment has its own overlay with specific ConfigMaps, Secrets, and replica counts. This helps maintain one base manifest and customize per environment efficiently.
