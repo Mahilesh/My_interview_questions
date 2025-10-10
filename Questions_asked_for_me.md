@@ -5,6 +5,7 @@ Summary
 3. Siemens - (L1 - Face to Face)
 4. Capgemini - (L1 - virtual)
 5. Sigma - (L1 - virtual)
+6. SquareShift - (L1 - Face to Face)
 
 Mirafra
 =======
@@ -101,3 +102,21 @@ Sigma
 16. Does your company have separate teams for Terraform, Kubernetes, and Docker?
 17. Do you have knowledge of databases?
 18. A junior DevOps engineer deployed a container, but after 5 days the container is down and the data is lost. How would you modify the Dockerfile to prevent data loss in the future?
+
+SquareShift
+===========
+1.	Are you running Elasticsearch on-premises or using Elastic Cloud on Kubernetes (ECK)?
+2.	Which version of open-source Elasticsearch are you currently using?
+3.	How do you deploy the ELK stack (Elasticsearch, Logstash, Kibana) in Kubernetes — for example, how do you handle components like Filebeat (as a DaemonSet)?
+4.	Have you encountered any recent issues or performance challenges with Elasticsearch in your project? How did you resolve them?
+5.	Is your Elasticsearch cluster exposed externally (public access) or restricted for internal access only?
+6.	What types of services are commonly used in your Kubernetes setup (e.g., ClusterIP, NodePort, LoadBalancer, etc.)?
+7.	Can you explain how networking works in Kubernetes — for example, how Pods, Services, and Ingress communicate?
+8.	How do different Kubernetes components communicate with each other (e.g., kube-apiserver, kubelet, controller manager)?
+9.	What’s the difference between a Pod and a Container in Kubernetes?
+10.	What’s the difference between a StatefulSet and a Deployment (Stateless application)?
+11.	How do you integrate Kubernetes with Vault or a Secret Manager? Where do you specify secret references in your manifests?
+12.	How do you implement Role-Based Access Control (RBAC) in your Kubernetes cluster?
+13.	What are the key sections typically defined inside a deployment.yaml file?
+14.	After deploying an application in Kubernetes, how do you verify that it’s running correctly and healthy?
+15.	Do you use Kustomize for environment-specific configurations in your CI/CD pipeline (e.g., GitLab)?
