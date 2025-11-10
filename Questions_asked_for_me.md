@@ -6,9 +6,9 @@ Summary
 4. Capgemini - (L1 - virtual)
 5. Sigma - (L1 - virtual)
 6. SquareShift - (L1 - Face to Face)
-7. ed
+7. Expleo - (L1 - Virtual) - Fully ON-Premises - Not relevant
 8. Tech Mahindra - (L1 - virtual)
-9. BMW TechWorks - (L1 - virtual) - Not relevent
+9. BMW TechWorks - (L1 - virtual) - Operations Support Role - Not relevent
 
 Mirafra
 =======
