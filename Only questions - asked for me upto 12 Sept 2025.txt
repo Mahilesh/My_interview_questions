@@ -117,4 +117,27 @@ SquareShift
 12.	How do you implement Role-Based Access Control (RBAC) in your Kubernetes cluster?
 13.	What are the key sections typically defined inside a deployment.yaml file?
 14.	After deploying an application in Kubernetes, how do you verify that it’s running correctly and healthy?
+
+Tech Mahindra
+=============
+1. Tell me about yourself 
+2. How would you establish communication between two VPCs? Describe common methods and when to use each.
+3. Have you written end-to-end Kubernetes manifests? If yes, describe an example (what manifests you created and why).
+4. Describe a recent issue or challenge you faced with the ELK stack and how you diagnosed and resolved it.
+5. Describe a recent issue or challenge you faced with Kafka and how you diagnosed and resolved it.
+6. What is Docker networking? Explain the different network drivers and when to use them.
+7. What typically goes inside a Dockerfile? List the common instructions and their purposes.
+8. How do you containerize an application using a Dockerfile? Walk me through the steps from source to image.
+9. How do you persist data for Docker containers? Explain volumes, bind mounts, and other options.
+10. What are AWS security best practices? Cover identity, access, network, and data protection.
+11. What is the difference between stateless and stateful applications? Give examples and implications for scaling.
+12. What is the purpose of the Terraform state file and why is it important?
+13. What is Ansible, what is it used for, and what are its key components (playbooks, inventory, modules)?
+14. What are Kubernetes manifests and which types of manifests are commonly used (e.g., Deployment, Service, ConfigMap)?
+15. What is a CrashLoopBackOff (CrashBackLoop) and how would you troubleshoot it?
+16. In which Kubernetes manifest do you specify the number of replicas? (Explain where and how.)
+17. What is the difference between IAM roles and IAM policies in AWS? Give an example of each.
+18. How would you create an EKS cluster? Explain the step-by-step process and tools you’d use.
+19. Have you set up alerts in the ELK stack? If yes, explain how you implemented alerting and what you monitored.
 15.	Do you use Kustomize for environment-specific configurations in your CI/CD pipeline (e.g., GitLab)?
+
