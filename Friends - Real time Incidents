@@ -1,0 +1,63 @@
+# ⭐ Real Time P2 Incident – AWS ECS Microservice Down (Client Admin Application)
+
+## 📌 Situation
+A production-critical ECS-based microservice named **Client Admin** (used by a global insurance client) was intermittently unreachable from multiple geographic regions — Australia, India, Europe, and later the US — following their time-zones.  
+Users saw blank webpage / not loading issues.
+
+**Tech Stack Involved:**  
+Route53 → CloudFront → ALB → ECS (Fargate)  
+WAF | S3 Logs | CloudTrail
+
+---
+
+## 🎯 Task
+- Restore service availability urgently (**P2**)
+- Identify the root cause since AWS health checks + ECS tasks were healthy
+
+---
+
+## 🔍 Action
+To troubleshoot, I followed a structured approach:
+
+1️⃣ **Verified application containers in ECS**  
+→ Tasks & services healthy, CPU/memory normal  
+
+2️⃣ **Checked Application Load Balancer & CloudFront**  
+→ No 4xx/5xx spikes reported  
+→ Health checks passing  
+
+3️⃣ **Verified DNS (Route53)**  
+→ Resolutions were correct globally  
+
+4️⃣ **Checked CloudTrail for Request ID provided by customer**  
+→ Found configuration event linked to AWS WAF  
+
+5️⃣ **Queried WAF logs stored in S3 using Athena**  
+→ Discovered requests were blocked by newly added WAF rules  
+
+6️⃣ **Confirmed change was made at Organization-level WAF**  
+→ Rules propagated to all child accounts, causing global outages  
+
+7️⃣ **Escalated to Security team**  
+→ Requested rollback of newly created rule  
+
+---
+
+## ✅ Result (Fix & Outcome)
+✔ Security team removed the new WAF rule  
+✔ Traffic instantly restored across all regions  
+✔ Confirmed by business and customer teams  
+✔ Incident closed after monitoring for 24 hours  
+
+---
+
+## 🔐 Preventive / Permanent Actions
+- Implemented Change Review & Approval for **Org-level WAF** configurations  
+- Added Athena dashboards for faster WAF log analysis  
+- Configured CloudWatch alerts for WAF block rate anomalies  
+- Improved collaboration between Security & DevOps Teams  
+
+---
+
+## 🎙 Interview-Ready Closing Line
+> “This incident helped me enhance operational visibility into WAF behavior. After this fix, we standardized a WAF rule change governance process to avoid future global outages.”
