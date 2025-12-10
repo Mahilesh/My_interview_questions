@@ -9,6 +9,7 @@ Summary
 7. Expleo - (L1 - Virtual) - Fully ON-Premises - Not relevant
 8. Tech Mahindra - (L1 - virtual)
 9. BMW TechWorks - (L1 - virtual) - Operations Support Role - Not relevent
+10. Neeve AI - Screening Interview (L1 - Virtual)
 
 Mirafra
 =======
@@ -146,3 +147,15 @@ Tech Mahindra
 17. What is the difference between IAM roles and IAM policies in AWS? Give an example of each.
 18. How would you create an EKS cluster? Explain the step-by-step process and tools you’d use.
 19. Have you set up alerts in the ELK stack? If yes, explain how you implemented alerting and what you monitored.
+
+Neeve AI
+=========
+1. Tell me about yourself and describe the key projects you are currently working on.
+2. Can you explain what Blue-Green Deployment is and how it works?
+3. Do you work in rotational shifts or a general day shift?
+4. What responsibilities do you handle in Kubernetes, and which Kubernetes objects do you work with regularly?
+5. Are you using Helm charts for deployments? If yes, how?
+6. Do you use ArgoCD, or do you rely on another CI/CD tool for deployments?
+7. Are you comfortable working on Python-based projects or writing Python automation scripts?
+8. What monitoring stack or tools are currently used in your organization?
+9. Can you explain your involvement and responsibilities in managing or maintaining Jenkins?
