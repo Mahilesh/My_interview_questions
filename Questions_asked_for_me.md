@@ -10,6 +10,7 @@ Summary
 8. Tech Mahindra - (L1 - virtual)
 9. BMW TechWorks - (L1 - virtual) - Operations Support Role - Not relevent
 10. Neeve AI - Screening Interview (L1 - Virtual)
+11. Akamai - (L1 - Virtual) 
 
 Mirafra
 =======
@@ -159,3 +160,19 @@ Neeve AI
 7. Are you comfortable working on Python-based projects or writing Python automation scripts?
 8. What monitoring stack or tools are currently used in your organization?
 9. Can you explain your involvement and responsibilities in managing or maintaining Jenkins?
+
+
+Akamai
+======
+- Tell me about yourself
+- How you about Linux and troubleshooting and scripting
+- Which Linux favour you mostly work on?
+- Difference b/t Docker and Podman
+- Are you aware of Podman?
+- Difference b/t Bind and Mount?
+- Have you ever heard of User Namespace in Linux ?
+- Fundamentals of Docker
+- My OS is Windows can I able to run container (Linux) top of it
+- Have you heard of Passwd fiel in linux?
+- In bash script, How I write to delete 30 days folder logs...How will you write
+- What is Terraform Workspace
