@@ -164,6 +164,13 @@ Neeve AI
 
 Akamai
 ======
+
+
+
+
+
+
+
 - Tell me about yourself
 - How you about Linux and troubleshooting and scripting
 - Which Linux favour you mostly work on?
@@ -173,6 +180,53 @@ Akamai
 - Have you ever heard of User Namespace in Linux ?
 - Fundamentals of Docker
 - My OS is Windows can I able to run container (Linux) top of it
-- Have you heard of Passwd fiel in linux?
+- Have you heard of Passwd file in linux?
 - In bash script, How I write to delete 30 days folder logs...How will you write
 - What is Terraform Workspace
+- Restart policy in Docker
+- Http code - 404?
+- Http code - 403?
+- Http code - 200?
+- In Apache what is the Virtual Host
+- How your GitLab cicd deployed - either container or VM
+- how you manage secure this HTTPs URL for GitLab UI in AWS
+- how you managing the RBAC in GitLab for the app teams
+- How you manage LDAP 
+- What is called as taint and tolerance in k8s
+- how you maintain the state in terraform
+- Using terraform build the infra (ec2), someone manually modified security group in AWS EC2 console, how to create new config change through next time through terraform what steps we should take 
+- How to troubleshoot any issue with network in AWS - what steps taken in VPC and other services
+- How you do reverse proxy the tomcat application
+- How to design and communication of frontend, backend, db like three tier architecture in on-premises VM
+- How to design and communication of frontend, backend, db like three tier architecture in docker
+- How to design and communication of frontend, backend, db like three tier architecture in k8s
+- Are you using ClusterIP
+- How to expose your application to the internet
+- Difference bt rabbitmq and sonicmq
+- what is CrashLoopBackOff error
+- Have you created k8 cluster from the scratch or already there and just you managing it
+- Within terraform also, taint is there...are you aware of that
+- What is ClusterRoleBinding
+- How about monitoring
+- Have you used Splunk
+- Tell something about Prometheus, how you config them in your project
+- NodeExporter
+- In prometheus, what extra steps should do To deep monitor application backend - like java based app
+- Docker Container is keep on restarting like loop
+- same application with different network - how to communicate within docker
+- how you optimize your docker image
+- what is the standard procedure to store secrets
+- in k8s, how you handling secrets and best practices
+- in docker, how you handle the secrets and best practices
+- how you integrate your k8s to AWS secret manager to read you secrets from K8s yaml config
+- have you created VPC fully like end to end
+- frontend is not able to communicate to backend, backend is not able to communicate with frontend - what are the commands to troubleshoot it
+- what is the persistent volume 
+- have you heard of cgroups
+- what is the diff bt COPY and ADD command in docker
+- which is the best practice to use - COPY or ADD in Dockerfile
+- I need download the files from remote URL so Can I use COPY command for that
+- what is the meaning of prune in Docker
+- have you heard of overlay in Docker
+- diff bt layer and overlay in Docker
+- have you created multistage Dockerfile. how
