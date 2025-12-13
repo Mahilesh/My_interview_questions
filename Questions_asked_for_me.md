@@ -164,69 +164,62 @@ Neeve AI
 
 Akamai
 ======
-
-
-
-
-
-
-
-- Tell me about yourself
-- How you about Linux and troubleshooting and scripting
-- Which Linux favour you mostly work on?
-- Difference b/t Docker and Podman
-- Are you aware of Podman?
-- Difference b/t Bind and Mount?
-- Have you ever heard of User Namespace in Linux ?
-- Fundamentals of Docker
-- My OS is Windows can I able to run container (Linux) top of it
-- Have you heard of Passwd file in linux?
-- In bash script, How I write to delete 30 days folder logs...How will you write
-- What is Terraform Workspace
-- Restart policy in Docker
-- Http code - 404?
-- Http code - 403?
-- Http code - 200?
-- In Apache what is the Virtual Host
-- How your GitLab cicd deployed - either container or VM
-- how you manage secure this HTTPs URL for GitLab UI in AWS
-- how you managing the RBAC in GitLab for the app teams
-- How you manage LDAP 
-- What is called as taint and tolerance in k8s
-- how you maintain the state in terraform
-- Using terraform build the infra (ec2), someone manually modified security group in AWS EC2 console, how to create new config change through next time through terraform what steps we should take 
-- How to troubleshoot any issue with network in AWS - what steps taken in VPC and other services
-- How you do reverse proxy the tomcat application
-- How to design and communication of frontend, backend, db like three tier architecture in on-premises VM
-- How to design and communication of frontend, backend, db like three tier architecture in docker
-- How to design and communication of frontend, backend, db like three tier architecture in k8s
-- Are you using ClusterIP
-- How to expose your application to the internet
-- Difference bt rabbitmq and sonicmq
-- what is CrashLoopBackOff error
-- Have you created k8 cluster from the scratch or already there and just you managing it
-- Within terraform also, taint is there...are you aware of that
-- What is ClusterRoleBinding
-- How about monitoring
-- Have you used Splunk
-- Tell something about Prometheus, how you config them in your project
-- NodeExporter
-- In prometheus, what extra steps should do To deep monitor application backend - like java based app
-- Docker Container is keep on restarting like loop
-- same application with different network - how to communicate within docker
-- how you optimize your docker image
-- what is the standard procedure to store secrets
-- in k8s, how you handling secrets and best practices
-- in docker, how you handle the secrets and best practices
-- how you integrate your k8s to AWS secret manager to read you secrets from K8s yaml config
-- have you created VPC fully like end to end
-- frontend is not able to communicate to backend, backend is not able to communicate with frontend - what are the commands to troubleshoot it
-- what is the persistent volume 
-- have you heard of cgroups
-- what is the diff bt COPY and ADD command in docker
-- which is the best practice to use - COPY or ADD in Dockerfile
-- I need download the files from remote URL so Can I use COPY command for that
-- what is the meaning of prune in Docker
-- have you heard of overlay in Docker
-- diff bt layer and overlay in Docker
-- have you created multistage Dockerfile. how
+1. Can you tell me about yourself?
+2. What experience do you have with Linux, including troubleshooting and scripting?
+3. Which Linux distribution do you mostly work with?
+4. What is the difference between Docker and Podman?
+5. Are you familiar with Podman?
+6. What is the difference between a bind mount and a volume mount?
+7. Have you heard of user namespaces in Linux?
+8. What are the fundamentals of Docker?
+9. If my OS is Windows, can I run Linux containers on it? How?
+10. Have you heard of the /etc/passwd file in Linux?
+11. In a Bash script, how would you delete log folders older than 30 days?
+12. What is a Terraform workspace?
+13. What is the restart policy in Docker?
+14. What does HTTP status code 404 mean?
+15. What does HTTP status code 403 mean?
+16. What does HTTP status code 200 mean?
+17. What is a Virtual Host in Apache?
+18. Is GitLab deployed as a container or on a virtual machine in your environment?
+19. How do you secure the GitLab HTTPS URL in AWS?
+20. How do you manage RBAC in GitLab for application teams?
+21. How do you manage LDAP integration?
+22. What are taints and tolerations in Kubernetes?
+23. How do you maintain state in Terraform?
+24. If infrastructure is created using Terraform and someone manually modifies a security group in AWS, how do you handle it and apply future changes?
+25. How do you troubleshoot network issues in AWS? What steps do you take at the VPC and service level?
+26. How do you configure a reverse proxy for a Tomcat application?
+27. How would you design and enable communication between frontend, backend, and database in a three-tier architecture on on-premises VMs?
+28. How would you design and enable communication between frontend, backend, and database in a three-tier architecture using Docker?
+29. How would you design and enable communication between frontend, backend, and database in a three-tier architecture using Kubernetes?
+30. Do you use ClusterIP services in Kubernetes?
+31. How do you expose your application to the internet?
+32. What is the difference between RabbitMQ and SonicMQ?
+33. What is a CrashLoopBackOff error in Kubernetes?
+34. Have you created a Kubernetes cluster from scratch, or are you managing an existing one?
+35. In Terraform, there is also a concept called taint. Are you familiar with it?
+36. What is a ClusterRoleBinding in Kubernetes?
+37. What monitoring tools have you worked with?
+38. Have you used Splunk?
+39. Can you explain Prometheus and how you configured it in your project?
+40. What is Node Exporter?
+41. In Prometheus, what additional steps are required to deeply monitor a backend application, such as a Java-based app?
+42. A Docker container keeps restarting continuously. How would you troubleshoot this issue?
+43. How do applications running in different Docker networks communicate with each other?
+44. How do you optimize your Docker images?
+45. What is the standard and secure way to store secrets?
+46. In Kubernetes, how do you manage secrets and what are the best practices?
+47. In Docker, how do you manage secrets and what are the best practices?
+48. How do you integrate Kubernetes with AWS Secrets Manager to read secrets in Kubernetes YAML files?
+49. Have you created a complete VPC end-to-end?
+50. If the frontend cannot communicate with the backend (and vice versa), what commands would you use to troubleshoot?
+51. What is a Persistent Volume in Kubernetes?
+52. Have you heard of cgroups?
+53. What is the difference between the COPY and ADD commands in Docker?
+54. Which is the best practice to use in a Dockerfile: COPY or ADD, and why?
+55. If you need to download files from a remote URL, can you use the COPY command?
+56. What does docker prune mean?
+57. Have you heard of overlay networking in Docker?
+58. What is the difference between Docker image layers and overlay?  and /var/lib/docker/overlay vs /var/lib/docker/layers
+59. Have you created a multi-stage Dockerfile? If yes, how?
