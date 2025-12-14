@@ -224,3 +224,25 @@ Akamai
 57. Have you heard of overlay networking in Docker?
 58. What is the difference between Docker image layers and overlay?  and /var/lib/docker/overlay vs /var/lib/docker/layers
 59. Have you created a multi-stage Dockerfile? If yes, how?
+
+Sopra Steria
+=============
+1. Can you explain your role in your current company, the infrastructure you work on, and the projects you handle?
+2. Have you faced any high-priority (P1/P2) incidents so far? How did you troubleshoot and resolve them?
+3. What is the difference between a Kubernetes master (control plane) node and a worker node? What components run on each?
+4. How does the Kubernetes scheduler decide on which node a pod should be placed?
+5. What are stateful and stateless applications in Kubernetes? Can you give examples?
+6. What is the kubectl drain command, and what happens when you execute it on a node?
+7. What is kubectl cordon, and how is it different from kubectl drain?
+8. What is node affinity in Kubernetes, and why is it used?
+9. How do you check the health of etcd in a Kubernetes cluster?
+10. What is the difference between a ConfigMap and a Secret in Kubernetes?
+11. Have you used any DevOps automation tools? If yes, which tools and for what purpose?
+12. Have you deployed GitLab as a self-hosted setup? If yes, can you explain the architecture?
+13. What is terraform taint, and when would you use it?
+14. If an EC2 instance was created manually earlier, and now you are asked to increase its RAM using Terraform, how would you handle this situation?
+15. How do you protect Terraform-managed resources from accidental deletion?
+16. Have you used Ansible? What kind of tasks have you automated using it?
+17. How do you manage and secure secrets in Ansible?
+18. In an Ansible playbook, how do you make the play wait until a server reboot is fully completed before running the next task?
+19. What are some basic Linux commands you use to check memory, CPU, disk usage, and system performance?
