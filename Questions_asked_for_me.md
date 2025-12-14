@@ -10,7 +10,8 @@ Summary
 8. Tech Mahindra - (L1 - virtual)
 9. BMW TechWorks - (L1 - virtual) - Operations Support Role - Not relevent
 10. Neeve AI - Screening Interview (L1 - Virtual)
-11. Akamai - (L1 - Virtual) 
+11. Akamai - (L1 - Virtual)
+12. Sopra Steria - (L1 - Virtual)
 
 Mirafra
 =======
