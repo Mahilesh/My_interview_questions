@@ -1,0 +1,144 @@
+🧑 General / HR / Experience
+
+Introduce yourself
+Can you introduce yourself?
+Tell me about yourself
+Tell me about yourself and describe the key projects you are currently working on.
+What you do in your company and infra and project
+What are your day-to-day activities as a DevOps engineer?
+Do you work in rotational shifts or a general day shift?
+
+🔁 CI/CD / DevOps Process
+
+CI/CD Workflow
+Can you explain the CI/CD workflow you follow?
+Can you walk me through the CI/CD flow you have implemented in your project?
+GitLab CI/CD - YAML for rollout/rollback deployment
+Can you explain a recent issue you faced in GitLab CI/CD?
+Do you use ArgoCD, or do you rely on another CI/CD tool for deployments?
+What responsibilities do you handle in managing or maintaining Jenkins?
+
+🌍 Terraform
+
+Terraform – How do you manage an existing EC2 instance by using Terraform?
+Terraform Architecture
+Difference between main.tf vs terraform.tfstate vs terraform.tfvars
+What is Terraform State File?
+What is terraform taint, and when would you use it?
+What is called as terraform taint
+If an EC2 instance was created manually earlier, and now I am asked you to add more RAM for ec2 instance through terraform, how you do
+How do you protect the resource from accidental deletion in terraform
+What are the remote backends available for storing a Terraform state file?
+How do you implement a remote backend in Terraform?
+Which version of Terraform are you currently using?
+How do you maintain state in Terraform?
+If infrastructure is created using Terraform and someone manually modifies a security group in AWS, how do you handle it and apply future changes?
+What is a Terraform workspace?
+
+☁ AWS / Cloud
+
+AWS – Auto Load Balancer troubleshooting steps
+What AWS services have you worked with?
+Static IP vs Dynamic IP
+Private IP is not visible, we should use only public IP but needs to be restricted. How?
+Why your org considers Autoscaling instead of Reserved or Spot Instances?
+How You Reduced Monthly Costs by 20% Through EC2?
+You mentioned AWS cost optimization in your resume — how did you achieve that?
+How do you perform cost optimization in AWS in practice?
+What is a target policy in IAM?
+What is the difference between IAM roles and IAM policies in AWS?
+Have you created a complete VPC end-to-end?
+How do you troubleshoot network issues in AWS?
+How would you create an EKS cluster?
+
+☸ Kubernetes
+
+Difference between master and worker nodes and what are the components in it
+What is the difference between a Kubernetes master (control plane) node and a worker node?
+how does schedular will decide which node to place the pod
+How does the Kubernetes scheduler decide on which node a pod should be placed?
+what is stateful and stateless applications in Kubernetes
+What is the difference between stateless and stateful applications?
+what is kubectl drain and what happens when we execute this
+what is kubectl cordon
+What is node affinity
+How do you check the etcd health
+Difference between secrets and config map
+What is a CrashLoopBackOff (CrashBackLoop)
+What is a Persistent Volume in Kubernetes?
+What are taints and tolerations in Kubernetes?
+What is a ClusterRoleBinding in Kubernetes?
+Which Kubernetes are you currently using - Self-hosted or Cloud Provider like EKS?
+Have you created a Kubernetes cluster from scratch, or are you managing an existing one?
+Do you use ClusterIP services in Kubernetes?
+How do you expose your application to the internet?
+In which Kubernetes manifest do you specify the number of replicas?
+
+🐳 Docker / Containers
+
+Docker – How do you ensure security while writing the Dockerfile?
+What is the difference between Docker and Kubernetes?
+Difference b/t Docker and Podman
+Are you aware of Podman?
+What is Docker networking?
+What typically goes inside a Dockerfile?
+Difference b/t Bind and Mount
+What is the restart policy in Docker?
+What does docker prune mean?
+What is the difference between COPY and ADD commands in Docker?
+Have you created a multi-stage Dockerfile?
+How do applications running in different Docker networks communicate with each other?
+How do you optimize your Docker images?
+
+🧰 Ansible
+
+Have you used Ansible
+How do you maintain the secrets in Ansible
+in ansible playbook, it should wait until the reboot to complete fully to execute next task in server - what do you mention in playbook
+What is Ansible, what is it used for, and what are its key components
+
+🐍 Python
+
+By using Python - what automation scripts you have created?
+Are you comfortable working on Python-based projects or writing Python automation scripts?
+
+🐧 Linux
+
+Linux – Get exact matching word in a file
+DNS is Not Working in Linux – How to Check Connectivity and Troubleshoot
+Basic commands in Linux like memory, cpu, ..
+What experience do you have with Linux, including troubleshooting and scripting?
+Which Linux distribution do you mostly work with?
+Have you heard of user namespaces in Linux?
+In a Bash script, how would you delete log folders older than 30 days?
+
+🔐 Git / GitHub / GitLab
+
+GitLab/GitHub – Restrict creating new branches when already 4 branches exist
+Difference between git merge vs git rebase
+Is GitLab deployed as a container or on a virtual machine?
+How do you manage RBAC in GitLab for application teams?
+How do you manage LDAP integration?
+
+📊 Monitoring / Logging
+
+What monitoring stack or tools are currently used in your organization?
+What monitoring tools have you worked with?
+Have you used Splunk?
+Can you explain Prometheus and how you configured it?
+What is Node Exporter?
+
+🌐 Networking / Protocols
+
+Difference Between TCP vs UDP
+What is TLS?
+What does HTTP status code 404 mean?
+What does HTTP status code 403 mean?
+What does HTTP status code 200 mean?
+What is a Virtual Host in Apache?
+
+📦 Messaging / Streaming
+
+Can you explain the Kafka architecture used in your organization?
+What are the key differences between SonicMQ and Kafka?
+What is the difference between RabbitMQ and SonicMQ?
