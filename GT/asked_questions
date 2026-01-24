@@ -1,0 +1,74 @@
+==========================
+Kumaran Systems - L1 Round	
+==========================
+	AWS
+How do you optimize cost in an AWS?
+What is the difference between Security Group and NACL?
+How do you give an EC2 instance access to an S3 bucket?
+What is VPC Peering and Transit Gateway?
+Explain RDS read replica.
+ElastiCache in AWS?
+What is AWS KMS?
+Explain IAM Users and IAM Roles.
+What are the types of Load Balancers in AWS?
+How does traffic flow from Load Balancer DNS to the application?
+	Docker
+How do you check logs of a container in Docker?
+What does docker ps -a do?
+Explain Docker syntax / Dockerfile instructions.
+	Kubernetes
+What are ConfigMaps and Secrets in Kubernetes?
+What are the types of Kubernetes Services?
+What is Ingress in Kubernetes?
+What is an Init Container?
+	CI/CD
+Why Argo CD instead of Jenkins ?
+=====================================================
+Company Name: CSS Crop
+Role: SRE Engineer
+====================================================
+Can you tell us about yourself and your current location?
+Are you okay with relocating to Bangalore?
+Can you walk us through your overall experience?
+Which DevOps tools have you extensively used?
+What OS and automation tools are you familiar with?
+Describe your networking and security knowledge.?
+What monitoring and observability experience do you have?
+Explain the difference between monitoring and observability.
+Can you explain the “golden signals” in SRE?
+Can you give an example of critical incident handling?
+How would you react if latency spikes in non-peak hours?
+What is your step-by-step approach when a service is unreachable from the internet?
+If the ping command fails, what could be the problem and how would you troubleshoot it?
+What are the pillars of SRE?
+Define SLA, SLO, and SLI.
+What is an error budget?
+Can you give an example of toil reduction?
+How do you configure monitoring with Grafana?
+How do you secure a server in the observability context?
+Explain the difference between network and application load balancers.
+What is the difference between EFS and EBS?
+What experience do you have with CloudWatch?
+What are log groups and log streams?
+What is CloudWatch Logs Insights?
+How do you show the current date in Linux?
+How do you list files and show detailed or hidden files?
+How do you create a new directory in Linux?
+What experience do you have with ServiceNow?
+Have you handled change management or service requests?
+
+=============================
+Company Name: BNP Paribas
+Role: DevOps Engineer
+============================
+Round 1 Questions
+
+What is the command to check port number in linux?
+Difference between soft link and hard link?
+What is sytemctl used for?
+Difference between git pull and git fetch?
+What is cherrypick in git?
+Which language does terraform written in?
+How to call existing resources inside terraform?
+What happens if we accidentally deleted the statefile in terraform, if we didn't store in statefile anywhere?
+What are the basic commands used in terraform?
