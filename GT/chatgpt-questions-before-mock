@@ -1,0 +1,85 @@
+# AWS DevOps Revision Questions
+
+## Set 1: Core EC2, VPC, S3, ELB
+
+1. An application running on EC2 needs to upload files to S3.
+   How would you provide access without using access keys on the server?
+2. What is the difference between Security Groups and Network ACLs?
+   Give one real scenario where a NACL is required instead of a Security Group.
+3. You want to increase the size of an EBS volume attached to a running EC2 instance.
+   What are the steps involved, including OS-level changes?
+4. Explain any three S3 storage classes and when you would use each.
+5. An EC2 instance in a public subnet still has no internet access.
+   What are the top things you would check?
+6. What happens if one target becomes unhealthy in a target group?
+   How does ELB detect this?
+7. How would you monitor disk usage of an EC2 instance using CloudWatch?
+8. If someone deleted an EC2 instance, how would you find:
+   * Who deleted it
+   * From where
+   * At what time
+  Explain the steps.
+9. Explain how SNS works.
+   Give one real-time use case where SNS is better than email alerts.
+10. An application needs a shared file system that multiple EC2 instances can read and write simultaneously.
+    Which service would you choose and why?
+
+---
+
+## Set 2: IAM, Networking, Load Balancing, Serverless
+
+11. You have an EC2 instance that suddenly becomes unreachable over SSH, but it is still showing running in the AWS console.
+    How would you troubleshoot this step by step?
+12. What is the difference between EBS and Instance Store?
+    In which scenarios would you never use EBS?
+13. An application team complains that someone accidentally deleted critical files from an S3 bucket.
+    What AWS features would you use to prevent and recover from this?
+14. What is the difference between:
+    * IAM Role
+    * IAM User
+    * IAM Policy
+      Why is using IAM Roles on EC2 considered a best practice?
+15. Why do we need public and private subnets in a VPC?
+    Can an EC2 instance in a private subnet access the internet? If yes, how?
+16. Explain the difference between ALB and NLB.
+    Give one real use case for each.
+17. How does Route 53 route traffic to resources?
+    Explain any two routing policies and where you would use them.
+18. What is the core difference between CloudWatch and CloudTrail?
+    Give one real incident where CloudTrail is more useful than CloudWatch.
+19. What happens internally when a Lambda function is invoked?
+    What are cold starts, and how can you reduce them?
+20. You mounted an EFS file system on EC2, but the mount command hangs and never completes.
+    What are the top three things you would check immediately?
+
+---
+
+## Set 3: Advanced AWS Concepts and Troubleshooting
+
+21. An EC2 instance is running, but the application is not reachable on port 8080.
+    List the layers you would check, in order.
+22. What is the difference between:
+    * AWS Managed Policy
+    * Customer Managed Policy
+    * Inline Policy
+      Which one is recommended and why?
+23. How do S3 bucket policies differ from IAM policies?
+    Give one use case for each.
+24. What is Source/Destination Check in AWS?
+    When do we disable it?
+25. What is a Target Group?
+    Can one target group be attached to multiple load balancers?
+26. What happens if two Route 53 records have the same name and type?
+    Is it allowed? Explain.
+27. What is the difference between:
+    * CloudWatch Metrics
+    * CloudWatch Logs
+    * CloudWatch Alarms
+28. Can a Lambda function access resources inside a private subnet?
+    If yes, how?
+29. What is the difference between:
+    * EFS and EBS
+    * EFS and S3
+      Provide a short comparison.
+30. What is the difference between SNS and SQS?
+    When would you use both together?
