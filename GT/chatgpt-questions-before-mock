@@ -83,3 +83,18 @@
       Provide a short comparison.
 30. What is the difference between SNS and SQS?
     When would you use both together?
+
+
+Questions I answered wrongly
+
+How can an application running on EC2 upload files to S3 without using access keys on the server?
+You attached an IAM role to an EC2 instance, but AWS CLI commands are still failing with AccessDenied. What could be wrong?
+What are the mandatory components required to make an EC2 instance publicly accessible from the internet?
+Why does a public IP alone not guarantee internet access to an EC2 instance?
+Why do we use a NAT Gateway instead of an Internet Gateway for private subnets?
+An EC2 instance in a private subnet cannot reach the internet even though a NAT Gateway exists. What should you check?
+A Lambda function works when tested manually, but fails when triggered by S3 events. Why?
+CloudWatch alarms are not triggering even though the metric threshold is breached. What could be the reasons?
+You enabled VPC Flow Logs, but you don’t see any traffic logs. Why?
+EFS mount is hanging on an EC2 instance. What would you check?
+CloudTrail is enabled, but you don’t see IAM-related events. Why could this happen?
