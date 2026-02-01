@@ -1,0 +1,26 @@
+AWS 
+
+1.2.26
+=======
+1. Types of instance types
+2. Types of EBS volume
+3. Types of policies in IAM
+4. diff bt appliation lb and network lb => use case
+5. How many SG can be attached to one ec2 instance?
+6. Types of stoarge class in S3
+7. How to secure a bucket
+8. diff bt security group and NACL
+9. give temp access to one object in S#
+10. Max size of one object
+11. In Replication rules, Source to destination possible, Is destination to source possible?
+12. what is DHCP option set? and its purpose
+13. R - I need few more IPs for existing VPC, how it possible to increase it?
+14. R - SNS - one case? 
+15. R - My current date data is corrupted so I need to recover before 5 days data. But I do not do snapshots backup , only AMI is available
+15. Is it possible to add secondary IP to ec2 instance? Why and use case
+16. AWS Reversed IP while creating CIDR by VPC, list them with sequence
+17. While creating VPC, what are componets are created by default?
+18. Max and min size of CIDR block - which AWS recommends
+19. Is it possible to set our required one IP address for subnet without dhcp option set? ex:- CIDR - 10.0.0.0/24 , my_db server I need - 10.0.1.100
+20. Without SG can we able to create ec2 instance?
+21. which layer used by alb and nlb? 
