@@ -1,26 +1,47 @@
 AWS 
-
+======
 1.2.26
 =======
-1. Types of instance types
-2. Types of EBS volume
-3. Types of policies in IAM
-4. diff bt appliation lb and network lb => use case
-5. How many SG can be attached to one ec2 instance?
-6. Types of stoarge class in S3
-7. How to secure a bucket
-8. diff bt security group and NACL
-9. give temp access to one object in S#
-10. Max size of one object
-11. In Replication rules, Source to destination possible, Is destination to source possible?
-12. what is DHCP option set? and its purpose
-13. R - I need few more IPs for existing VPC, how it possible to increase it?
-14. R - SNS - one case? 
-15. R - My current date data is corrupted so I need to recover before 5 days data. But I do not do snapshots backup , only AMI is available
-15. Is it possible to add secondary IP to ec2 instance? Why and use case
-16. AWS Reversed IP while creating CIDR by VPC, list them with sequence
-17. While creating VPC, what are componets are created by default?
-18. Max and min size of CIDR block - which AWS recommends
-19. Is it possible to set our required one IP address for subnet without dhcp option set? ex:- CIDR - 10.0.0.0/24 , my_db server I need - 10.0.1.100
-20. Without SG can we able to create ec2 instance?
-21. which layer used by alb and nlb? 
+
+Answered questions
+------------------
+Types of instance types
+Types of EBS volume
+Types of policies in IAM
+How to secure a bucket
+Types of stoarge class in S3
+Max size of one object
+AWS Reversed IP while creating CIDR by VPC, list them with sequence
+While creating VPC, what are componets are created by default?
+diff bt security group and NACL
+diff bt appliation lb and network lb => use case
+which layer used by alb and nlb? 
+
+Not answered questions
+----------------------
+1. How many SG can be attached to one ec2 instance? 
+Ans:- Only 5 SG is allowed to add.
+2. give temp access to one object in S3? 
+Ans:- yes possible by giving pre-signed URL -> Max 12 hrs
+3. In Replication rules, Source to destination possible, Is destination to source possible? 
+Ans:- by default, not possible. But by applying "replica modification sync" in both source and destination we can achieve this
+4. what is DHCP option set? and its purpose. 
+Ans:- Automatically assigns IPs, DNS, domain name, and NTP to instances.
+5. Is it possible to add secondary IP to ec2 instance? Why and use case 
+Ans:- Yes possible by Manage IP Address -> Assign new secondary IP address Ex:- 10.0.16.1/32
+6. Max and min size of CIDR block - which AWS recommends
+Min /16 to Max /28
+7. Is it possible to set our required one IP address for subnet without dhcp option set? ex:- CIDR - 10.0.0.0/24 , my_db server I need - 10.0.1.100
+Ans:- Reserve specific IP ranges using CIDR reservations 
+8. Without SG can we able to create ec2 instance?
+Ans:- NO
+9. R - I need few more IPs for existing VPC, how it possible to increase it?
+Ans:- adding a secondary CIDR block.
+10. R - SNS - one case? 
+11. R - My current date data is corrupted so I need to recover before 5 days data. But I do not do snapshots backup , only AMI is available
+Ans:- Use snapshots inside AMI. 
+AMI → snapshot → EBS → attach to existing instance
+
+
+
+
