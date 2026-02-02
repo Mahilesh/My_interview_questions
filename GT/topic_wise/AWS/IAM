@@ -1,0 +1,17 @@
+IAM Q/A
+=======
+1. Types of IAM
+2. What is Roles
+3. Difference between Roles & Policy
+4. Difference between user & group
+5. What is MFA
+6. What is Assume role
+7. what is STS (Security Token Service)
+8. How many user can create in IAM
+9. How many group can create in IAM
+10. How many user can add in group
+11. How many permission can add to user and group
+11. What is Identity center 
+12. What is OU (Organization Unit) and Control Tower
+13. Difference between NAT instance and NAT Gateway
+Write a use case and scenario  for every policy
