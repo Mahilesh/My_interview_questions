@@ -1,0 +1,20 @@
+VPC Q/A
+=======
+1. how many VPC you can create in single region.
+2. how many IGW you can create in single region.
+3. how many route table you can create inside a VPC
+4. how many subnet you can create in single region.
+5. how many SG and NACL you can create in single region.
+6. how many inbound and outbound you can create in SG and NACL
+7. How many inbound and outbound created in Nacl?
+8. How many security group attached in EC2?
+9. One EC2 instance have one interface, how many security group can associate?
+10. How many network interface can be attached in Single instance?
+11. What are local routes and custom routes?
+12. What's vpc flow logs? 
+13. It's possible to attach single RT to multiple subnets.
+14. How many ips can reserve in 10.0.0.0 network and purpose of those reserved ips?
+15. What is the minimum and max CIDR block?
+16. What is End point?
+17. VPC peering?
+18. Transit gateway?
