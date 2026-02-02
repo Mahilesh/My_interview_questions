@@ -18,3 +18,48 @@ VPC Q/A
 16. What is End point?
 17. VPC peering?
 18. Transit gateway?
+
+
+with answers
+=============
+1. how many VPC you can create in single region.
+Ans:- Default 5 VPC, if needed we can increase by AWS support
+2. how many IGW you can create in single region.
+Ans:- 5 IGW
+3. how many route table you can create inside a VPC
+Ans:- 200 Route table per VPC
+4. how many subnet you can create in single region.
+Ans:- 200 subnet per VPC 
+5. how many SG and NACL you can create in single region.
+Ans:- 2500 SG and 200 NACL per VPC
+6. how many inbound and outbound you can create in SG?
+Ans:- Inbound - 60, Outbound - 60 per SG
+7. How many inbound and outbound created in Nacl?
+Ans:- Inbound - 20, Outbound - 20 per NACL
+8. How many security group attached in EC2?
+Ans:- 5 SG
+9. One EC2 instance have one interface, how many security group can associate?
+Ans:- Up to 5 Security Groups can be associated with a single network interface (ENI) by default.
+10. How many network interface can be attached in Single instance?
+Ans:- It depends on the EC2 instance type.
+Each instance type has a maximum number of ENIs
+Example:
+t2.micro → 2 ENIs, m5.large → 3 ENIs, High-end instances → many more
+👉 There is no single fixed number for all instances.
+11. What are local routes and custom routes?
+Ans:- Local route: auto-created, internal VPC traffic
+Custom route: user-defined, external or specific traffic paths
+12. What's vpc flow logs? 
+Ans:- VPC Flow Logs capture IP traffic metadata going to and from network interfaces in a VPC. They are mainly used for network monitoring and troubleshooting connectivity issues.
+13. It's possible to attach single RT to multiple subnets.
+Ans:- Yes, a single route table can be associated with multiple subnets within the same VPC.
+14. How many ips can reserve in 10.0.0.0 network and purpose of those reserved ips?
+Ans:- 5 reserved. 1st - network address, 2nd - router, 3rd - DNS, 4th - future use, last IP - broadcast
+15. What is the minimum and max CIDR block?
+Ans:- CIDR block size for a VPC must be between /16 and /28.
+16. What is End point?
+Ans:- VPC Endpoint enables private communication between a VPC and AWS services without using the public internet.
+17. VPC peering?
+Ans:- Communication between two VPCs.
+18. Transit gateway?
+Ans:- It acts as a central hub, make communication between multiple VPC.
