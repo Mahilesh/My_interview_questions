@@ -14,4 +14,48 @@ IAM Q/A
 11. What is Identity center 
 12. What is OU (Organization Unit) and Control Tower
 13. Difference between NAT instance and NAT Gateway
-Write a use case and scenario  for every policy
+14. Write a use case and scenario  for every policy
+
+with answers
+=============
+1. Types of IAM
+Ans:- Identity based policy, resource based policy, SCP, session policy, permissions boundary
+2. What is Roles
+Ans:- Service to service communication, roles are for providing temporary access, no long term access keys
+3. Difference between Roles & Policy
+Ans:- Roles - A role is an identity that assumes permissions
+Policy - A policy is a document that defines permissions
+4. Difference between user & group
+Ans:- User - Individual identity with specific permissions to access AWS resources
+User group - collection of IAM users used to assign and manage permissions collectively
+5. What is MFA
+Ans:- Multi Factor Authentication - Additional layer of security, Protects root and IAM users
+6. What is Assume role
+Ans:- Assume Role is the process of obtaining temporary security credentials by taking an IAM role, based on the trust policy, instead of using long-term access keys.
+7. what is STS (Security Token Service)
+Ans:- AWS STS is a service that provides temporary, limited-privilege credentials to users or services by issuing security tokens. Generates Access Key + Secret Key + Session Token with Credentials are time-bound. No long-term credentials stored
+8. How many user can create in IAM
+Ans:- 5,000 IAM users per AWS account, can be increased via AWS Support
+9. How many group can create in IAM
+Ans:- 300 IAM groups per AWS account
+10. How many user can add in group
+Ans:- single IAM group can have up to 1,000 users
+11. How many permission can add to user and group
+Ans:- 10 managed policy + one inline policy
+11. What is Identity center 
+Ans:- AWS IAM Identity Center is a centralized service to manage single sign-on (SSO) and user access across multiple AWS accounts and applications using one identity source. Use:- One login → access multiple AWS accounts
+12. What is OU (Organization Unit) and Control Tower
+Ans:- Organizational Unit (OU) is a logical grouping of AWS accounts within AWS Organizations used to apply policies and manage accounts collectively. Used inside AWS Organizations
+AWS Control Tower is a managed service that automatically sets up and governs a secure, multi-account AWS environment using best practices. Builds a landing zone
+13. Difference between NAT instance and NAT Gateway
+Ans:- NAT Instance → You manage everything
+NAT Gateway → AWS manages everything
+NAT Instance is a self-managed EC2-based NAT solution, while NAT Gateway is a fully managed, highly available AWS service that automatically scales.
+14. Write a use case and scenario  for every policy
+Ans:- Identity-Based Policy - DevOps role needs access to EC2, S3, and CloudWatch.
+Resource-Based Policy - You add a bucket policy allowing that account’s role to GetObject.
+Service Control Policy (SCP) - Apply an SCP that denies cloudtrail:DeleteTrail
+Permissions Boundary - developer can create IAM roles, but must never get admin access.
+Session Policy - You apply a session policy allowing access only to one S3 bucket for 2 hours.
+Managed Policy - Create a customer-managed policy for “ReadOnlyEC2”, Attach it to multiple users and roles.
+Inline Policy - single IAM role needs temporary access to one DynamoDB table.
