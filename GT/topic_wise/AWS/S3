@@ -1,0 +1,20 @@
+S3
+==
+1. How will you secure a s3 bucket
+2. Explore bucket versioning use ases and scenarios
+3. Encryption (SSE,Dual size encryption)
+4. life cycle rules in s3
+5. What are the storage class
+6. How will you host website in s3(static webhosting)
+7. Event notification in S3
+8. Object Lock
+9. CRR and its configuration
+10. CORS (theory alone)
+11. Life cycle scenarios
+12. S3 is a global then why we have buckets region specific
+13. Multipart upload in S3
+14. Check whether 50tb upload works in multipart upload or not
+15. Storage types in s3
+16. General purpose bucket vs directory bucket in s3
+17. Mechanisms to secure s3 bucket
+18. How to maintain high availability in S3
