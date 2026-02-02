@@ -1,0 +1,15 @@
+LB & ASG:
+=========
+1. What is ELB and give a proper definition?
+2. What are different types of LB in AWS?
+3. What's different about ALB & NLB?
+4. LB is which use case is used?
+5. Suppose the target is unhealthy, how Will you troubleshoot and how will you make it healthy?
+6. Types of Load balancing techniques?
+7. How will the load balancer distribute the traffic?
+8. Scaling policies?
+9. Diff between launch template and launch configuration
+10. Desired minimum and maximum?
+11. What are Lifecycle hooks?
+12. What is scale in and scale out. Suppose scaling is not triggered, how will you troubleshoot?
+13. Diff between horizontal scaling and vertical scaling?
