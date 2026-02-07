@@ -13,3 +13,36 @@ LB & ASG:
 11. What are Lifecycle hooks?
 12. What is scale in and scale out. Suppose scaling is not triggered, how will you troubleshoot?
 13. Diff between horizontal scaling and vertical scaling?
+
+with answers:-
+=============
+1. What is ELB and give a proper definition?
+Ans:- 
+2. What are different types of LB in AWS?
+Ans:- Classic, Application, Network, Gateway
+3. What's different about ALB & NLB?
+Ans:- ALB - Layer 7, http/https, path based routing, used for webapplications, microservices
+NLB - Layer 4, tcp/udp, port based, used for video gaming, video streaming.
+4. LB is which use case is used?
+Ans:- Distribute incoming traffic across multiple instances - Used for High Availabilty
+5. Suppose the target is unhealthy, how Will you troubleshoot and how will you make it healthy?
+Ans:- First we need to make sure ports are allowed in both instance level SG and load balancer level SG.
+Check :- Protocol, port, path, success codes.
+check whether app is running or not.
+6. Types of Load balancing techniques?
+Ans:- Round-robin, least connections, least response time, IP hash/source IP affinity, ...
+7. How will the load balancer distribute the traffic?
+Ans:- using listerners in target group
+8. Scaling policies?
+Ans:- 5 types - Target tracking scaling, step scaling, simple scaling, scheduled scaling, predictive scaling
+9. Diff between launch template and launch configuration
+Ans:- 
+10. Desired minimum and maximum?
+Ans:- 
+11. What are Lifecycle hooks?
+Ans:- 
+12. What is scale in and scale out. Suppose scaling is not triggered, how will you troubleshoot?
+Ans:- Scale out - Add instances, Scale In - remove instances
+13. Diff between horizontal scaling and vertical scaling?
+Ans:- HS - Increase or decrease the no. of instances to handle the traffic
+VS - Increase resources like CPU, Memory, Storage of an existing instance
