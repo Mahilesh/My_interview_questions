@@ -38,6 +38,7 @@ Ans:- NO
 9. R - I need few more IPs for existing VPC, how it possible to increase it?
 Ans:- adding a secondary CIDR block.
 10. R - SNS - one case? 
+Ans:- CPU high -> SNS -> DevOps team notified
 11. R - My current date data is corrupted so I need to recover before 5 days data. But I do not do snapshots backup , only AMI is available
 Ans:- Use snapshots inside AMI. 
 AMI → snapshot → EBS → attach to existing instance
