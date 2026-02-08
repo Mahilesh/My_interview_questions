@@ -18,3 +18,43 @@ S3
 16. General purpose bucket vs directory bucket in s3
 17. Mechanisms to secure s3 bucket
 18. How to maintain high availability in S3
+
+
+with answers
+============
+1. How will you secure a s3 bucket
+Ans:- To secure an S3 bucket, I keep it private with public access blocked, control access using bucket policies with ACLs disabled, use access points for fine-grained access, enable encryption at rest and in transit, protect data with versioning and object lock, replicate data for resilience, and enable server access logging for audit and monitoring.
+2. Explore bucket versioning use cases and scenarios
+Ans:- S3 bucket versioning is used to retain multiple versions of an object, which helps in recovering data from accidental deletions, overwrites, or application errors. When an object is deleted, S3 adds a delete marker instead of permanently removing the object, allowing us to restore previous versions easily.
+3. Encryption (SSE,Dual size encryption)
+Ans:- 
+4. life cycle rules in s3
+Ans:- S3 lifecycle rules are used to automatically manage objects during their lifetime by transitioning them between storage classes or expiring them, based on predefined conditions.
+5. What are the storage class
+Ans:- S3 storage classes define how data is stored, accessed, and priced, based on access frequency, latency needs, and durability requirements.
+6. How will you host website in s3(static webhosting)
+Ans:-
+7. Event notification in S3
+Ans:-
+8. Object Lock
+Ans:-
+9. CRR and its configuration
+Ans:-
+10. CORS (theory alone)
+Ans:- CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls how a web application running on one origin can request resources from another origin. It prevents unauthorized cross-origin access to resource
+11. Life cycle scenarios
+Ans:-
+12. S3 is a global then why we have buckets region specific
+Ans:- S3 is a global service in terms of namespace and API access, but buckets are region-specific because data must physically reside in a region for latency, compliance, cost optimization, and durability across AZs.
+13. Multipart upload in S3
+Ans:- Multipart upload allows large objects to be uploaded to S3 in multiple parts, improving performance and fault tolerance, and is mandatory for objects larger than 5 GB.
+14. Check whether 50tb upload works in multipart upload or not
+Ans:- No, S3 multipart upload cannot upload 50 TB as a single object because the maximum S3 object size is 5 TB. Multipart upload only improves upload performance, not the object size limit.
+15. Storage types in s3
+Ans:-
+16. General purpose bucket vs directory bucket in s3
+Ans:-
+17. Mechanisms to secure s3 bucket
+Ans:-
+18. How to maintain high availability in S3
+Ans:- S3 maintains high availability by automatically replicating data across multiple Availability Zones within a region. It is a fully managed service with built-in scaling and failover, offers 99.99% availability SLA, and supports features like versioning and cross-region replication to protect against logical errors and regional failures.
