@@ -17,7 +17,7 @@ LB & ASG:
 with answers:-
 =============
 1. What is ELB and give a proper definition?
-Ans:- 
+Ans:- Elastic Load Balancing (ELB) is an AWS-managed service that automatically distributes incoming application traffic across multiple targets (such as EC2 instances, containers, or IP addresses) in one or more Availability Zones to ensure high availability, fault tolerance, and scalability.
 2. What are different types of LB in AWS?
 Ans:- Classic, Application, Network, Gateway
 3. What's different about ALB & NLB?
@@ -36,13 +36,16 @@ Ans:- using listerners in target group
 8. Scaling policies?
 Ans:- 5 types - Target tracking scaling, step scaling, simple scaling, scheduled scaling, predictive scaling
 9. Diff between launch template and launch configuration
-Ans:- 
+Ans:- Launch Configurations are legacy and immutable, while Launch Templates support versioning, advanced EC2 features like Spot and mixed instances, and are the recommended way to define instance launch settings in Auto Scaling Groups.
 10. Desired minimum and maximum?
-Ans:- 
+Ans:- Desired capacity is not a limit; it’s the current target value. Min and Max define the boundaries within which Desired can change.
 11. What are Lifecycle hooks?
-Ans:- 
+Ans:- Lifecycle hooks allow us to pause EC2 instances during launch or termination in an Auto Scaling Group so we can run custom actions like configuration, traffic draining, or cleanup before the instance enters or exits service.”
+Max time set - 48 hours (heartbeat timeout)
 12. What is scale in and scale out. Suppose scaling is not triggered, how will you troubleshoot?
-Ans:- Scale out - Add instances, Scale In - remove instances
+Ans:- Scale out - Add instances, Scale In - remove instances. Verify Scaling Policy Configuration
 13. Diff between horizontal scaling and vertical scaling?
 Ans:- HS - Increase or decrease the no. of instances to handle the traffic
 VS - Increase resources like CPU, Memory, Storage of an existing instance
+14. Launch template can be edited directly?
+Ans:- You create a new version
