@@ -43,6 +43,79 @@ Ans:- CPU high -> SNS -> DevOps team notified
 Ans:- Use snapshots inside AMI. 
 AMI → snapshot → EBS → attach to existing instance
 
+8.2.26
+======
+
+Questions
+---------
+1. Can you tell me AWS services which you extensively used in your project? -> EC2, ELB, RDS, 
+
+2. Prod ec2 instance unreachable which is running fine for last 1 year-> Steps involved in troubleshooting
+Ex:- 0/3 failed	Instance is down/unreachable
+- 1. Running status -> Instance -> Actions -> System log - STATUS CHECK  
+      -> 1. System check   → Stop/start instance (move to new host) or contact AWS support
+      -> 2. Instance check → Reboot, check logs, recover instance
+      -> 3. Network check  → Check security group, NACL, route table, ENI
+- 2. Check cloudwatch logs -> log group -> Metrics -> System health, Compute resources like CPU, memory, disk
+- 3. Check network layer -> SG, NACL, IP address
+- 4. Check cloudtrail logs
+To fix:- (steps)
+- Go to ALB -> remove target
+- Using AMI -> create new server -> register new instance into ALB
+- Login into new server -> now troubleshoot
+
+3. App is slow?? & 100 users -> 50 - ok, 50 - not ok - Steps to troubleshoot
+
+Possible reason for failure 
+  - Any DB query running in backend
+  - Check CPU usage
+To fix:-
+- Give Cloudfront URL with latency based routing policy - to reduce the slowness/latency issue
+
+3. ELB -> 4 EC2 Register -> healthy ?? Health Status Check : Parameter -> Protocol, port, path, timeout
+(Time to start the instance) -> Probes concept 
+
+4. VPC peering vs TG -> 10 VPC 
+which is fast -> VPC peering
+which is cheap -> VPC Peering is cheaper for small setups, while Transit Gateway cost increases with attachments and traffic.
+which is better in config -> TG
+best performance -> VPC peering
+
+5. which use case - you select ALB and NLB
+ALB -> which uses layer 7 (http/https), path/host/domain/ip based routing                                               -> In Web applications, Microservices
+NLB -> which uses layer 4, port based routing, ultra low latency, Millions of requests per second, non-http traffic (tcp/udp)     -> In gaming, Video streaming
+
+
+6. Diff bt TCP and UDP
+TCP - sends the data in secure and in order - ports used - 80, 443, 8080, 22, RDP, 3306, ....so on - 3 way handshake
+UDP - sends the data in fast, without checking if it arrived - ports used - 53, - pocket loss
+
+7. 500, 501, 502, 503 -> Problem is on the server side (server failed to process a valid request)
+500 - Internal Server Error -> Application crash / unhandled exception
+502 - Bad Gateway           -> ALB/Nginx got invalid response from backend
+503 - Service Unavailable   -> App down / scaling / maintenance
+504 - Gateway Timeout       -> Backend took too long to respond
+507 - Insufficient Storage  -> Disk full
+
+8. 400, 401, 402, 403, 404 - Problem is on the client side (request is wrong)
+400 - Bad Request   -> Invalid request syntax / missing parameters
+401 - Unauthorized  -> Authentication required or token missing
+403 - Forbidden     -> Authenticated but no permission
+404 - Not Found     -> Resource/URL doesn’t exist
+
+9. Cloudwatch - Metrics -??
+CPU, Memory, Target, Disk usage, network in/out, status check, ebs volumes iops readwrite operation
+
+10. Recent issues you faced in EC2
+
+11. Recent issues you faced in our recent project?
+
+=> Include your issues in your self-intro ***********
+
+Recently faced issue in VPC
+-> 100s of VPC -> move to TG -> refer blog -> use terraform -> terraform import -> take existing resources and did automation
+
+
 
 
 
