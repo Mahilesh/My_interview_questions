@@ -115,7 +115,10 @@ CPU, Memory, Target, Disk usage, network in/out, status check, ebs volumes iops 
 Recently faced issue in VPC
 -> 100s of VPC -> move to TG -> refer blog -> use terraform -> terraform import -> take existing resources and did automation
 
+10. How to create an alarm for 40 ec2 instances without CF and Terraform and manually?
+Ans:- Use Lambda
 
+11. 
 
 
 
