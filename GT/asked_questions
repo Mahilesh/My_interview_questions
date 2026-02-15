@@ -657,3 +657,289 @@ ROLE : DEVOPS ENGINEER
 71. What monitoring and alerting tools have you used?
 72. How do you manage secrets and configuration?
 73. How do you perform rolling deployments with zero downtime?
+
+COMPANY NAME : INFNITE - Round 2
+ROLE : DEVOPS ENGINEER
+1. General & Background
+1. Can you briefly explain your career background?
+2. What kind of DevOps tools and technologies have you worked with?
+2. AWS & Cloud Services
+3. What AWS services have you used in your projects?
+4. Can you explain your experience with VPC, Load Balancers, IAM, and S3?
+5. Have you used Amazon EKS in production?
+6. How do you store and manage Docker images in AWS?
+7. How do you ensure high availability of applications on AWS?
+8. How many Availability Zones did you use in your project, and why?
+9. What type of databases have you used (RDS, DynamoDB, etc.)?
+10. How do you handle backups in AWS environments?
+3. Kubernetes Architecture & Scheduling
+11. How do you deploy applications across multiple Availability Zones in Kubernetes?
+12. How does Kubernetes ensure pod scheduling across worker nodes?
+13. What is the role of the Kubernetes Scheduler?
+14. On what basis are pods scheduled to nodes?
+15. What are taints and tolerations, and why are they used?
+16. What is node affinity and pod affinity?
+17. What is pod anti-affinity, and when would you use it?
+18. How do you avoid all pods getting scheduled in a single Availability Zone?
+19. What happens if one Availability Zone goes down?
+20. What are topology spread constraints in Kubernetes?
+4. Kubernetes Core Concepts
+21. What is the difference between Deployment and StatefulSet?
+22. When should you use StatefulSets?
+23. What is a ConfigMap?
+24. What is a Kubernetes Secret?
+25. How are secrets stored in Kubernetes?
+26. What is a CronJob in Kubernetes?
+27. What are real-time use cases for Kubernetes CronJobs?
+28. What is a DaemonSet?
+29. When should you use a DaemonSet?
+5. Kubernetes YAML & Probes
+30. What are the important fields in a Kubernetes deployment YAML file?
+31. What is apiVersion and kind in Kubernetes manifests?
+32. What are liveness and readiness probes?
+33. What happens if a liveness probe fails?
+34. What happens if a readiness probe fails?
+6. Pod Lifecycle & Troubleshooting
+35. What are the different pod states in Kubernetes?
+36. What is CrashLoopBackOff?
+37. What is ImagePullBackOff?
+38. Why does a pod stay in Pending state?
+39. How do you troubleshoot pods stuck in pending state?
+40. What does an OOMKilled error mean?
+41. How do you troubleshoot memory-related pod failures?
+7. Services, Ingress & Networking
+42. What are the different types of Kubernetes Services?
+43. What is ClusterIP?
+44. What is NodePort?
+45. What is LoadBalancer service?
+46. What is Ingress, and why is it used?
+47. How do you expose applications outside the Kubernetes cluster?
+48. How do you verify whether a service is routing traffic correctly?
+8. HTTP Errors & Debugging
+49. What does HTTP 400 error indicate?
+50. What does HTTP 404 error indicate?
+51. What does HTTP 500 error indicate?
+52. How do you troubleshoot Ingress-related errors?
+53. How do you debug backend service connectivity issues?
+9. Monitoring & Logging
+54. What monitoring tools have you used with Kubernetes?
+55. Have you worked with Prometheus and Grafana?
+56. What is Node Exporter?
+57. What metrics have you monitored (CPU, memory, disk, network)?
+58. How do you configure alerting in Kubernetes?
+10. Docker & Containerization
+59. How do you create a Dockerfile?
+60. What are the common Dockerfile instructions?
+61. How do you build a Docker image?
+62. How do you push Docker images to AWS ECR?
+63. How do you secure Docker images before deployment?
+64. Have you used Docker image scanning tools?
+11. CI/CD Pipelines
+65. What CI/CD tools have you used?
+66. How does a Jenkins pipeline work in your project?
+67. What stages are included in your CI/CD pipeline?
+68. How do you trigger pipelines using Git events?
+69. How do you perform code quality checks?
+70. What is SonarQube used for?
+71. How do you handle Docker image signing and scanning?
+72. How do you deploy applications using Helm?
+73. How do you manage multiple environments using CI/CD?
+12. Infrastructure as Code (Terraform)
+74. What is Terraform?
+75. What is Terraform drift?
+76. What happens during terraform plan?
+77. How does Terraform detect changes in infrastructure?
+78. What are Terraform state files?
+13. Configuration Management (Ansible)
+79. Have you used Ansible for configuration management?
+80. What are Ansible playbooks?
+81. What tasks have you automated using Ansible?
+14. Production Deployments & Best Practices
+82. What precautions do you take before deploying to production?
+83. What is blue-green deployment?
+84. How do you minimize downtime during production upgrades?
+85. How do you roll back production deployments?
+86. What approvals are required before production changes?
+87. How do you document production changes?
+15. DevOps Roles & Responsibilities
+88. What are your day-to-day responsibilities as a DevOps engineer?
+89. How do you handle incidents in production?
+90. How do you work with cross-functional teams?
+91. What troubleshooting skills are essential for a DevOps engineer?
+
+Company: Accenture
+Role: AWS DevOps Engineer
+Round: 2nd Round
+
+Introduce about yourself
+Total yrs of experience?
+In last 6months, what is the most complex assignment you worked on, and tell me what was the complexity of that assignment, and what have you learn from that?
+How big, the team that you working in?
+Whether you worked on lower environments or production also?
+As on these days, you heard about AI all around you. so, what is your exposure with AI technologies?
+Do you have theoretical knowledge about AI technologies or else just heard of it?
+Do you have habit of doing personal projects?
+Can you explain latest project you did personally? 
+how was CI/CD pipeline created in your company project?
+Tell me one thing, why Accenture for you?? why do you be a part of Accenture? 
+Where are you located?
+what will be your notice period?
+
+
+Company name:- Sonata softwares
+AWS EC2 & Compute
+1. How can you configure EC2 instances to automatically recover or replace themselves when they fail in a cost-effective way?
+2. What is EC2 Auto Recovery, and how does it work with CloudWatch?
+3. How would you design a solution to replace failed EC2 instances without downtime?
+4. How would you deploy updates to a fleet of EC2 web servers with minimal or zero downtime?
+5. How does blue-green deployment work using Elastic Load Balancer?
+6. How do you securely provide internet access to EC2 instances in private subnets?
+7. What is the role of a NAT Gateway and Elastic IP?
+AWS IAM & Security
+8. What happens when a user has both an explicit Allow and explicit Deny IAM policy?
+9. Can an IAM role have multiple policies attached?
+10. How do you secure API Gateway endpoints?
+11. What authentication and authorization methods can be used with API Gateway?
+12. How do you secure secrets stored in AWS Secrets Manager?
+13. How does encryption work in AWS Secrets Manager?
+AWS Lambda
+14. Have you worked with AWS Lambda in event-driven architectures?
+15. What is a cold start in AWS Lambda?
+16. How can you reduce Lambda cold start latency?
+17. What happens when a Lambda function times out?
+18. What is the maximum execution timeout for a Lambda function?
+19. When does a Lambda function return a response to API Gateway?
+20. What happens if Lambda execution exceeds API Gateway timeout limits?
+Amazon API Gateway
+21. What is the difference between REST API and WebSocket API in API Gateway?
+22. In what use cases would you choose WebSocket APIs?
+23. What is the maximum payload size supported by API Gateway?
+24. What is the difference between Lambda Proxy Integration and Non-Proxy (HTTP) Integration?
+25. How does request and response mapping work in non-proxy integration?
+AWS Secrets Manager
+26. How do you retrieve secrets from AWS Secrets Manager using Python?
+27. What AWS SDK is commonly used in Python to access Secrets Manager?
+28. How do environment variables help when using Secrets Manager with Lambda?
+AWS Databases (RDS vs Aurora)
+29. What is the difference between Amazon RDS and Amazon Aurora?
+30. How does Aurora provide better performance and scalability than RDS?
+31. How does replication and failover work in Amazon Aurora?
+32. How does Aurora achieve high availability across Availability Zones?
+Terraform
+33. Can you rename existing resources created using Terraform?
+34. What is the purpose of the terraform state mv command?
+35. What happens if you change the name of an S3 bucket in Terraform?
+36. Why can’t S3 buckets be renamed?
+37. Can you rename an Auto Scaling Group created by Terraform?
+38. What is a Terraform data block, and when is it used?
+39. How do data blocks help reference existing AWS resources?
+CI/CD & Git (GitLab / GitHub Actions)
+40. Have you worked with GitHub Actions or GitLab CI/CD?
+41. What are rules in GitLab CI/CD pipelines?
+42. How do rules control job execution in pipelines?
+43. How do you restrict pipelines to run only on specific branches or merge requests?
+Shell Scripting & Linux
+44. What is the difference between single ampersand (&) and double ampersand (&&) in shell scripting?
+45. How does command chaining work using &&?
+46. What happens if the first command fails when using &&?
+Python (Basics)
+47. Have you used Python in AWS Lambda functions?
+48. What is the self keyword in Python?
+49. How is Python commonly used in DevOps automation?
+
+
+Company name:- Presidio
+AWS DevOps Interview Questions (Converted)
+1. Background & Role
+1. Can you explain your current role as a DevOps/Cloud Engineer and your day-to-day responsibilities?
+2. What kind of cloud platforms and production environments have you worked with?
+3. Have you handled large-scale, multi-account or multi-environment architectures?
+2. AWS Networking & Connectivity
+4. Have you implemented Site-to-Site VPN connectivity between on-premises and AWS?
+5. What challenges did you face with VPN tunnels after a customer router OS upgrade?
+6. How did you troubleshoot packet drops and latency issues in VPN connections?
+7. How do VPC Flow Logs and Traffic Mirroring help in network troubleshooting?
+8. What steps would you take when routing is not properly propagated in IPSec tunnels?
+3. Multi-Account AWS Architecture
+9. How would you design networking for three AWS accounts where:
+o One account is public
+o Two accounts are private
+o All internet traffic must flow only through the public account?
+10. How can you enforce no direct internet access for private accounts?
+11. How would you enable inter-account communication without exposing workloads to the internet?
+12. What role does AWS Transit Gateway play in centralized networking?
+13. How do you control inbound and outbound traffic using route tables and firewalls?
+4. Cross-Account Access & IAM
+14. How do you enable an EC2 instance in Account A to upload files to an S3 bucket in Account B?
+15. What IAM components are required for cross-account S3 access?
+16. What is the purpose of an IAM trust relationship?
+17. What is the difference between:
+ AWS Managed Policies
+ Customer Managed Policies
+ Inline Policies?
+18. When would you use bucket policies instead of IAM policies?
+5. S3, CloudFront & Static Website Hosting
+19. How do you securely host a static website using S3 while keeping the bucket private?
+20. How does CloudFront help secure S3 content?
+21. What is Origin Access Identity (OAI) / Origin Access Control (OAC)?
+22. How do you connect a custom domain (Route 53) to CloudFront?
+23. Which DNS record type is used to point a domain to CloudFront?
+6. Terraform & Infrastructure as Code
+24. What is your experience using Terraform in AWS environments?
+25. What happens if you enable EBS encryption in Terraform for an already running EC2 instance?
+26. Why does Terraform try to replace the EC2 instance in this scenario?
+27. How do you encrypt an existing unencrypted EBS volume without data loss?
+28. How do snapshots help in EBS encryption?
+29. What is the use of:
+ lifecycle { ignore_changes }
+ prevent_destroy in Terraform?
+30. How do you import manually created AWS resources into Terraform state?
+7. Kubernetes (EKS)
+31. How do you deploy a monitoring agent on all Kubernetes nodes automatically?
+32. Why is a DaemonSet preferred for node-level agents?
+33. What happens to DaemonSets when new nodes are added to the cluster?
+34. What is the difference between Deployment and StatefulSet?
+35. When would you use StatefulSet instead of Deployment?
+8. CI/CD & GitOps
+36. What is Argo CD, and why is it used with Kubernetes?
+37. How does Argo CD help with multi-environment deployments?
+38. What is drift detection in GitOps?
+39. What is the difference between manual sync and auto sync in Argo CD?
+9. Jenkins
+40. What is a Jenkins Shared Library?
+41. Why are shared libraries important in large CI/CD pipelines?
+42. How do shared libraries improve reusability and maintainability?
+
+
+Company: Comcast
+Role: Devops Engineer 
+Round: Written Assessment (round 1)
+
+1. What if the resource block is removed in terraform and runs terraform apply command?
+2. How to list large files in a directory in linux?
+3. How to find a empty file in shell script?
+4. CMD & ENTRYPOINT Difference in dockerfile
+5. What is EIP? How it is differ from public ip?
+6. How to rollback in Ci cd pipeline?
+7. How to restrict S3 bucket to access from only particular IAM role?
+8. How to restrict container to use cpu and memory limits?
+9. Hard link and soft link difference?
+10. How to include output of one command to another variable ?
+
+Company: comcast
+Role: Devops Engineer 
+Round 2: Technical Discussion 
+
+
+Tell me about Ci cd pipeline you have used in your project?
+Have you done Linux Os patching?
+What is iostat in linux?
+How to check cpu utilisation in linux and find the largest files utilising it?
+Consider I'm going to run my application in linux os. what are the steps to be considered?
+How to check logs of a container?
+How we can call multistage build in a docker?
+What is the log monitoring tools you have used in your company?
+What are the monitoring tools you have used?
+If I'm having application inside EC2 and from browser, how the traffic flows into my application?
+What is the major thing to use, for communication of one resource in AWS account into  resource in another aws account?
+Have you worked on python or ansible?
