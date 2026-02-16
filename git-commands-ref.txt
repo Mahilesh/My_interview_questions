@@ -1,3 +1,7 @@
 
 git status
 git add
+git log --oneline
+git log
+git status -s
+git switch <branch-name>
