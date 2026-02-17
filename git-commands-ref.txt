@@ -6,3 +6,4 @@ git log
 git status -s
 git switch <branch-name>
 git remote -v
+git remote add origin https://github.com/Interview-Preparation-Mahilesh/My_interview_questions.git
