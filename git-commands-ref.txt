@@ -15,3 +15,7 @@ git remote -v
 git remote add origin https://github.com/Interview-Preparation-Mahilesh/My_interview_questions.git
 git mergetool -y
 git push origin <branch-name>
+git push origin v.2.0
+git tag
+git commit -am "second version commit"
+git tag -a "v.2.0" -m "second version"
