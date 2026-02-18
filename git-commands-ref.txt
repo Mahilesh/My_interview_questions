@@ -20,3 +20,4 @@ git tag
 git commit -am "second version commit"
 git tag -a "v.2.0" -m "second version"
 git stash pop
+git stash
