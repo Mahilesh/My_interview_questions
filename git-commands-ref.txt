@@ -19,7 +19,4 @@ git push origin v.2.0
 git tag
 git commit -am "second version commit"
 git tag -a "v.2.0" -m "second version"
-
-difference questions
-
 git stash pop
