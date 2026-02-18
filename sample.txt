@@ -6,3 +6,5 @@ today change
 master - branch
 dev- branch
 
+
+new version- 1.0
