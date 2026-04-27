@@ -246,3 +246,17 @@ Sopra Steria
 17. How do you manage and secure secrets in Ansible?
 18. In an Ansible playbook, how do you make the play wait until a server reboot is fully completed before running the next task?
 19. What are some basic Linux commands you use to check memory, CPU, disk usage, and system performance?
+
+
+Atos - L1 
+=======
+
+1. Tell me about your yourself and day-to-day activities and current project
+2. You put migration part in resume - tell what challenges you face while on-prem to cloud migration - what you checked and give me the plan and what analysis you do
+3. what are all the resources you provisioned through terraform and where is you state file
+4. what is the terraform lifecycle
+5. tell me the workflow of terraform lifecycle
+6. how much time it is taking to provision ec2 in your project through terraform
+7. While provisioning ec2 instances through terraform ex:- more than 10 mins - it is taking more time than usual and not created - how do you check and what fix you will do 
+8. what will you do taint resource in terraform
+9. you have state resource when you do apply
