@@ -251,12 +251,298 @@ Sopra Steria
 Atos - L1 
 =======
 
-1. Tell me about your yourself and day-to-day activities and current project
-2. You put migration part in resume - tell what challenges you face while on-prem to cloud migration - what you checked and give me the plan and what analysis you do
-3. what are all the resources you provisioned through terraform and where is you state file
-4. what is the terraform lifecycle
-5. tell me the workflow of terraform lifecycle
-6. how much time it is taking to provision ec2 in your project through terraform
-7. While provisioning ec2 instances through terraform ex:- more than 10 mins - it is taking more time than usual and not created - how do you check and what fix you will do 
-8. what will you do taint resource in terraform
-9. you have state resource when you do apply
+1. Introduce yourself, explain your daily responsibilities, and describe your current project.
+2. You mentioned migration experience in your resume. Can you explain the challenges you faced during on-premises to cloud migration? What checks, planning, and analysis did you perform?
+3. Which AWS or infrastructure resources have you provisioned using Terraform, and where do you store the Terraform state file?
+4. What do you understand by the Terraform lifecycle?
+5. Tell me the workflow of Terraform lifecycle.
+6. In your project, how long does it usually take to provision an EC2 instance using Terraform?
+7. If EC2 provisioning through Terraform is taking more than 10 minutes and the instance is not created, how would you troubleshoot and resolve it?
+8. What is the purpose of the taint command in Terraform, and when would you use it?
+9. If a stale lock/state file occurs during Terraform apply and an instance is urgently required, how would you handle the situation?
+10. When you give "kubectl apply" for a deployment, what is happening in the backend?
+11. How many worker nodes are currently available in your Kubernetes cluster?
+12. What is a Kubernetes Service?
+13. Why is a Kubernetes Service required?
+14. What is the difference between L4 VIP and L7 VIP?
+15. What functions are performed by an L7 load balancer?
+16. What is a ConfigMap in Kubernetes?
+17. Where do you store application secrets in your environment?
+18. Where would you store third-party certificates in Kubernetes: Secret or ConfigMap?
+19. If a pod becomes unhealthy, how would you troubleshoot it?
+20. How many containers are typically running inside your pod?
+21. Recently, how did you resolve readiness, liveness, or startup probe issues? Did you only increase timings or apply other fixes as well?
+22. Can you explain your CI/CD pipeline flow?
+23. What is the difference between Git merge and Git rebase?
+24. Do you have hands-on experience with Ansible?
+25. Have you worked with ArgoCD?
+26. What is the most critical challenge you have faced recently, and how did you resolve it?
+27. How would you implement the principle of least privilege in AWS?
+28. How would you grant access permissions to an S3 bucket?
+29. What types of policies have you configured for S3 buckets?
+30. what are included in S3 bucket policy?
+31. Have you worked with or come across HashiCorp Vault?
+
+BNP Paribas - Questions
+===============
+
+1. Introduce Yourself
+2. What is your day-to-day activity in Kubernetes?
+3. Pod continuously failing — how will you troubleshoot?
+4. Real issues faced in Kubernetes
+5. StatefulSet vs Stateless
+6. Labels and Selectors
+7. Terraform Experience
+8. Count vs For_each
+9. Explain Projects
+10. Multi-cloud experience
+11. Terraform Lifecycle
+12. Ansible
+13. Jenkins Pipelines
+14. Ticketing Tool / Change Requests
+15. Alert Handling
+16. Disk Utilization in Linux
+17. LVM
+18. Swap Space
+
+Guhatek - L1
+========
+
+- tell me about yourself and your experience 
+- write terraform code for VPC and EC2
+- I am the user of your application, I am hitting your URL - what happens before k8s cluster and what happens in loadbalancer
+- what component you are using for Container Runtime interface in your worker node
+- are you using helm charts, what components in it
+- How is microservices communication happening inside the Kubernetes cluster?
+- What if microservices are in different Kubernetes clusters? How do they communicate?
+- Is the communication synchronous or asynchronous?
+- What is Kafka used for?
+- What is the difference between Kafka and RabbitMQ?
+- Which Kafka are you using? Standalone Kafka or Confluent Kafka?
+- pod is crashing, what's about your approach
+- how to come to know, your pod is crashing
+- do you wait until customer complaint that pod is crashing
+- what is coredns?
+- what is kubeproxy?
+- What add-ons/plugins are installed in an EKS cluster?
+- How do you proactively identify Pod failures?
+- Will you wait until customer reports the issue?
+- How will you know whether a Pod is crashing?
+- What would be your troubleshooting approach?
+- Other EKS plugins/add-ons apart from CoreDNS and kube-proxy?
+- What resources/components are required for PVC testing?
+- What issues do you suspect if readiness probe is unstable?
+- Why do we use readiness probes?
+- What happens when liveness probe fails?
+- What is ingress and egress?
+- How can ingress act like a load balancer?
+- Which ingress controller are you using?
+- Who manages the Kubernetes cluster in your team?
+- How are deployments managed in your organization?
+- What ingress/controller component is running in your cluster?
+- How does networking work with listeners and routing flow in Ingress / ALB?
+- What are the components/files inside a Helm chart?
+- How does scaling work in Kubernetes?
+- What metrics can be used for HPA scaling?
+- Do you use HPA practically or manual scaling?
+- What is Node Affinity?
+- Difference between Node Affinity and Node Selector?
+- What is the use of taints?
+- What are tolerations?
+- What issues occur when using a small subnet (/24) for nodes and Pods?
+- Why separate Pod and Node subnets?
+- What are resource requests and limits for a Pod?
+How do you pass environment variables into containers?
+If image works locally but fails in cluster, what could be the issue?
+How did you troubleshoot ImagePullBackOff issue?
+Where do you store secrets?
+What AWS services have you used?
+List AWS services from your Solution Architect knowledge
+What is container runtime?
+What is Docker?
+Why is Docker not used directly as Kubernetes runtime anymore?
+What is kubelet?
+How do you reduce Docker image size?
+What is multi-stage Docker build?
+Have you written GitLab CI/CD pipelines?
+How does Terraform pipeline connect securely to AWS?
+How do you securely pass AWS secrets?
+How does GitLab Runner access AWS Secrets Manager?
+How authentication happens between runner and AWS?
+How do you pass artifacts between GitLab CI jobs?
+How do you trigger pipelines automatically on branch push?
+How do you manage multiple Terraform environments?
+How do you maintain consistency across environments in Terraform?
+Difference between variable.tf and terraform.tfvars?
+How do you validate Terraform syntax?
+How do you auto-format/correct Terraform code?
+Write EC2, VPC, and Security Group resource blocks
+How frequently do you work on Terraform tasks?
+What AI tools are you using?
+How do you use AI tools in day-to-day work?
+How do you avoid Terraform conflicts when multiple people apply simultaneously?
+What is Terraform state locking?
+How do you detect Terraform drift/conflicts?
+Cross-account S3 access scenario
+How can an application in Account A access a private S3 bucket in Account B?
+How do bucket policies and IAM roles work for cross-account access?
+Do you have any questions for the interviewer?
+
+Guhatek - L2 - Questions
+================
+
+Tell me about yourself, your work experience, and day-to-day activities.
+Have you developed scripts from scratch in Terraform/Ansible or used existing scripts?
+What kind of resources have you provisioned using Terraform?
+What exactly have you done in Ansible?
+Do you have networking experience in AWS/cloud?
+What are the autoscaling policies used in AWS?
+Explain path-based routing and host-based routing in Application Load Balancer.
+How will you provide access to an EC2 instance without sharing the PEM file?
+What is liveness probe and readiness probe in Kubernetes?
+Explain the structure of a Kubernetes deployment YAML file.
+What are the important sections inside the spec block in deployment YAML?
+Write a sample Kubernetes deployment YAML for nginx.
+Write a Terraform block to create an S3 bucket (or any resource).
+How do you detect Terraform drift in real-time environments?
+How do you give only a specific Lambda function access to an S3 bucket?
+How does communication happen inside Kubernetes?
+Pod-to-pod communication
+Node-to-node communication
+What is CNI in Kubernetes?
+How do you restrict Kubernetes network communication?
+How do you create/deploy external secrets manager integration in Kubernetes/AWS?
+How do you fetch secrets from AWS Secrets Manager in GitLab CI/CD?
+Do you have any questions for us?
+
+Kriyadocs - L1 - Questions
+=================
+
+Tell me about yourself, your experience, day-to-day activities, and responsibilities.
+Explain what your current company does.
+How would you approach deploying an application across Dev, QA, and Production environments in AWS?
+How would you design/manage AWS accounts for multiple environments?
+Why should Dev, QA, and Production use separate AWS accounts instead of a single account?
+How do you manage AWS user access across multiple AWS accounts?
+How do you restrict IAM users so Dev users cannot access QA/Prod accounts?
+Have you worked with AWS Organizations?
+Have you worked with AWS Control Tower?
+Have you worked with AWS SSO / IAM Identity Center?
+How do you configure backup strategy for EKS clusters?
+What backup methods/tools are used for Kubernetes/EKS?
+What third-party or AWS backup services are used for centralized backups?
+Have you worked with AWS Elastic Disaster Recovery (DRS)?
+Have you used Spot Instances?
+Why are you not using Spot Instances for EKS worker nodes?
+How would you optimize cost using Spot and On-Demand instances together?
+How do you configure Load Balancers for multiple environments?
+How does path-based routing work in ALB?
+How does Kubernetes Ingress routing work?
+What is the difference between ALB and NLB?
+What protocols are supported by ALB and NLB?
+Which OSI layers do ALB and NLB work on?
+What workloads are suitable for ALB?
+What workloads are suitable for NLB?
+How do you configure ALB listener rules for path-based routing?
+How do ALB routing priorities work?
+What is weighted routing in ALB?
+What are listeners in AWS ALB?
+How are ALBs configured inside EKS clusters?
+How does Ingress communicate with ALB in Kubernetes?
+What rules are configured inside ingress.yaml?
+How do you expose Kubernetes applications externally?
+How do you route traffic from ALB to Kubernetes services?
+How do you handle production traffic stability in EKS?
+What is your approach for RCA and alert prevention?
+What monitoring tools are you using?
+How do you configure alerts in monitoring systems?
+How do you manage Terraform changes in daily activities?
+What kind of AWS resources have you modified/provisioned using Terraform?
+
+Equitas Bank
+
+Tell me about yourself.
+Have you used ArgoCD?
+What is the difference between ArgoCD and Helm charts?
+What is the difference between ArgoCD and traditional CI/CD tools like Jenkins?
+How would you install Jenkins from scratch?
+What are the main sections or parameters you write inside a Jenkinsfile?
+How does communication happen between master and worker nodes in Kubernetes?
+Have you built a Kubernetes cluster from scratch?
+What components or services will you install on the master node and worker node?
+In your own on-prem Kubernetes cluster, how do you identify whether a node is master or worker?
+How does a worker node join a Kubernetes cluster?
+How do you create a Kubernetes cluster from scratch?
+How do you connect Jenkins to an on-prem Kubernetes cluster?
+Explain your on-prem Kubernetes architecture.
+How many master and worker nodes were present in your cluster?
+Which command is used to join worker nodes to the Kubernetes cluster?
+
+ShellKode - L1
+==============
+
+who you setup HPA in your project?
+what is node auto scalar?
+what is carpenter?
+are you using kustomize or helm charts?
+are you using argocd? why it is needed?
+how do you setup multi region DR? why needed? 
+Diff bt RTO vs RPO
+terraform module structure 
+where you store terraform state?
+are using dynamodb in the terms of terraform?
+end to end flow
+what is global accelerator 
+what is cluster autoscalar? are you using it?
+have you implemented WAF in your project?
+
+ShellKode - L2 
+==============
+Technical part
+- what is TG?
+- how do you configure TG?
+- 
+
+
+Managerial part
+1. Diff bt priority vs severity 
+2. Diff bt maker and checker
+Concord - L1
+============
+1. diff bt authentication and authorization
+2. what branching strategy you are following in your project
+3. you said, master branch => build -> test -> docker build -> push to ECR -> DEV deploy
+release branch => build -> test -> docker build -> push to ECR -> Release -> TST deploy -> UAT deploy -> Manual CR approval -> PRD deploy 
+- why build, test, docker build happening again
+4. After entering into the pod, you have taken thread dump -> how do you copy the thread dump into local machine
+5. I need to change the CMD arguments and ENTRYPOINT arguments in pod.yaml file - within the yaml file - what is that exact name and where it placed in the yaml
+6. how you copy file from Linux server to local
+7. how you copy file from Linux server to local without privatekey
+8. what is the purpose of SFTP
+9. what are the AWS services you are working on?
+10. explain 2 shell scripting, which you did recently?
+11. In crontab, Every 2nd Monday 9:00 AM I need to run one cron?
+12. old port is 8080, I need to change the port to 7000. how can we do without changing in dockerfile?
+13. how do you reduce the build time while creating the docker image?
+14. when you are build the image -> how to exclude few files in this command -> docker build . 
+15. your app is up and running in version 1 after three/four months - you are processing the same docker image and no changes in app code, do any changes will happen for image or app or container?
+16. what is #!/bin/bash
+17. 100's developer pushing their change (feature) into which branch
+18. error code - 429
+19. error code - 505
+20. what is anti affinity in Kubernetes?
+
+Comcast - L1
+============
+Round 1: (Written test)
+
+1. We have app slowness issue, In linux so need to monitor disk I/O utilisation - how to do this
+2. Diff bt kernel patching and package patching
+3. API intermmently showing timeout error, not CPU and memory are looking good. So how to resolve this app slowness issue
+4. Diff bt TCP and UDP
+5. how to avoid long-running or blocked_queries in database
+6. Diff bt primary_key and index in database
+7. How do you secure EC2 instance which is exposed publicly
+8. Deployment pipeline succeeded, but application failed immediately - in EKS/ECS, what would you check first
+9. In ansible playbooks, workloads are calling different comfig files for diff env, in this case what would you use var_files or include_var ?
+
