@@ -12,6 +12,20 @@ Summary
 10. Neeve AI - Screening Interview (L1 - Virtual)
 11. Akamai - (L1 - Virtual)
 12. Sopra Steria - (L1 - Virtual)
+13. Atos - L1
+14. BNP Paribas - L1
+15. Guhatek - L1
+16. Guhatek - L2
+17. Kriyadocs - L1
+18. Equitas Bank - L1 F2F
+19. Shellkode - L1
+20. Shellkode - L2
+21. Concord - L1 F2F
+22. Comcast - L1 F2F Written test
+23. Haylo Llyod - L1
+24. HID Global - L1
+25. Mahindra - L1
+26. Redington - L1 
 
 Mirafra
 =======
