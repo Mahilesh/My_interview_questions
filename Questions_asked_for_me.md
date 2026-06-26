@@ -546,3 +546,75 @@ Round 1: (Written test)
 8. Deployment pipeline succeeded, but application failed immediately - in EKS/ECS, what would you check first
 9. In ansible playbooks, workloads are calling different comfig files for diff env, in this case what would you use var_files or include_var ?
 
+HID Global - L1
+================
+1. What is your primary cloud platform experience—Azure or AWS?
+2. Which AWS security services have you worked with, apart from EC2 and EKS? Which security-related AWS services do you use regularly?
+3. Have you recently explored any automation related to AWS cloud resources? Can you give an example?
+4. What does your IAM policy automation do? Can you give a detailed walkthrough of your process?
+5. If your company has 20+ AWS accounts (mix of production and non-production) and 50+ developers, how would you approach providing role-based access to all users?
+6. Suppose you have two separate teams: Team A (Developers) should have full access in dev, and read-only access in prod; Team B (DevOps) should have full access in prod. How would you set up these access controls in AWS?
+7. If management requests to further restrict developer access—such as allowing only certain EC2 instance types or actions in specific regions, and blocking actions like VPC deletion—how would you enforce these fine-grained controls?
+8. Besides Service Control Policies (SCPs), are there any other AWS policy types available for access control?
+9. For restricting S3 bucket creation centrally across an organization, what methods would you use apart from SCPs?
+10. Have you heard about Resource Control Policy (RCP) in AWS?
+11. Out of 5, how would you rate your expertise in Terraform?
+12. What is the purpose of Terraform workspaces, and when should they be used?
+13. In a scenario where all AWS resources are managed via Terraform, but someone creates a resource manually, and the team decides not to delete it but to sync it with Terraform code, how would you handle this resource sync?
+14. Is using the `terraform import` command alone enough, or do you also need to write the Terraform resource block in the code?
+15. What security checklist do you follow in your end-to-end CI/CD pipeline? How do you handle situations when the checklist is not met?
+16. If your SonarQube quality threshold isn’t met but the release is urgent and vulnerabilities have no immediate fix, how do you handle this?
+17. Besides Trivy (open source), are you using any other enterprise container image scanning tools?
+18. What checklist do you consider for marking a container image as compliant during image scanning?
+19. Does your organization have a specific vulnerability threshold policy for container images (e.g., no more than X vulnerabilities or none at certain severity)?
+20. What best practices do you follow when writing a Dockerfile?
+
+Mahindra - L1
+=============
+1. Can you introduce yourself and share a summary of your professional experience?
+2. Have you earned any professional certifications? If yes, which ones, and how did you score?
+3. Why are you considering leaving your current company?
+4. What is your educational background, and which branch did you specialize in?
+5. What motivated you to transition from civil engineering to a career in DevOps/IT?
+6. Are you comfortable with a five-day in-office work schedule at our Coimbatore location?
+7. How would you design a secure VPC networking architecture for AWS ECS workloads?
+8. Do you have experience working with Terraform?
+9. How do you manage Terraform state securely in a production environment?
+10. Can you provide a sample Terraform backend configuration code that demonstrates state locking?
+11. What is the function of the `encrypt = true` setting in Terraform’s S3 backend configuration?
+12. Which encryption algorithm is used by AWS S3 when `encrypt = true` is specified?
+13. Have you managed encryption using AWS Key Management Service (KMS)?
+14. What steps do you take to prevent accidental deletion of production resources?
+15. Do you have hands-on experience with Kubernetes and its components?
+16. If a Kubernetes pod is stuck in a CrashLoopBackOff state but logs look normal, what troubleshooting steps would you follow?
+17. If AWS credentials are exposed on GitHub, what immediate actions would you take?
+18. What is RBAC (Role-Based Access Control) in Kubernetes, and how do you use it?
+19. How would you implement GitOps practices using Argo CD? Do you have experience with Argo CD?
+20. How would you design a system to achieve an RPO (Recovery Point Objective) of zero and an RTO (Recovery Time Objective) of less than 30 seconds?
+21. If your Kubernetes pods are running but the service is unreachable, how would you approach diagnosing and resolving the issue?
+22. How would you identify and permanently fix frequent Terraform drift issues?
+23. How would you design a CI/CD process capable of handling 500 microservices and supporting 50 deployments a day?
+
+Redington - L1
+==============
+1. Can you introduce yourself and describe your current role and responsibilities in your organization?
+2. Since you mentioned automation, can you describe what types of automation you have implemented so far and what outcomes they produced?
+3. Can you give an example of an automation script or code you have written, and explain its impact?
+4. How has your automation work helped save time or effort for developers or engineers?
+5. Have you written any Bash scripts? If so, what functionality do those scripts provide?
+6. What types of resources do your health check scripts monitor or verify?
+7. What mechanisms or tools do you use to send alerts when a problem is detected?
+8. How do you schedule or run your Bash scripts in your environment?
+9. From your jump server, how do you send email alerts to stakeholders?
+10. What prerequisites or configurations are required to enable sending emails from a server?
+11. I see you have completed the AWS Solutions Architect certification. How has this certification helped you or how do you apply its knowledge in your work?
+12. Suppose a customer is using an EC2 instance to transfer data to S3 and is receiving high data transfer charges. What would you suggest in this situation?
+13. What solution would you recommend to eliminate (make zero) data transfer charges from EC2 to S3?
+14. If a customer wants to upgrade their ECS cluster, what prerequisites would you check before starting the upgrade, and how would you perform a rollback if there are any issues?
+15. How would you take a backup or “snapshot” of an ECS cluster before an upgrade?
+16. Do you have access to the ECS control plane? If not, how would you handle backups?
+17. Can you explain if it is possible to back up the ECS cluster itself, or is it limited to worker nodes? How would you approach this?
+18. How would you restore the ECS cluster or its resources from a backup if needed?
+19. What are the advantages of using disk striping in Linux?
+20. Can you explain what disk striping is and how it works in Linux systems?
+21. Can you describe a critical incident you faced in your organization and explain how you resolved it?
