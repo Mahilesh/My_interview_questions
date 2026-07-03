@@ -102,6 +102,7 @@ UDP - sends the data in fast, without checking if it arrived - ports used - 53, 
 401 - Unauthorized  -> Authentication required or token missing
 403 - Forbidden     -> Authenticated but no permission
 404 - Not Found     -> Resource/URL doesn’t exist
+429 - Too many requests
 
 9. Cloudwatch - Metrics -??
 CPU, Memory, Target, Disk usage, network in/out, status check, ebs volumes iops readwrite operation
